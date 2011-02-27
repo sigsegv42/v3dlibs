@@ -1,0 +1,74 @@
+Vertical|3D Read Me
+
+The Vertical3D project consists of a collection of libraries useful for various client 
+3D applications as well as the Vertical|3D application itself.
+
+Libraries:
+
+libhookah
+libhookah_sdl
+libhookah_fltk
+libv3daudio
+libv3dbrep
+libv3dcommand
+libv3dcore
+libv3dfont
+libv3dgui
+libv3dimage
+libv3dinput
+libv3dtypes
+libv3dutil
+
+New in version 0.0.9 (xx-xx-08)
+
+libv3dimage
+Improvements in image library. More extensive format support for image reading along with
+new support for writing images. Both reading and writing of images in JPEG, TGA, BMP, PNG
+formats is now supported (though not in all possible format variants). 
+
+libhookah
+The backend driver is now separate from the core Hookah library. A new event-driven driver 
+using FLTK has been added. The original SDL driver has been moved out of the base library.
+Each driver has its own additional library. Clients must now provide the window dimensions 
+at window creation time.
+
+libv3dtypes
+There is a new Bound2D data type for specifying 2D bounding volumes.
+
+libv3dgui
+The input event adapter now allows for connecting multiple event listeners to a single 
+adapter.
+
+libv3dcommand
+The event info object now supports an optional data parameter to be associated with the
+event.
+
+
+New in version 0.0.8 (02-25-08)
+Added separate abstract input library, removed command library dependency from hookah and
+input libraries. Added support for mouse input. Lots of small bugfixes and code cleanups.
+
+
+New in version 0.0.7 (12-12-07)
+More API documentation, code cleanups, reorganizations.
+
+libv3daudio
+New library. Audio support was moved from the hookah library into its own separate library.
+
+libv3dcommand
+The command / event / binding system is rewritten. Command tables have been removed and
+command handlers are now provided using the boost signal library. Support for a command 
+parameter string has also been added.
+
+libv3dfont
+New library. Font support was moved from the hookah library into its own separate library.
+The font system has also been completely rewritten to use the FreeType2 library for cross-
+platform loading of truetype fonts.
+
+libv3dimage
+New library. Image support was moved from the hookah library into its own separate library.
+PNG loading bugfixes.
+
+libhookah
+Moved audio, image, font support to their own libraries. Improved texture support for 8-bit
+textures. The boost signal library is now used for the game loop callbacks.
