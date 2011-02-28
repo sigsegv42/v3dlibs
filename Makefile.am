@@ -1,0 +1,7 @@
+AUTOMAKE_OPTIONS = subdir-objects
+ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I .
+
+SUBDIRS = \
+src/3dtypes \
+src/command \
+src/tests

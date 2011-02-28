@@ -1,0 +1,27 @@
+AUTOMAKE_OPTIONS = subdir-objects
+ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I .
+
+lib_LTLIBRARIES = \
+libv3dcommand-@VERTICAL3D_API_VERSION@.la
+
+libv3dcommand_@VERTICAL3D_API_VERSION@_la_SOURCES = \
+Bind.cxx \
+Command.cxx \
+CommandDirectory.cxx \
+CommandInfo.cxx \
+EventInfo.cxx \
+StateController.cxx
+# bindloader depends on the property tree stuff in util - need to rewrite to just use boost property tree instead
+#BindLoader.cxx 
+# missing header file in git repo for this file right now
+
+library_includedir=$(includedir)/vertical3d-$(VERTICAL3D_API_VERSION)/vertical3d/command
+
+library_include_HEADERS= \
+Bind.h \
+Command.h \
+CommandDirectory.h \
+CommandInfo.h \
+EventInfo.h
+
+AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS)

@@ -6,6 +6,7 @@
 #include "Matrix4.h"
 
 #include <string>
+#include <ostream>
 
 namespace v3D
 {
