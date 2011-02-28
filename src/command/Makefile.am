@@ -9,11 +9,11 @@ Bind.cxx \
 Command.cxx \
 CommandDirectory.cxx \
 CommandInfo.cxx \
-EventInfo.cxx \
-StateController.cxx
+EventInfo.cxx 
 # bindloader depends on the property tree stuff in util - need to rewrite to just use boost property tree instead
 #BindLoader.cxx 
 # missing header file in git repo for this file right now
+#StateController.cxx
 
 library_includedir=$(includedir)/vertical3d-$(VERTICAL3D_API_VERSION)/vertical3d/command
 

@@ -3,6 +3,7 @@ ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I .
 
 bin_PROGRAMS = unit_tests
 unit_tests_SOURCES = \
+TestMain.cxx \
 Color3Test.cxx
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS)

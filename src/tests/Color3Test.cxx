@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE( color3_test )
 
 	// test subtraction
 	color3 = color - color2;
-	BOOST_CHECK_EQUAL(color[0], 2.0f);
-	BOOST_CHECK_EQUAL(color[1], 2.0f);
-	BOOST_CHECK_EQUAL(color[2], 2.0f);
+	BOOST_CHECK_EQUAL(color3[0], 2.0f);
+	BOOST_CHECK_EQUAL(color3[1], 2.0f);
+	BOOST_CHECK_EQUAL(color3[2], 2.0f);
 }

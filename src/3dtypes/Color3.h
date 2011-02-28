@@ -36,8 +36,26 @@ namespace v3D
 
 	const Color3 operator * (const Color3 & lhs, float f);
 	const Color3 operator / (const Color3 & lhs, float f);
-	const Color3 operator + (const Color3 & lhs, const Color3 & rhs);
-	const Color3 operator - (const Color3 & lhs, const Color3 & rhs);
+
+	Color3 operator+(const Color3 & lhs, const Color3 & rhs)
+	{
+		Color3 c = lhs;
+		c[0] += rhs[0];
+		c[1] += rhs[1];
+		c[2] += rhs[2];
+
+		return c;
+	}
+
+	Color3 operator - (const Color3 & lhs, const Color3 & rhs)
+	{
+		Color3 c = lhs;
+		c[0] -= rhs[0];
+		c[1] -= rhs[1];
+		c[2] -= rhs[2];
+
+		return c;
+	}
 
 }; // end namespace v3D
 
