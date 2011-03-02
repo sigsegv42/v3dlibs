@@ -1,4 +1,3 @@
-#define BOOST_TEST_MODULE Color3 test
 #include <boost/test/unit_test.hpp>
 
 #include "../3dtypes/Color3.h"
