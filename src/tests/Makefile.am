@@ -7,7 +7,8 @@ TestMain.cxx \
 Color3Test.cxx \
 Color4Test.cxx \
 Vector2Test.cxx \
-Vector3Test.cxx
+Vector3Test.cxx \
+AABBoxTest.cxx
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
 AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS) $(GCOV_LDFLAGS)

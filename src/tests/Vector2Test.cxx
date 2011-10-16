@@ -2,6 +2,11 @@
 
 #include "../3dtypes/Vector2.h"
 
+float get_vector_value(const v3D::Vector2 vector)
+{
+	return vector[0];
+}
+
 BOOST_AUTO_TEST_CASE( vector2_test )
 {
 	// test default constructor
@@ -42,4 +47,7 @@ BOOST_AUTO_TEST_CASE( vector2_test )
 	BOOST_CHECK_EQUAL(vector[0], -5.0f);
 	BOOST_CHECK_EQUAL(vector[1], -9.0f);
 
+	// test const accessor
+	float fval = get_vector_value(vector);
+	BOOST_CHECK_EQUAL(fval, -5.0f);
 }
