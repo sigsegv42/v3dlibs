@@ -9,10 +9,34 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS([string])
 AC_CHECK_HEADERS([iostream])
 
-
 # need at least boost 1.41 for property tree support
 BOOST_REQUIRE([1.41])
 BOOST_TEST
+
+# gcov support (for code coverage reports)
+
+AC_PATH_PROG([GCOV], [gcov], [enable_gcov=no])
+
+AC_MSG_CHECKING([whether to build with gcov testing])
+
+AC_ARG_ENABLE([gcov],
+              [AS_HELP_STRING([--enable-gcov],
+                              [Whether to enable coverage testing (requires gcc and gcov)])],
+              [],
+              [enable_gcov=no])
+
+AS_IF([test "x$enable_gcov" = "xyes" && test "x$GCC" = "xyes"],
+      [
+        GCOV_CFLAGS="-g -O0 -fprofile-arcs -ftest-coverage"
+        GCOV_LDFLAGS="-lgcov"
+      ]
+)
+
+AM_CONDITIONAL([GCOV_ENABLED], [test "x$enable_gcov" = "xyes"])
+AC_SUBST([GCOV_CFLAGS])
+AC_SUBST([GCOV_LDFLAGS])
+AC_MSG_RESULT([$enable_gcov])
+
 
 AC_SUBST([VERTICAL3D_SO_VERSION], [0:1:0])
 AC_SUBST([VERTICAL3D_API_VERSION], [1.0])

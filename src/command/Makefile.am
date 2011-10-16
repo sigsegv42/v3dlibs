@@ -15,6 +15,8 @@ EventInfo.cxx
 # missing header file in git repo for this file right now
 #StateController.cxx
 
+libv3dcommand_@VERTICAL3D_API_VERSION@_la_LDFLAGS = -version-info $(VERTICAL3D_SO_VERSION) $(GCOV_LDFLAGS)
+
 library_includedir=$(includedir)/vertical3d-$(VERTICAL3D_API_VERSION)/vertical3d/command
 
 library_include_HEADERS= \
@@ -24,4 +26,4 @@ CommandDirectory.h \
 CommandInfo.h \
 EventInfo.h
 
-AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS)
+AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)

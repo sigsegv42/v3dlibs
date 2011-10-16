@@ -17,7 +17,7 @@ Quaternion.cxx \
 Vector2.cxx \
 Vector3.cxx
 
-libv3dtypes_@VERTICAL3D_API_VERSION@_la_LDFLAGS = -version-info $(VERTICAL3D_SO_VERSION)
+libv3dtypes_@VERTICAL3D_API_VERSION@_la_LDFLAGS = -version-info $(VERTICAL3D_SO_VERSION) $(GCOV_LDFLAGS)
 
 library_includedir=$(includedir)/vertical3d-$(VERTICAL3D_API_VERSION)/vertical3d/3dtypes
 
@@ -36,4 +36,4 @@ Vector.h \
 Vector2.h \
 Vector3.h
 
-AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS)
+AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
