@@ -46,4 +46,22 @@ BOOST_AUTO_TEST_CASE( color3_test )
 	BOOST_CHECK_EQUAL(color3[0], 2.0f);
 	BOOST_CHECK_EQUAL(color3[1], 2.0f);
 	BOOST_CHECK_EQUAL(color3[2], 2.0f);
+	
+	// test rgb constructor
+	v3D::Color3 color4(4.0f, 7.0f, 3.0f);
+	BOOST_CHECK_EQUAL(color4[0], 4.0f);
+	BOOST_CHECK_EQUAL(color4[1], 7.0f);
+	BOOST_CHECK_EQUAL(color4[2], 3.0f);
+
+	// test multiplication
+	color3 = color4 * 5.0f;
+	BOOST_CHECK_EQUAL(color3[0], 20.0f);
+	BOOST_CHECK_EQUAL(color3[1], 35.0f);
+	BOOST_CHECK_EQUAL(color3[2], 15.0f);
+
+	// test division
+	color2 = color3 / 5.0f;
+	BOOST_CHECK_EQUAL(color2[0], 4.0f);
+	BOOST_CHECK_EQUAL(color2[1], 7.0f);
+	BOOST_CHECK_EQUAL(color2[2], 3.0f);
 }

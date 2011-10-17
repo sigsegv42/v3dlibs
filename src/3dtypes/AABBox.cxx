@@ -35,9 +35,11 @@ Vector3 AABBox::origin() const
 	return (max_ - min_);
 }
 
+/*
 void AABBox::vertices(Vector3 * v) const
 {
 }
+*/
 
 // set min & max extents
 void AABBox::extents(const Vector3 & min, const Vector3 & max)

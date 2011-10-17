@@ -51,7 +51,7 @@ float & Color3::operator[](unsigned int i)
 	return data_[i];
 }
 
-const Color3 operator * (const Color3 & lhs, float f)
+const Color3 v3D::operator * (const Color3 & lhs, const float f)
 {
 	Color3 c = lhs;
 	c[0] *= f;
@@ -61,7 +61,7 @@ const Color3 operator * (const Color3 & lhs, float f)
 	return c;
 }
 
-const Color3 operator / (const Color3 & lhs, float f)
+const Color3 v3D::operator / (const Color3 & lhs, const float f)
 {
 	Color3 c = lhs;
 	c[0] /= f;

@@ -29,7 +29,7 @@ namespace v3D
 			 * Get the 8 vertices that compose the bounding box
 			 * @param verts an array of Vector3's to hold the 8 vertices.
 			 */
-			void vertices(Vector3 * verts) const;
+			//void vertices(Vector3 * verts) const;
 			/**
 			 * Set the minimum extents of the bounding box.
 			 * @param v the vector containing the minimum extents.

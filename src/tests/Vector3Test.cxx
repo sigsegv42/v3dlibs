@@ -73,13 +73,13 @@ BOOST_AUTO_TEST_CASE( vector3_test )
 
 	// test scalar multiplication
 	vector2 = vector3 * 10.0f;
-	BOOST_CHECK_EQUAL(vector2[0], 130.0f);
-	BOOST_CHECK_EQUAL(vector2[1], 170.0f);
-	BOOST_CHECK_EQUAL(vector2[2], 210.0f);
+	BOOST_CHECK_EQUAL(vector2[0], 230.0f);
+	BOOST_CHECK_EQUAL(vector2[1], 270.0f);
+	BOOST_CHECK_EQUAL(vector2[2], 310.0f);
 
 	// test scalar division
 	vector3 = vector2 / 10.0f;
-	BOOST_CHECK_EQUAL(vector2[0], 13.0f);
-	BOOST_CHECK_EQUAL(vector2[1], 17.0f);
-	BOOST_CHECK_EQUAL(vector2[2], 21.0f);
+	BOOST_CHECK_EQUAL(vector3[0], 23.0f);
+	BOOST_CHECK_EQUAL(vector3[1], 27.0f);
+	BOOST_CHECK_EQUAL(vector3[2], 31.0f);
 }
