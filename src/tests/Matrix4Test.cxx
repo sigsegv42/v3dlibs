@@ -141,4 +141,50 @@ BOOST_AUTO_TEST_CASE( matrix4_test )
 	v3D::Matrix4 matrix5(test_values);
 	matrix5.neg();
 	BOOST_CHECK_EQUAL((matrix4 == matrix5), true);
+
+
+	// test copy constructor
+	v3D::Matrix4 matrix6(matrix5);
+	BOOST_CHECK_EQUAL((matrix6 == matrix5), true);
+
+	// test clone
+	matrix6.clone(matrix4);
+	BOOST_CHECK_EQUAL((matrix6 == matrix4), true);
+
+	// test subtraction operator
+	matrix6 = matrix5 - matrix4;
+	matrix5.zero();
+	BOOST_CHECK_EQUAL((matrix6 == matrix5), true);
+
+	// test big constructor
+	v3D::Matrix4 matrix7(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);
+	v3D::Matrix4 matrix8(test_values);
+	BOOST_CHECK_EQUAL((matrix7 == matrix8), true);
+
+	// test float multiplication operator
+	matrix7 *= 3.0f;
+	BOOST_CHECK_EQUAL(matrix7[0], 3.0f);
+	BOOST_CHECK_EQUAL(matrix7[1], 6.0f);
+	BOOST_CHECK_EQUAL(matrix7[2], 9.0f);
+	BOOST_CHECK_EQUAL(matrix7[3], 12.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[4], 15.0f);
+	BOOST_CHECK_EQUAL(matrix7[5], 18.0f);
+	BOOST_CHECK_EQUAL(matrix7[6], 21.0f);
+	BOOST_CHECK_EQUAL(matrix7[7], 24.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[8], 27.0f);
+	BOOST_CHECK_EQUAL(matrix7[9], 30.0f);
+	BOOST_CHECK_EQUAL(matrix7[10], 33.0f);
+	BOOST_CHECK_EQUAL(matrix7[11], 36.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[12], 39.0f);
+	BOOST_CHECK_EQUAL(matrix7[13], 42.0f);
+	BOOST_CHECK_EQUAL(matrix7[14], 45.0f);
+	BOOST_CHECK_EQUAL(matrix7[15], 48.0f);
+
+	// test addition operator
+	matrix5 = matrix8 * 3.0f;
+	BOOST_CHECK_EQUAL((matrix5 == matrix7), true);
+
 }
