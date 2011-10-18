@@ -4,4 +4,141 @@
 
 BOOST_AUTO_TEST_CASE( matrix4_test )
 {
+	// test default constructor
+	v3D::Matrix4 matrix;
+	BOOST_CHECK_EQUAL(matrix[0], 1.0f);
+	BOOST_CHECK_EQUAL(matrix[1], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[2], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[3], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix[4], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[5], 1.0f);
+	BOOST_CHECK_EQUAL(matrix[6], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[7], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix[8], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[9], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[10], 1.0f);
+	BOOST_CHECK_EQUAL(matrix[11], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix[12], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[13], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[14], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[15], 1.0f);
+
+	// test zero
+	matrix.zero();
+	BOOST_CHECK_EQUAL(matrix[0], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[1], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[2], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[3], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix[4], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[5], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[6], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[7], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix[8], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[9], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[10], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[11], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix[12], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[13], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[14], 0.0f);
+	BOOST_CHECK_EQUAL(matrix[15], 0.0f);
+
+	// test single value constructor
+	v3D::Matrix4 matrix2(0.0f);
+	BOOST_CHECK_EQUAL(matrix2[0], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[1], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[2], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[3], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix2[4], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[5], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[6], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[7], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix2[8], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[9], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[10], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[11], 0.0f);
+
+	BOOST_CHECK_EQUAL(matrix2[12], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[13], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[14], 0.0f);
+	BOOST_CHECK_EQUAL(matrix2[15], 0.0f);
+
+	// test comparison - zero == zero
+	BOOST_CHECK_EQUAL((matrix2 == matrix), true);
+
+	// test comparison - identity != zero
+	matrix.identity();
+	BOOST_CHECK_EQUAL((matrix != matrix2), true);
+
+	// test default constructor == identity matrix
+	v3D::Matrix4 matrix3;
+	BOOST_CHECK_EQUAL((matrix == matrix3), true);
+
+	// test assignment - assign identity to zero matrix
+	matrix2 = matrix3;
+	BOOST_CHECK_EQUAL((matrix2 == matrix3), true);
+
+	float test_values[] = 
+	{
+		1.0f, 2.0f, 3.0f, 4.0f,
+		5.0f, 6.0f, 7.0f, 8.0f,
+		9.0f, 10.0f, 11.0f, 12.0f,
+		13.0f, 14.0f, 15.0f, 16.0f
+	};
+
+	// test 1-dimensional array constructor
+	v3D::Matrix4 matrix4(test_values);
+	BOOST_CHECK_EQUAL(matrix4[0], 1.0f);
+	BOOST_CHECK_EQUAL(matrix4[1], 2.0f);
+	BOOST_CHECK_EQUAL(matrix4[2], 3.0f);
+	BOOST_CHECK_EQUAL(matrix4[3], 4.0f);
+
+	BOOST_CHECK_EQUAL(matrix4[4], 5.0f);
+	BOOST_CHECK_EQUAL(matrix4[5], 6.0f);
+	BOOST_CHECK_EQUAL(matrix4[6], 7.0f);
+	BOOST_CHECK_EQUAL(matrix4[7], 8.0f);
+
+	BOOST_CHECK_EQUAL(matrix4[8], 9.0f);
+	BOOST_CHECK_EQUAL(matrix4[9], 10.0f);
+	BOOST_CHECK_EQUAL(matrix4[10], 11.0f);
+	BOOST_CHECK_EQUAL(matrix4[11], 12.0f);
+
+	BOOST_CHECK_EQUAL(matrix4[12], 13.0f);
+	BOOST_CHECK_EQUAL(matrix4[13], 14.0f);
+	BOOST_CHECK_EQUAL(matrix4[14], 15.0f);
+	BOOST_CHECK_EQUAL(matrix4[15], 16.0f);
+
+	// test unary negate operator
+	matrix4 = -matrix4;
+	BOOST_CHECK_EQUAL(matrix4[0], -1.0f);
+	BOOST_CHECK_EQUAL(matrix4[1], -2.0f);
+	BOOST_CHECK_EQUAL(matrix4[2], -3.0f);
+	BOOST_CHECK_EQUAL(matrix4[3], -4.0f);
+
+	BOOST_CHECK_EQUAL(matrix4[4], -5.0f);
+	BOOST_CHECK_EQUAL(matrix4[5], -6.0f);
+	BOOST_CHECK_EQUAL(matrix4[6], -7.0f);
+	BOOST_CHECK_EQUAL(matrix4[7], -8.0f);
+
+	BOOST_CHECK_EQUAL(matrix4[8], -9.0f);
+	BOOST_CHECK_EQUAL(matrix4[9], -10.0f);
+	BOOST_CHECK_EQUAL(matrix4[10], -11.0f);
+	BOOST_CHECK_EQUAL(matrix4[11], -12.0f);
+
+	BOOST_CHECK_EQUAL(matrix4[12], -13.0f);
+	BOOST_CHECK_EQUAL(matrix4[13], -14.0f);
+	BOOST_CHECK_EQUAL(matrix4[14], -15.0f);
+	BOOST_CHECK_EQUAL(matrix4[15], -16.0f);
+
+	// test negate method
+	v3D::Matrix4 matrix5(test_values);
+	matrix5.neg();
+	BOOST_CHECK_EQUAL((matrix4 == matrix5), true);
 }

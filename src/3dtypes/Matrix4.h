@@ -90,4 +90,4 @@ namespace v3D
 
 }; // end namespace v3D
 
-#endif // __INCLUDED_V3D_MATRIX4__
+#endif // INCLUDED_V3D_MATRIX4
