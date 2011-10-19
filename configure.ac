@@ -12,6 +12,8 @@ AC_CHECK_HEADERS([iostream])
 # need at least boost 1.41 for property tree support
 BOOST_REQUIRE([1.41])
 BOOST_TEST
+# need boost signals for libv3dcommand
+BOOST_SIGNALS
 
 # gcov support (for code coverage reports)
 

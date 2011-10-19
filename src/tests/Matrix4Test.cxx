@@ -183,8 +183,76 @@ BOOST_AUTO_TEST_CASE( matrix4_test )
 	BOOST_CHECK_EQUAL(matrix7[14], 45.0f);
 	BOOST_CHECK_EQUAL(matrix7[15], 48.0f);
 
-	// test addition operator
+	// test multiplication operator
 	matrix5 = matrix8 * 3.0f;
 	BOOST_CHECK_EQUAL((matrix5 == matrix7), true);
 
+	// test scale
+	matrix7.scale(3.0f, 2.0f, 5.0f);
+	BOOST_CHECK_EQUAL(matrix7[0], 9.0f);
+	BOOST_CHECK_EQUAL(matrix7[1], 6.0f);
+	BOOST_CHECK_EQUAL(matrix7[2], 9.0f);
+	BOOST_CHECK_EQUAL(matrix7[3], 12.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[4], 15.0f);
+	BOOST_CHECK_EQUAL(matrix7[5], 36.0f);
+	BOOST_CHECK_EQUAL(matrix7[6], 21.0f);
+	BOOST_CHECK_EQUAL(matrix7[7], 24.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[8], 27.0f);
+	BOOST_CHECK_EQUAL(matrix7[9], 30.0f);
+	BOOST_CHECK_EQUAL(matrix7[10], 165.0f);
+	BOOST_CHECK_EQUAL(matrix7[11], 36.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[12], 39.0f);
+	BOOST_CHECK_EQUAL(matrix7[13], 42.0f);
+	BOOST_CHECK_EQUAL(matrix7[14], 45.0f);
+	BOOST_CHECK_EQUAL(matrix7[15], 48.0f);
+
+	// test abs
+	matrix7[1] = -21.0f;
+	matrix7[13] = -33.0f;
+	matrix7[5] = -12.0f;
+	matrix7.abs();
+	BOOST_CHECK_EQUAL(matrix7[0], 9.0f);
+	BOOST_CHECK_EQUAL(matrix7[1], 21.0f);
+	BOOST_CHECK_EQUAL(matrix7[2], 9.0f);
+	BOOST_CHECK_EQUAL(matrix7[3], 12.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[4], 15.0f);
+	BOOST_CHECK_EQUAL(matrix7[5], 12.0f);
+	BOOST_CHECK_EQUAL(matrix7[6], 21.0f);
+	BOOST_CHECK_EQUAL(matrix7[7], 24.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[8], 27.0f);
+	BOOST_CHECK_EQUAL(matrix7[9], 30.0f);
+	BOOST_CHECK_EQUAL(matrix7[10], 165.0f);
+	BOOST_CHECK_EQUAL(matrix7[11], 36.0f);
+
+	BOOST_CHECK_EQUAL(matrix7[12], 39.0f);
+	BOOST_CHECK_EQUAL(matrix7[13], 33.0f);
+	BOOST_CHECK_EQUAL(matrix7[14], 45.0f);
+	BOOST_CHECK_EQUAL(matrix7[15], 48.0f);
+
+	// test addition operator
+	matrix8 = matrix7 + matrix5;
+	BOOST_CHECK_EQUAL(matrix8[0], 12.0f);
+	BOOST_CHECK_EQUAL(matrix8[1], 27.0f);
+	BOOST_CHECK_EQUAL(matrix8[2], 18.0f);
+	BOOST_CHECK_EQUAL(matrix8[3], 24.0f);
+
+	BOOST_CHECK_EQUAL(matrix8[4], 30.0f);
+	BOOST_CHECK_EQUAL(matrix8[5], 30.0f);
+	BOOST_CHECK_EQUAL(matrix8[6], 42.0f);
+	BOOST_CHECK_EQUAL(matrix8[7], 48.0f);
+
+	BOOST_CHECK_EQUAL(matrix8[8], 54.0f);
+	BOOST_CHECK_EQUAL(matrix8[9], 60.0f);
+	BOOST_CHECK_EQUAL(matrix8[10], 198.0f);
+	BOOST_CHECK_EQUAL(matrix8[11], 72.0f);
+
+	BOOST_CHECK_EQUAL(matrix8[12], 78.0f);
+	BOOST_CHECK_EQUAL(matrix8[13], 75.0f);
+	BOOST_CHECK_EQUAL(matrix8[14], 90.0f);
+	BOOST_CHECK_EQUAL(matrix8[15], 96.0f);
 }

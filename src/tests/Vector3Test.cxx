@@ -82,4 +82,10 @@ BOOST_AUTO_TEST_CASE( vector3_test )
 	BOOST_CHECK_EQUAL(vector3[0], 23.0f);
 	BOOST_CHECK_EQUAL(vector3[1], 27.0f);
 	BOOST_CHECK_EQUAL(vector3[2], 31.0f);
+
+	float dot = vector3.dot(vector);
+	BOOST_CHECK_EQUAL(dot, 810.0f);
+
+	float dot2 = vector3.squaredLength();
+	BOOST_CHECK_EQUAL(dot2, 2219.0f);
 }
