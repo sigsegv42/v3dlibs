@@ -9,6 +9,8 @@ Image.cxx \
 ImageReader.cxx \
 readers/BMPReader.cxx \
 readers/TGAReader.cxx \
+readers/PNGReader.cxx \
+readers/JPEGReader.cxx \
 ImageWriter.cxx \
 writers/BMPWriter.cxx \
 writers/TGAWriter.cxx
@@ -23,8 +25,10 @@ BMP.h \
 ImageReader.h \
 readers/BMPReader.h \
 readers/TGAReader.h \
+readers/PNGReader.h \
+readers/JPEGReader.h \
 ImageWriter.cxx \
 writers/BMPWriter.cxx \
 writers/TGAWriter.cxx
 
-AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
+AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS) $(libpng_CFLAGS)

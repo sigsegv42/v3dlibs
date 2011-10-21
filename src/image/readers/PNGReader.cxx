@@ -6,7 +6,7 @@
 
 #pragma pack(pop)
 #include <iostream>
-//#include <cstdio>
+#include <cstdio>
 
 using namespace v3D;
 
@@ -24,8 +24,7 @@ boost::shared_ptr<Image> PNGReader::read(const std::string & filename)
 
 	// open the file
 	FILE * fp;
-	errno_t err;
-	if ((err = fopen_s(&fp, filename.c_str(), "rb")) != 0)
+	if ((fp = fopen(filename.c_str(), "rb")) != 0)
 	{
 		return empty_ptr;
 	}

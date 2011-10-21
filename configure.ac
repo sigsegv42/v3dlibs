@@ -15,6 +15,43 @@ BOOST_TEST
 # need boost signals for libv3dcommand
 BOOST_SIGNALS
 
+# use pkg-config
+PKG_PROG_PKG_CONFIG([0.2])
+# libv3dimage needs libpng support
+PKG_CHECK_MODULES([libpng], [libpng])
+
+AC_ARG_WITH(jpeg, 
+	[AC_HELP_STRING([--with-jpeg=<DIR>],
+    [Provide an alternative path to the libJPEG library directory])],
+    libjpeg_libdir=$withval,
+    libjpeg_libdir=""
+    )
+
+# Check for -ljpeg
+AC_CHECK_LIB(jpeg, jpeg_destroy_decompress,
+                   jpeg_ok=yes, jpeg_ok=no
+                   AC_MSG_ERROR([JPEG library (libjpeg) not found]))
+if test "$jpeg_ok" = yes; then
+   AC_MSG_CHECKING([for jpeglib])
+   AC_TRY_CPP(
+[#include <stdio.h>
+#undef PACKAGE
+#undef VERSION
+#undef HAVE_STDLIB_H
+#include <jpeglib.h>],
+         jpeg_ok=yes,
+         jpeg_ok=no)
+   AC_MSG_RESULT($jpeg_ok)
+   if test "$jpeg_ok" = yes; then
+      JPEG_LIBS="-ljpeg"
+      # should we check for progressive JPEG like GTK+ as well?
+   else
+      AC_MSG_ERROR([JPEG library (libjpeg) not found])
+   fi
+fi
+AC_SUBST([JPEG_LIBS])
+
+
 # gcov support (for code coverage reports)
 
 AC_PATH_PROG([GCOV], [gcov], [enable_gcov=no])
