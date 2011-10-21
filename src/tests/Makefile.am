@@ -27,4 +27,5 @@ AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS) $(GCOV_LDFLAGS) $(BOOST_SIGNAL
 
 unit_tests_LDADD = $(DEPS_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(BOOST_SIGNALS_LIBS) \
 $(top_builddir)/src/3dtypes/.libs/libv3dtypes-@VERTICAL3D_API_VERSION@.la \
-$(top_builddir)/src/command/.libs/libv3dcommand-@VERTICAL3D_API_VERSION@.la
+$(top_builddir)/src/command/.libs/libv3dcommand-@VERTICAL3D_API_VERSION@.la \
+$(top_builddir)/src/image/.libs/libv3dimage-@VERTICAL3D_API_VERSION@.la

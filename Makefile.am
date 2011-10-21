@@ -4,6 +4,7 @@ ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I .
 SUBDIRS = \
 src/3dtypes \
 src/command \
+src/image \
 src/tests
 
 gcov_sources = $(unit_tests_SOURCES)
