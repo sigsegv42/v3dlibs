@@ -17,6 +17,19 @@ bool Bind::operator == (const EventInfo & e) const
 	return false;
 }
 
+
+bool Bind::operator == (const Bind & b) const
+{
+	if (event_ == b.event() &&
+		command_ == b.command() &&
+		param_ == b.param()) 
+	{
+		return true;
+	}
+	return false;
+}
+
+
 CommandInfo Bind::command() const
 {
 	return command_;

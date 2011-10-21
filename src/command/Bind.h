@@ -31,6 +31,14 @@ namespace v3D
 			 * @return whether the event matches this bind
 			 */
 			bool operator == (const EventInfo & e) const;
+
+			/**
+			 * Comparison operator. Full object comparison.
+			 * @param b the Bind object to test against
+			 * @return whether the event matches this bind
+			 */
+			bool operator == (const Bind &b) const;
+
 			/**
 			 * Get the Bind's CommandInfo
 			 * @return a copy of the CommandInfo

@@ -16,7 +16,11 @@ CameraProfileTest.cxx \
 CameraTest.cxx \
 3dtypesTest.cxx \
 Bound2DTest.cxx \
-EventInfoTest.cxx
+EventInfoTest.cxx \
+CommandInfoTest.cxx \
+CommandTest.cxx \
+BindTest.cxx \
+CommandDirectoryTest.cxx
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
 AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS) $(GCOV_LDFLAGS) $(BOOST_SIGNALS_LDFLAGS)
