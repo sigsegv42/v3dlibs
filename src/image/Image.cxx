@@ -3,6 +3,7 @@
 #include <cassert>
 #include <algorithm>
 #include <iostream>
+#include <cstring>
 
 using namespace v3D;
 
