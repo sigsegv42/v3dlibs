@@ -2,6 +2,7 @@
 #include "../BMP.h"
 
 #include <fstream>
+#include <cstring>
 
 using namespace v3D;
 
