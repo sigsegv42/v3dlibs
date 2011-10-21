@@ -43,6 +43,8 @@ AC_MSG_RESULT([$enable_gcov])
 AC_SUBST([VERTICAL3D_SO_VERSION], [0:1:0])
 AC_SUBST([VERTICAL3D_API_VERSION], [1.0])
 
+V3D_CONFIG_NICE([config.nice])
+
 AC_CONFIG_FILES([
 Makefile 
 src/3dtypes/Makefile
