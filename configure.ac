@@ -49,6 +49,7 @@ AC_CONFIG_FILES([
 Makefile 
 src/3dtypes/Makefile
 src/command/Makefile
+src/image/Makefile
 src/tests/Makefile
 ])
 
