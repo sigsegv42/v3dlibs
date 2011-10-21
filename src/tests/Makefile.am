@@ -20,7 +20,8 @@ EventInfoTest.cxx \
 CommandInfoTest.cxx \
 CommandTest.cxx \
 BindTest.cxx \
-CommandDirectoryTest.cxx
+CommandDirectoryTest.cxx \
+ImageTest.cxx
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
 AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS) $(GCOV_LDFLAGS) $(BOOST_SIGNALS_LDFLAGS)
