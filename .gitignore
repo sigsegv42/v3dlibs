@@ -2,3 +2,4 @@
 *.gcda
 coverage
 src/tests/unit_tests
+config.nice
