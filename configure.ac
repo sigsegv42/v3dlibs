@@ -14,6 +14,9 @@ BOOST_REQUIRE([1.41])
 BOOST_TEST
 # need boost signals for libv3dcommand
 BOOST_SIGNALS
+# libv3dimage needs boost system & filesystem
+BOOST_SYSTEM
+BOOST_FILESYSTEM
 
 # use pkg-config
 PKG_PROG_PKG_CONFIG([0.2])

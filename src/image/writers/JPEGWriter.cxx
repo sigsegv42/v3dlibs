@@ -26,8 +26,7 @@ bool JPEGWriter::write(const std::string & filename, const boost::shared_ptr<Ima
 
 	// open the file
 	FILE * fp;
-	errno_t err;
-	if ((err = fopen_s(&fp, filename.c_str(), "wb")) != 0)
+	if ((fp = fopen(filename.c_str(), "wb")) != 0)
 	{
 		return false;
 	}

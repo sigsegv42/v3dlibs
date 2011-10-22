@@ -3,7 +3,7 @@
 #include <png.h>
 
 #include <iostream>
-//#include <cstdio>
+#include <cstdio>
 
 using namespace v3D;
 
@@ -18,10 +18,13 @@ PNGWriter::~PNGWriter()
 static void
 pngtest_warning(png_structp png_ptr, png_const_charp message)
 {
-   PNG_CONST char *name = "UNKNOWN (ERROR!)";
-   if (png_ptr != NULL && png_ptr->error_ptr != NULL)
-      name = reinterpret_cast<char*>(png_ptr->error_ptr);
-   std::cout << name << ": libpng warning: " << message << std::endl;
+	PNG_CONST char *name = "UNKNOWN (ERROR!)";
+	png_voidp error_ptr = NULL;
+	if (png_ptr != NULL)
+		error_ptr = png_get_error_ptr(png_ptr);
+	if (error_ptr != NULL)
+		name = reinterpret_cast<char*>(error_ptr);
+	std::cout << name << ": libpng warning: " << message << std::endl;
 }
 
 /* This is the default error handling function.  Note that replacements for
@@ -41,8 +44,7 @@ bool PNGWriter::write(const std::string & filename, const boost::shared_ptr<Imag
 {
 	// open the file
 	FILE * fp;
-	errno_t err;
-	if ((err = fopen_s(&fp, filename.c_str(), "wb")) != 0)
+	if ((fp = fopen(filename.c_str(), "wb")) != 0)
 	{
 		return false;
 	}
