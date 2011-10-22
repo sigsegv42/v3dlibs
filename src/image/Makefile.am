@@ -13,7 +13,8 @@ readers/PNGReader.cxx \
 readers/JPEGReader.cxx \
 ImageWriter.cxx \
 writers/BMPWriter.cxx \
-writers/TGAWriter.cxx
+writers/TGAWriter.cxx \
+ImageFactory.cxx
 
 libv3dimage_@VERTICAL3D_API_VERSION@_la_LDFLAGS = -version-info $(VERTICAL3D_SO_VERSION) $(GCOV_LDFLAGS)
 
@@ -27,8 +28,9 @@ readers/BMPReader.h \
 readers/TGAReader.h \
 readers/PNGReader.h \
 readers/JPEGReader.h \
-ImageWriter.cxx \
-writers/BMPWriter.cxx \
-writers/TGAWriter.cxx
+ImageWriter.h \
+writers/BMPWriter.h \
+writers/TGAWriter.h \
+ImageFactory.h
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS) $(libpng_CFLAGS)
