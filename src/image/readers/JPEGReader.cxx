@@ -8,6 +8,13 @@
 
 #include <fstream>
 #include <iostream>
+#include <cstdio>
+// for errno
+#include <cerrno>
+// for strerror
+#include <cstring>
+
+#include "log4cxx/logger.h"
 
 using namespace v3D;
 
@@ -21,6 +28,9 @@ JPEGReader::~JPEGReader()
 
 boost::shared_ptr<Image> JPEGReader::read(const std::string &filename)
 {
+	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.image"));
+	LOG4CXX_DEBUG(logger, "JPEGReader::read - Reading jpeg file [" << filename << "]");
+
 	boost::shared_ptr<Image> empty_ptr;
 	struct jpeg_decompress_struct cinfo;
 	struct jpeg_error_mgr jerr;
@@ -31,8 +41,10 @@ boost::shared_ptr<Image> JPEGReader::read(const std::string &filename)
 
 	// open the file
 	FILE * fp;
-	if ((fp = fopen(filename.c_str(), "rb")) != 0)
+	errno = 0;
+	if ((fp = fopen(filename.c_str(), "rb")) == 0)
 	{
+		LOG4CXX_DEBUG(logger, "JPEGReader::read - failed opening file [" << filename << "] with errno [" << strerror(errno) << "]");
 		return empty_ptr;
 	}
 
