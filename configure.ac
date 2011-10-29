@@ -22,6 +22,8 @@ BOOST_FILESYSTEM
 PKG_PROG_PKG_CONFIG([0.2])
 # libv3dimage needs libpng support
 PKG_CHECK_MODULES([libpng], [libpng])
+# need log4cxx for logging support
+PKG_CHECK_MODULES([liblog4cxx], [liblog4cxx])
 
 AC_ARG_WITH(jpeg, 
 	[AC_HELP_STRING([--with-jpeg=<DIR>],
@@ -83,6 +85,7 @@ AC_MSG_RESULT([$enable_gcov])
 AC_SUBST([VERTICAL3D_SO_VERSION], [0:1:0])
 AC_SUBST([VERTICAL3D_API_VERSION], [1.0])
 
+# save configure options in config.nice
 V3D_CONFIG_NICE([config.nice])
 
 AC_CONFIG_FILES([
