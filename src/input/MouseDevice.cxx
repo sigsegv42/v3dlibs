@@ -9,7 +9,9 @@ bool MouseDevice::MouseState::pressed(unsigned int button) const
 {
 	std::vector<unsigned int>::const_iterator iter = std::find(buttons_.begin(), buttons_.end(), button);
 	if (iter != buttons_.end())
+	{
 		return true;
+	}
 	return false;
 }
 
