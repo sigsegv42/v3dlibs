@@ -25,7 +25,8 @@ ImageTest.cxx \
 TextureTest.cxx \
 ImageReaderTest.cxx \
 ImageWriterTest.cxx \
-FontTest.cxx
+FontTest.cxx \
+FontCacheTest.cxx
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
 AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS) $(GCOV_LDFLAGS) \
