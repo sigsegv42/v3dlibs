@@ -39,7 +39,7 @@ namespace v3D
 					 */
 					bool operator() (unsigned int button);
 
-					friend MouseDevice;
+					friend class MouseDevice;
 
 				private:
 					std::vector<unsigned int> buttons_;

@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-#include <al.h>
-#include <alc.h>
-#include <alut.h>
+#include <AL/al.h>
+#include <AL/alc.h>
+#include <AL/alut.h>
 
 using namespace v3D;
 

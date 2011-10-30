@@ -20,12 +20,24 @@ BOOST_FILESYSTEM
 
 # use pkg-config
 PKG_PROG_PKG_CONFIG([0.2])
+
+# checks for libraries which use pkg-config
+
 # libv3dimage needs libpng support
 PKG_CHECK_MODULES([libpng], [libpng])
+
 # need log4cxx for logging support
 PKG_CHECK_MODULES([liblog4cxx], [liblog4cxx])
+
 # libv3dfont needs freetype2
 PKG_CHECK_MODULES([freetype2], [freetype2])
+
+# libv3daudio needs openal
+PKG_CHECK_MODULES([openal], [openal])
+PKG_CHECK_MODULES([freealut], [freealut])
+
+# libhookah needs sdl
+PKG_CHECK_MODULES([sdl], [sdl])
 
 AC_ARG_WITH(jpeg, 
 	[AC_HELP_STRING([--with-jpeg=<DIR>],
@@ -96,6 +108,8 @@ src/3dtypes/Makefile
 src/command/Makefile
 src/image/Makefile
 src/font/Makefile
+src/input/Makefile
+src/audio/Makefile
 src/gl/Makefile
 src/tests/Makefile
 ])

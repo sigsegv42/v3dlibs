@@ -6,6 +6,8 @@ src/3dtypes \
 src/command \
 src/image \
 src/font \
+src/input \
+src/audio \
 src/gl \
 src/tests
 
