@@ -3,11 +3,9 @@
 #include <boost/test/unit_test.hpp>
 
 // include log4cxx header files.
-#include "log4cxx/logger.h"
-#include "log4cxx/basicconfigurator.h"
-#include "log4cxx/helpers/exception.h"
-
-//log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d"));
+#include <log4cxx/logger.h>
+#include <log4cxx/basicconfigurator.h>
+#include <log4cxx/helpers/exception.h>
 
 /**
  * Global Test Fixture used for initializing the logger

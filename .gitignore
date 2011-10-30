@@ -5,3 +5,4 @@ src/tests/unit_tests
 config.nice
 src/image/readers/readers
 src/image/writers/writers
+src/tests/data_out
