@@ -1,3 +1,11 @@
+10.29.11
+
+- add dependency on log4cxx & freetype2
+- all image library tests pass
+- add libv3dfont
+- add libv3dgl
+
+
 10.15.11
 
 - support for creating code coverage reports using gcov/lcov

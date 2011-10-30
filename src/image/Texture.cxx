@@ -25,6 +25,8 @@ Texture & Texture::operator = (const Texture & t)
 	type_	= t.type_;
 	texID_	= t.texID_;
 	wrap_	= t.wrap_;
+	width_ 	= t.width_;
+	height_ = t.height_;
 
 	return *this;
 }
