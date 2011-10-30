@@ -5,6 +5,8 @@ SUBDIRS = \
 src/3dtypes \
 src/command \
 src/image \
+src/font \
+src/gl \
 src/tests
 
 gcov_sources = $(unit_tests_SOURCES)

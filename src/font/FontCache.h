@@ -34,7 +34,7 @@ namespace v3D
 			boost::shared_ptr<Font2D> get(const std::string & name);
 
 		private:
-			std::map<std::string, boost::shared_ptr<Font2D> > _fonts;
+			std::map<std::string, boost::shared_ptr<Font2D> > fonts_;
 	};
 
 }; // end namespace v3D

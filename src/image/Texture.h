@@ -60,6 +60,16 @@ namespace v3D
 			 * @return true if the texture was sucessfully created
 			 */
 			bool create(boost::shared_ptr<Image> image);
+			/**
+			 * Get the texture id
+			 * @return texture id
+			 */
+			unsigned int id(void) const;
+			/**
+			 * Set the texture id
+			 * @param id the texture id
+			 */
+			void id(unsigned int id);
 
 			typedef enum 
 			{ 
@@ -71,11 +81,11 @@ namespace v3D
 			TextureVersion;
 
 		private:
-			TextureVersion _type;
-			unsigned int _texID;		// Texture ID Used To Select A Texture
-			bool _wrap;		// Repeat(true) or Clamp(false)
-			unsigned int _width;
-			unsigned int _height;
+			TextureVersion 	type_;
+			unsigned int 	texID_;		// Texture ID Used To Select A Texture
+			bool 			wrap_;		// Repeat(true) or Clamp(false)
+			unsigned int 	width_;
+			unsigned int 	height_;
 	};
 
 }; // end namespace v3D

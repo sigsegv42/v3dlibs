@@ -16,7 +16,8 @@ writers/BMPWriter.cxx \
 writers/TGAWriter.cxx \
 writers/JPEGWriter.cxx \
 writers/PNGWriter.cxx \
-ImageFactory.cxx
+ImageFactory.cxx \
+Texture.cxx
 
 libv3dimage_@VERTICAL3D_API_VERSION@_la_LDFLAGS = -version-info $(VERTICAL3D_SO_VERSION) $(GCOV_LDFLAGS)
 
@@ -35,6 +36,7 @@ writers/BMPWriter.h \
 writers/TGAWriter.h \
 writers/JPEGWriter.h \
 writers/PNGWriter.h \
-ImageFactory.h
+ImageFactory.h \
+Texture.h
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS) $(libpng_CFLAGS)

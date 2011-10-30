@@ -5,8 +5,6 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-#include <windows.h>
-#include <gl/gl.h>
 
 #include <string>
 #include <cmath>
@@ -16,11 +14,11 @@
 
 using namespace v3D;
 
-Font2D::Font2D() : _typeface("Courier New"), _size(24), _line_height(0), _tex_line_height(0.0f)
+Font2D::Font2D() : typeface_("Courier New"), size_(24), line_height_(0), tex_line_height_(0.0f)
 {
 }
 
-Font2D::Font2D(const std::string & face, unsigned int size) : _typeface(face), _size(size), _line_height(0), _tex_line_height(0.0f)
+Font2D::Font2D(const std::string & face, unsigned int size) : typeface_(face), size_(size), line_height_(0), tex_line_height_(0.0f)
 {
 }
 
@@ -30,37 +28,37 @@ Font2D::~Font2D()
 
 unsigned int Font2D::style(void) const
 {
-	return _style;
+	return style_;
 }
 
 void Font2D::style(unsigned int attribs)
 {
-	_style = attribs;
+	style_ = attribs;
 }
 
 int Font2D::size(void) const
 {
-	return _size;
+	return size_;
 }
 
 void Font2D::size(int s)
 {
-	_size = s;
+	size_ = s;
 }
 
 std::string Font2D::typeface(void) const
 {
-	return _typeface;
+	return typeface_;
 }
 
 void Font2D::typeface(const std::string & face)
 {
-	_typeface = face;
+	typeface_ = face;
 }
 
 boost::shared_ptr<Texture> Font2D::texture(void) const
 {
-	return _texture;
+	return texture_;
 }
 
 // NOTE: fonts aren't locale or language aware - there is a limited predefined character range supported. 
@@ -82,7 +80,7 @@ bool Font2D::build(void)
 	}
 	// load font file
 	FT_Face face;
-	std::string filename(_typeface);
+	std::string filename(typeface_);
 	if ((error = FT_New_Face(library, filename.c_str(), 0, &face)) != 0)
 	{
 		return false;
@@ -94,7 +92,7 @@ bool Font2D::build(void)
 	}
 
 	// set the font size
-	if ((error = FT_Set_Pixel_Sizes(face, _size, 0)) != 0)
+	if ((error = FT_Set_Pixel_Sizes(face, size_, 0)) != 0)
 	{
 		return false;
 	}
@@ -172,12 +170,12 @@ bool Font2D::build(void)
 		}
 		// create glyph
 		Glyph glyph;
-		glyph._x1 = static_cast<float>(x) / image_width;
-		glyph._x2 = static_cast<float>(x + (advance - pad)) / image_width;
-		glyph._y1 = static_cast<float>((y - max_ascent)) / image_height;
-		glyph._advance = (advance - pad);
+		glyph.x1_ = static_cast<float>(x) / image_width;
+		glyph.x2_ = static_cast<float>(x + (advance - pad)) / image_width;
+		glyph.y1_ = static_cast<float>((y - max_ascent)) / image_height;
+		glyph.advance_ = (advance - pad);
 
-		_glyphs[charcode] = glyph;
+		glyphs_[charcode] = glyph;
 
 		// copy bitmap to texture image
 		for (int row = 0; row < face->glyph->bitmap.rows; row++)
@@ -193,10 +191,10 @@ bool Font2D::build(void)
 
 	FT_Done_FreeType(library);
 
-	_texture = boost::shared_ptr<Texture>(new Texture(image));
+	texture_ = boost::shared_ptr<Texture>(new Texture(image));
 
-	_line_height = max_ascent + max_descent;
-	_tex_line_height = static_cast<float>(_line_height) / image_height;
+	line_height_ = max_ascent + max_descent;
+	tex_line_height_ = static_cast<float>(line_height_) / image_height;
 
 	return true;
 }
@@ -214,53 +212,32 @@ unsigned int Font2D::width(const std::string & str) const
 
 unsigned int Font2D::height(void) const
 {
-	return _line_height;
+	return line_height_;
+}
+
+float Font2D::textureHeight(void) const
+{
+	return tex_line_height_;
 }
 
 unsigned int Font2D::width(unsigned char charcode) const
 {
-	std::map<unsigned char, Glyph>::const_iterator iter = _glyphs.find(charcode);
-	if (iter != _glyphs.end())
-		return iter->second._advance;
+	std::map<unsigned char, Glyph>::const_iterator iter = glyphs_.find(charcode);
+	if (iter != glyphs_.end())
+	{
+		return iter->second.advance_;
+	}
 	return 0;
 }
 
-
-void Font2D::print(const std::string & text, float x, float y)
+const Font2D::Glyph * Font2D::glyph(unsigned char charcode) const
 {
-	// set texture & blending states for font drawing
-	glPushAttrib(GL_TEXTURE_BIT | GL_COLOR_BUFFER_BIT);
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
-
-	if (!_texture->bind())
-		return;
-
-	glBegin(GL_QUADS);
-	for (size_t i = 0; i < text.size(); i++)
+	std::map<unsigned char, Glyph>::const_iterator iter = glyphs_.find(charcode);
+	if (iter == glyphs_.end())
 	{
-		std::map<unsigned char, Glyph>::iterator iter = _glyphs.find(text[i]);
-		if (iter == _glyphs.end())
-			iter = _glyphs.begin();
-		Glyph * glyph = &(iter->second);
-
-		glTexCoord2f(glyph->_x1, glyph->_y1);
-		glVertex2f(x, y);
-
-		glTexCoord2f(glyph->_x1, glyph->_y1 + _tex_line_height);
-		glVertex2f(x, y + _line_height);
-
-		glTexCoord2f(glyph->_x2, glyph->_y1 + _tex_line_height);
-		glVertex2f(x + glyph->_advance, y + _line_height);
-
-		glTexCoord2f(glyph->_x2, glyph->_y1);
-		glVertex2f(x + glyph->_advance, y);
-
-		x += glyph->_advance;
+		iter = glyphs_.begin();
 	}
-	glEnd();
-
-	// reset texture & blend states to their initial settings
-	glPopAttrib();
+	const Glyph * glyph = &(iter->second);
+	return glyph;
 }
+

@@ -24,6 +24,8 @@ PKG_PROG_PKG_CONFIG([0.2])
 PKG_CHECK_MODULES([libpng], [libpng])
 # need log4cxx for logging support
 PKG_CHECK_MODULES([liblog4cxx], [liblog4cxx])
+# libv3dfont needs freetype2
+PKG_CHECK_MODULES([freetype2], [freetype2])
 
 AC_ARG_WITH(jpeg, 
 	[AC_HELP_STRING([--with-jpeg=<DIR>],
@@ -93,6 +95,8 @@ Makefile
 src/3dtypes/Makefile
 src/command/Makefile
 src/image/Makefile
+src/font/Makefile
+src/gl/Makefile
 src/tests/Makefile
 ])
 

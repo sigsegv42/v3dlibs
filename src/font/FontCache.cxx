@@ -21,17 +21,21 @@ bool FontCache::load(const std::string & name, const std::string & face, unsigne
 {
 	boost::shared_ptr<Font2D> font(new Font2D(face, size));
 	if (!font->build())
+	{
 		return false;
-	_fonts[name] = font;
+	}
+	fonts_[name] = font;
 	return true;
 }
 
 boost::shared_ptr<Font2D> FontCache::get(const std::string & name)
 {
-	std::map<std::string, boost::shared_ptr<Font2D> >::iterator it = _fonts.find(name);
+	std::map<std::string, boost::shared_ptr<Font2D> >::iterator it = fonts_.find(name);
 	boost::shared_ptr<Font2D> font;
-	if (it != _fonts.end())
+	if (it != fonts_.end())
+	{
 		font = it->second;
+	}
 	return font;
 }
 

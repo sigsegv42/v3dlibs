@@ -34,6 +34,18 @@ namespace v3D
 			} FontStyle;
 
 			/**
+			 * Representation of a single character glyph
+			 */
+			struct Glyph
+			{
+				
+				float x1_;
+				float y1_;
+				float x2_;
+				unsigned int advance_;
+			};
+
+			/**
 			 * Set the font style attributes
 			 * @param attribs the style attributes to set
 			 */
@@ -71,13 +83,6 @@ namespace v3D
 			 */
 			bool build(void);
 			/**
-			 * Render the the text to the current drawing surface
-			 * @param text the text to be printed
-			 * @param x the left position to print
-			 * @param y the top of the position to begin printing
-			 */
-			void print(const std::string & text, float x, float y);
-			/**
 			 * Get the width of the string
 			 * @param str the string to get the width of
 			 * @return the width
@@ -99,26 +104,28 @@ namespace v3D
 			 * @return a pointer to the texture
 			 */
 			boost::shared_ptr<Texture> texture(void) const;
+			/**
+			 * Get the texture height
+			 * @return the texture height
+			 */
+			float textureHeight(void) const;
+			/**
+			 * Get a single character glyph
+			 * @param charcode the character to lookup
+			 * @return a pointer to a single character glyph
+			 */
+			const Glyph * glyph(unsigned char charcode) const;
 
 		private:
-			struct Glyph
-			{
-				
-				float _x1;
-				float _y1;
-				float _x2;
-				unsigned int _advance;
-			};
+			std::map<unsigned char, Glyph> 	glyphs_;
+			boost::shared_ptr<Texture> 		texture_;
 
-			std::map<unsigned char, Glyph> _glyphs;
-			boost::shared_ptr<Texture> _texture;
+			float 			tex_line_height_; 	// _line
+			unsigned int 	line_height_; 		// _height
 
-			float _tex_line_height; // _line
-			unsigned int _line_height; // _height
-
-			std::string _typeface;
-			int _size;
-			unsigned int _style;
+			std::string 	typeface_;
+			int 			size_;
+			unsigned int 	style_;
 	};
 
 }; // end namespace v3D
