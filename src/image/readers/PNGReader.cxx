@@ -24,7 +24,7 @@ boost::shared_ptr<Image> PNGReader::read(const std::string & filename)
 
 	// open the file
 	FILE * fp;
-	if ((fp = fopen(filename.c_str(), "rb")) != 0)
+	if ((fp = fopen(filename.c_str(), "rb")) == 0)
 	{
 		return empty_ptr;
 	}

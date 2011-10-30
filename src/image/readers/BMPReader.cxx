@@ -5,6 +5,10 @@
 #include <sstream>
 #include <iostream>
 #include <cstring>
+// needed for runtime_error
+#include <stdexcept>
+
+#include <log4cxx/logger.h>
 
 using namespace v3D;
 
@@ -17,33 +21,10 @@ BMPReader::~BMPReader()
 {
 }
 
-void debug_file_header(const bmp_file_header & fheader)
-{
-	std::cout << "bmp type: " << fheader.type_ << std::endl;
-	std::cout << "bmp size: " << fheader.size_ << std::endl;
-	std::cout << "bmp reserved1: " << fheader.reserved1_ << std::endl;
-	std::cout << "bmp reserved2: " << fheader.reserved2_ << std::endl;
-	std::cout << "bmp offset: " << fheader.offset_ << std::endl;
-}
-
-void debug_info_header(const bmp_info_header & iheader)
-{
-	std::cout << "info size: " << iheader.size_ << std::endl;
-	std::cout << "info width: " << iheader.width_ << std::endl;
-	std::cout << "info height: " << iheader.height_ << std::endl;
-	std::cout << "info planes: " << iheader.planes_ << std::endl;
-	std::cout << "info bits: " << iheader.bits_ << std::endl;
-	std::cout << "info compression: " << iheader.compression_ << std::endl;
-	std::cout << "info image size: " << iheader.imageSize_ << std::endl;
-	std::cout << "info xppm: " << iheader.xppm_ << std::endl;
-	std::cout << "info yppm: " << iheader.yppm_ << std::endl;
-	std::cout << "info used: " << iheader.used_ << std::endl;
-	std::cout << "info important: " << iheader.important_ << std::endl;
-}
-
 boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 {
-	bool debug = false;
+	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.image"));
+	LOG4CXX_DEBUG(logger, "BMPReader::read - reading file: " << filename);
 
 	std::fstream file;
 	file.open(filename.c_str(), std::fstream::in | std::fstream::binary);
@@ -52,6 +33,7 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 
 	if (!file)
 	{
+		LOG4CXX_DEBUG(logger, "BMPReader::read - error opening file: " << filename);
 		return empty_ptr;
 	}
 
@@ -62,12 +44,14 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 	file.read(reinterpret_cast<char*>(&fheader), sizeof(bmp_file_header));
 	if (!file)
 	{
-		throw std::string("error reading bmp file header!");
+		LOG4CXX_DEBUG(logger, "BMPReader::read - error reading bmp file header!");
+		throw std::runtime_error("error reading bmp file header!");
 	}
 
 	// check magic number
 	if (fheader.type_ != 19778)
 	{
+		LOG4CXX_DEBUG(logger, "BMPReader::read - bad header magic number!");
 		return empty_ptr;
 	}
 
@@ -78,17 +62,29 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 	file.read(reinterpret_cast<char*>(&iheader), sizeof(bmp_info_header));
 	if (!file)
 	{
-		throw std::string("error reading bmp info header!");
+		LOG4CXX_DEBUG(logger, "BMPReader::read - error reading bmp info header!");
+		throw std::runtime_error("error reading bmp info header!");
 	}
 
 	int num_colors = 1 << iheader.bits_;
 
-	if (debug)
-	{
-		debug_file_header(fheader);
-		debug_info_header(iheader);
-		std::cout << "num colors: " << num_colors << std::endl;
-	}
+	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp type: " << fheader.type_ );
+	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp size: " << fheader.size_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp reserved1: " << fheader.reserved1_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp reserved2: " << fheader.reserved2_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp offset: " << fheader.offset_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info size: " << iheader.size_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info width: " << iheader.width_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info height: " << iheader.height_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info planes: " << iheader.planes_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info bits: " << iheader.bits_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info compression: " << iheader.compression_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info image size: " << iheader.imageSize_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info xppm: " << iheader.xppm_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info yppm: " << iheader.yppm_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info used: " << iheader.used_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - info important: " << iheader.important_);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - num colors: " << num_colors);
 
 	bmp_rgb_quad * colors = 0;
 	if (iheader.bits_ == 8) // load 8 bit color palette
@@ -99,7 +95,7 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 
 	if (!file)
 	{
-		throw std::string("error reading bmp colors!");
+		throw std::runtime_error("error reading bmp colors!");
 	}
 	// size of image data buffer including boundary padding
 	unsigned long size = iheader.width_ * iheader.height_ * (iheader.bits_ / 8);
@@ -110,15 +106,15 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 	{
 		pad++;
 	}
-	if (debug)
-	{
-		std::cout << "allocating image bits: " << size << std::endl;
-		std::cout << "width is: " << width << " after padding: " << pad << std::endl;
-	}
+
+	LOG4CXX_DEBUG(logger, "BMPReader::read - allocating image bits: " << size);
+	LOG4CXX_DEBUG(logger, "BMPReader::read - width is: " << width << " after padding: " << pad);
 
 	// this is just temporary storage
 	boost::shared_ptr<Image> img(new Image(size));
 	unsigned char * temp = img->data();
+
+	/*
 	if (debug)
 	{
 		int pos = file.tellg();
@@ -128,16 +124,16 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 		std::cout << "file pointer: " << file.tellg() << std::endl;
 		std::cout << "file length: " << length << std::endl;
 	}
+	*/
+
 	// read image data
 	file.read(reinterpret_cast<char*>(temp), size);
 
-	if (debug)
-	{
-		std::cout << "done reading file.." << std::endl;
-	}
+	LOG4CXX_DEBUG(logger, "BMPReader::read - done reading file..");
+
 	if (!file)
 	{
-		throw std::string("error reading bmp data!");
+		throw std::runtime_error("error reading bmp data!");
 	}
 
 	// done reading in file
@@ -257,7 +253,7 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 	{
 		std::stringstream ss;
 		ss << iheader.bits_;
-		throw std::string("unrecognized bmp bits - " + ss.str() + "!");
+		throw std::runtime_error("unrecognized bmp bits - " + ss.str() + "!");
 	}
 	return image;
 }
