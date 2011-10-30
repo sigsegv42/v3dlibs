@@ -17,6 +17,8 @@ BOOST_SIGNALS
 # libv3dimage needs boost system & filesystem
 BOOST_SYSTEM
 BOOST_FILESYSTEM
+# needed by imagetool
+BOOST_PROGRAM_OPTIONS
 
 # use pkg-config
 PKG_PROG_PKG_CONFIG([0.2])
@@ -112,6 +114,7 @@ src/input/Makefile
 src/audio/Makefile
 src/gl/Makefile
 src/tests/Makefile
+src/imagetool/Makefile
 ])
 
 AC_OUTPUT

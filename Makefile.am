@@ -9,7 +9,8 @@ src/font \
 src/input \
 src/audio \
 src/gl \
-src/tests
+src/tests \
+src/imagetool
 
 gcov_sources = $(unit_tests_SOURCES)
 

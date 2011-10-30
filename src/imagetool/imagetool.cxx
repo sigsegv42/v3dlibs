@@ -29,24 +29,34 @@
  */
 
 #include <iostream>
+#include <boost/program_options.hpp>
 
-#include "../util/getopts.h"
 #include "../image/ImageFactory.h"
 
-void usage(void)
-{
-	std::cout << "usage:" << std::endl;
-	std::cout << "imagetool --file filename --outfile filename --info --silent" << std::endl;
-	std::cout << "	--info		- display image info" << std::endl;
-	std::cout << "	--silent	- don't display any output" << std::endl;
-	std::cout << "	--file		- input image filename to be read" << std::endl;
-	std::cout << "	--outfile	- image filename to be written" << std::endl;
-}
 
 int main (int argc, char *argv[])
 {
+	// setup option parser
+	boost::program_options::options_description opts_desc("Allowed options");
+	opts_desc.add_options()
+		("help", "produce help message")
+		("info", "display image info")
+		("silent", "don't display any output")
+		("file", boost::program_options::value<std::string>(), "input image filename to be read")
+		("outfile", boost::program_options::value<std::string>(), "image filename to be written")
+	;
 
-	GetOpts getopts(argc, argv, "i|info:s|silent:f|file*:o|outfile*");
+	// parse options
+	boost::program_options::variables_map var_map;
+	boost::program_options::store(boost::program_options::parse_command_line(argc, argv, opts_desc), var_map);
+	boost::program_options::notify(var_map);
+
+	// process options
+	if (var_map.count("help"))
+	{
+		std::cout << opts_desc << std::endl;
+		exit(EXIT_SUCCESS);
+	}
 
 	bool info = false;
 	bool silent = false;
@@ -54,32 +64,26 @@ int main (int argc, char *argv[])
 	std::string infile;
 	std::string outfile;
 
-	int opt;
-	while ((opt = getopts.next()) != EOF)
+	if (var_map.count("info"))
 	{
-		switch (opt)
-		{
-			case 'i':
-				info = true;
-				break;
-			case 's':
-				silent = true;
-				break;
-			case 'f':
-				infile = getopts.getarg();
-				break;
-			case 'o':
-				sync = true;
-				outfile = getopts.getarg();
-				break;
-			default:
-				break;
-		}
+		info = true;
+	}
+	if (var_map.count("silent"))
+	{
+		silent = true;
+	}
+	if (var_map.count("file"))
+	{
+		infile = var_map["file"].as<std::string>();
+	}
+	if (var_map.count("outfile"))
+	{
+		outfile = var_map["outfile"].as<std::string>();
 	}
 
 	if (infile.empty())
 	{
-		usage();
+		std::cout << opts_desc << std::endl;
 		exit(EXIT_SUCCESS);
 	}
 
