@@ -28,7 +28,11 @@ ImageWriterTest.cxx \
 FontTest.cxx \
 FontCacheTest.cxx \
 KeyboardDeviceTest.cxx \
-MouseDeviceTest.cxx
+MouseDeviceTest.cxx \
+VertexTest.cxx \
+FaceTest.cxx \
+HalfEdgeTest.cxx \
+BRepTest.cxx
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
 AM_LDFLAGS = $(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS) $(GCOV_LDFLAGS) \
@@ -41,4 +45,5 @@ $(top_builddir)/src/3dtypes/.libs/libv3dtypes-@VERTICAL3D_API_VERSION@.la \
 $(top_builddir)/src/command/.libs/libv3dcommand-@VERTICAL3D_API_VERSION@.la \
 $(top_builddir)/src/image/.libs/libv3dimage-@VERTICAL3D_API_VERSION@.la \
 $(top_builddir)/src/font/.libs/libv3dfont-@VERTICAL3D_API_VERSION@.la \
-$(top_builddir)/src/input/.libs/libv3dinput-@VERTICAL3D_API_VERSION@.la
+$(top_builddir)/src/input/.libs/libv3dinput-@VERTICAL3D_API_VERSION@.la \
+$(top_builddir)/src/brep/.libs/libv3dbrep-@VERTICAL3D_API_VERSION@.la

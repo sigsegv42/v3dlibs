@@ -113,6 +113,7 @@ src/font/Makefile
 src/input/Makefile
 src/audio/Makefile
 src/gl/Makefile
+src/brep/Makefile
 src/tests/Makefile
 src/imagetool/Makefile
 ])

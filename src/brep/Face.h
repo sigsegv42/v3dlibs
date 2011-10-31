@@ -13,8 +13,10 @@ namespace v3D
 			Face(const Vector3 & normal, unsigned int edge);
 			~Face();
 
+			/*
 			bool selected(void) const;
 			void selected(bool sel);
+			*/
 
 			Vector3 normal(void) const;
 			void normal(const Vector3 & n);

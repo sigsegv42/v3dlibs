@@ -9,6 +9,7 @@ src/font \
 src/input \
 src/audio \
 src/gl \
+src/brep \
 src/tests \
 src/imagetool
 
