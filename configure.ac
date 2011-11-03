@@ -106,6 +106,7 @@ V3D_CONFIG_NICE([config.nice])
 
 AC_CONFIG_FILES([
 Makefile 
+vertical3d.pc
 src/3dtypes/Makefile
 src/command/Makefile
 src/image/Makefile
