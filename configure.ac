@@ -117,6 +117,7 @@ src/audio/Makefile
 src/gl/Makefile
 src/brep/Makefile
 src/hookah/Makefile
+src/gui/Makefile
 src/tests/Makefile
 src/imagetool/Makefile
 ])

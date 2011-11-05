@@ -23,7 +23,7 @@ HalfEdge::~HalfEdge()
 
 bool HalfEdge::operator == (const HalfEdge & e)
 {
-	return (vertex_ = e.vertex_ && 
+	return (vertex_ == e.vertex_ && 
 			face_ == e.face_ &&
 			next_ == e.next_ &&
 			pair_ == e.pair_);

@@ -11,6 +11,7 @@ src/audio \
 src/gl \
 src/brep \
 src/hookah \
+src/gui \
 src/tests \
 src/imagetool
 

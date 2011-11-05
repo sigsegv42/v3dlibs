@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE( halfEdge_test )
 	BOOST_CHECK_EQUAL(edge.vertex(), 3);
 
 	v3D::HalfEdge edge2(4);
-	BOOST_CHECK_EQUAL(edge.vertex(), 4);
+	BOOST_CHECK_EQUAL(edge2.vertex(), 4);
 
 	BOOST_CHECK_EQUAL((edge == edge2), false);
 
