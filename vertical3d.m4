@@ -425,6 +425,22 @@ V3D_DEFUN([3dtypes],
 ])# V3D_3DTYPES
 
 
+# V3D_IMAGE()
+# -----------------------------------------
+# Look for libv3dimage
+V3D_DEFUN([image],
+# this is a bit of a kludge, but in order to link the image library
+# we need to link a bunch of other dependent libraries. so this macro
+# must only be used after those dependent library macros have been called
+v3d_image_save_LIBS=$LIBS
+LIBS="$LIBS $libpng_LIBS $JPEG_LIBS $liblog4cxx_LIBS $BOOST_SYSTEM_LIBS $BOOST_FILESYSTEM_LIBS"
+[V3D_FIND_LIB([image],
+                [vertical3d/image/Image.h],
+                [v3D::Image test();])
+LIBS=$v3d_image_save_LIBS
+])# V3D_IMAGE
+
+
 #V3D_AUDIO
 #V3D_BREP
 #V3D_COMMAND
