@@ -8,3 +8,4 @@ src/image/writers/writers
 src/tests/data_out
 src/imagetool/imagetool
 vertical3d.pc
+version.h

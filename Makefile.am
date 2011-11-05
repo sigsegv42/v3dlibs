@@ -13,6 +13,17 @@ src/brep \
 src/tests \
 src/imagetool
 
+# make sure the root version file gets installed
+v3d_includedir=$(includedir)/vertical3d-$(VERTICAL3D_API_VERSION)/vertical3d
+v3d_include_HEADERS= \
+version.h
+
+# install m4 files
+aclocaldir = $(datadir)/aclocal
+aclocal_DATA = \
+boost.m4 \
+vertical3d.m4
+
 gcov_sources = $(unit_tests_SOURCES)
 
 if GCOV_ENABLED
