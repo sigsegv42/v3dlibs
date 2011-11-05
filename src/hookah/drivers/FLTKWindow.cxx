@@ -13,7 +13,7 @@
 using namespace Hookah;
 
 FLTKWindow::FLTKWindow(unsigned int width, unsigned int height) : 
-		Window(width, height),
+		Hookah::Window(width, height),
 		shutdown_(false),
 		dirty_(true), 
 		fltk::GlWindow(width, height)

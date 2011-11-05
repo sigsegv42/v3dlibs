@@ -17,7 +17,7 @@ SDLWindow::SDLWindow(unsigned int width, unsigned int height) :
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		std::string err = std::string("video initialization failed: ") + SDL_GetError();
-		throw std::exception(err.c_str());
+		throw std::runtime_error(err);
 	}
 	const SDL_VideoInfo * video_info;
 	video_info = SDL_GetVideoInfo();
@@ -25,7 +25,7 @@ SDLWindow::SDLWindow(unsigned int width, unsigned int height) :
 	if (!video_info)
 	{
 		std::string err = std::string("video query failed: ") + SDL_GetError();
-		throw std::exception(err.c_str());
+		throw std::runtime_error(err);
 	}
 
 	videoFlags_ = SDL_OPENGL|SDL_GL_DOUBLEBUFFER|SDL_HWPALETTE|SDL_RESIZABLE;
@@ -45,7 +45,7 @@ SDLWindow::SDLWindow(unsigned int width, unsigned int height) :
 	if (!surface_)
 	{
 		std::string err = std::string("video mode set failed: ") + SDL_GetError();
-		throw std::exception(err.c_str());
+		throw std::runtime_error(err);
 	}
 
 	// set window caption

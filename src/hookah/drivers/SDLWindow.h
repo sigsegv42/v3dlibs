@@ -3,7 +3,7 @@
 
 #include "../Window.h"
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 namespace Hookah
 {

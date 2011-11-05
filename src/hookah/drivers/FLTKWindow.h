@@ -11,7 +11,7 @@ namespace Hookah
 	/**
 	 * An SDL-based Window class.
 	 **/
-	class FLTKWindow : public Window, public fltk::GlWindow
+	class FLTKWindow : public Hookah::Window, public fltk::GlWindow
 	{
 		public:
 			FLTKWindow(unsigned int width, unsigned int height);

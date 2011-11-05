@@ -10,6 +10,7 @@ src/input \
 src/audio \
 src/gl \
 src/brep \
+src/hookah \
 src/tests \
 src/imagetool
 
