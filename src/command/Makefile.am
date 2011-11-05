@@ -24,6 +24,7 @@ Bind.h \
 Command.h \
 CommandDirectory.h \
 CommandInfo.h \
-EventInfo.h
+EventInfo.h \
+EventListener.h
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)
