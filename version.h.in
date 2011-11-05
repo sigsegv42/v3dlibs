@@ -3,7 +3,7 @@
 
 #define V3D_VERSION 100000
 
-#define V3D_LIB_VERSION "1_00_0"
+#define V3D_LIB_VERSION "1.0"
 
 #endif
 

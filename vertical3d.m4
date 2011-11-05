@@ -155,7 +155,7 @@ m4_pattern_allow([^V3D_VERSION$])dnl
       *)      set x "$with_v3d/include" "$with_v3d";;
     esac
     shift
-    for boost_dir
+    for v3d_dir
     do
     # Without --layout=system, v3D (or at least some versions) installs
     # itself in <prefix>/include/vertical3d-<version>.  This inner loop helps to
@@ -227,7 +227,7 @@ AC_LANG_POP([C++])dnl
 v3d-lib-version = V3D_LIB_VERSION],
     [v3d_cv_lib_version=`cat conftest.i`])])
     # e.g. "134" for 1_34_1 or "135" for 1_35
-    v3d_major_version=`echo "$v3d_cv_lib_version" | sed 's/_//;s/_.*//'`
+    v3d_major_version=`echo "$v3d_cv_lib_version" | sed 's/\.//;s/_.*//'`
     case $v3d_major_version in #(
       '' | *[[!0-9]]*)
         AC_MSG_ERROR([invalid value: v3d_major_version=$v3d_major_version])
@@ -378,9 +378,6 @@ dnl generated only once above (before we start the for loops).
       fi
     done
   done
-done
-done
-done
 done
 rm -f conftest.$ac_objext
 ])
