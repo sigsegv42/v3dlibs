@@ -57,4 +57,22 @@ BOOST_AUTO_TEST_CASE( aabbox_test )
 	max_check = box.max();
 	max_extent = v3D::Vector3(17.0f, 27.0f, 34.0f);
 	BOOST_CHECK_EQUAL((max_extent == max_check), true);
+
+	v3D::Vector3 vertices[8];
+	box.vertices(vertices);
+	v3D::Vector3 v0(1.0f, 27.0f, 34.0f);
+	v3D::Vector3 v1(17.0f, 3.0f, 7.0f);
+	v3D::Vector3 v2(17.0f, 27.0f, 7.0f);
+	v3D::Vector3 v3(1.0f, 27.0f, 7.0f);
+	v3D::Vector3 v4(17.0f, 3.0f, 34.0f);
+	v3D::Vector3 v5(1.0f, 3.0f, 34.0f);
+	BOOST_CHECK_EQUAL((v0 == vertices[0]), true);
+	BOOST_CHECK_EQUAL((v1 == vertices[1]), true);
+	BOOST_CHECK_EQUAL((v2 == vertices[2]), true);
+	BOOST_CHECK_EQUAL((v3 == vertices[3]), true);
+	BOOST_CHECK_EQUAL((v4 == vertices[4]), true);
+	BOOST_CHECK_EQUAL((v5 == vertices[5]), true);
+	BOOST_CHECK_EQUAL((min_extent == vertices[6]), true);
+	BOOST_CHECK_EQUAL((max_extent == vertices[7]), true);
+
 }
