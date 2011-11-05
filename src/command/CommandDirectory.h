@@ -75,6 +75,7 @@ namespace v3D
 			 * Execute a Command
 			 * @param cmd a CommandInfo object describing the command to execute
 			 * @param param the parameter string to pass to the command handler
+			 * @return whether the command was successfully executed
 			 */
 			bool exec(const CommandInfo & cmd, const std::string & param);
 

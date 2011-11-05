@@ -9,9 +9,8 @@ Bind.cxx \
 Command.cxx \
 CommandDirectory.cxx \
 CommandInfo.cxx \
-EventInfo.cxx 
-# bindloader depends on the property tree stuff in util - need to rewrite to just use boost property tree instead
-#BindLoader.cxx 
+EventInfo.cxx \
+BindLoader.cxx 
 # missing header file in git repo for this file right now
 #StateController.cxx
 
@@ -25,6 +24,7 @@ Command.h \
 CommandDirectory.h \
 CommandInfo.h \
 EventInfo.h \
-EventListener.h
+EventListener.h \
+BindLoader.h
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS)

@@ -1,8 +1,9 @@
 #ifndef INCLUDED_V3D_BINDLOADER
 #define INCLUDED_V3D_BINDLOADER
 
-#include "../util/PropertyTree.h"
 #include "CommandDirectory.h"
+
+#include <boost/property_tree/ptree.hpp>
 
 namespace v3D
 {
@@ -22,7 +23,7 @@ namespace v3D
 		 * @param directory the CommandDirectory to store the loaded bindings in
 		 * @return whether loading was successful or not
 		 */
-		bool load_binds(const PropertyTree & tree, CommandDirectory * directory);
+		bool load_binds(const boost::property_tree::ptree & tree, CommandDirectory * directory);
 
 	}; // end namespace utility
 

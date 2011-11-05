@@ -19,6 +19,8 @@ BOOST_SYSTEM
 BOOST_FILESYSTEM
 # needed by imagetool
 BOOST_PROGRAM_OPTIONS
+# need by libv3dcommand for bindloader
+BOOST_PROPERTY_TREE
 
 # use pkg-config
 PKG_PROG_PKG_CONFIG([0.2])
