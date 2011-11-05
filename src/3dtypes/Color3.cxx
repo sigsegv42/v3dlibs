@@ -70,3 +70,23 @@ const Color3 v3D::operator / (const Color3 & lhs, const float f)
 
 	return c;
 }
+
+Color3 v3D::operator+(const Color3 & lhs, const Color3 & rhs)
+{
+	Color3 c = lhs;
+	c[0] += rhs[0];
+	c[1] += rhs[1];
+	c[2] += rhs[2];
+
+	return c;
+}
+
+Color3 v3D::operator - (const Color3 & lhs, const Color3 & rhs)
+{
+	Color3 c = lhs;
+	c[0] -= rhs[0];
+	c[1] -= rhs[1];
+	c[2] -= rhs[2];
+
+	return c;
+}
