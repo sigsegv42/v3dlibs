@@ -2,6 +2,7 @@
 #define INCLUDED_V3D_GL_FONT_RENDERER
 
 #include "../font/Font2D.h"
+#include "GLTexture.h"
 
 namespace v3D
 {
@@ -27,7 +28,8 @@ namespace v3D
 
 
 		private:
-			Font2D font_;
+			Font2D 		font_;
+			GLTexture 	texture_;
 	};
 
 }; // end namespace v3D

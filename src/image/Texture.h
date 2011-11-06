@@ -30,11 +30,6 @@ namespace v3D
 			 */
 			bool isnull(void);
 			/**
-			 * Make the texture active.
-			 * @return true if successful otherwise false
-			 */
-			bool bind(void);
-			/**
 			 * Get whether the texture wraps (repeats)
 			 * @return true if the texture wraps
 			 */
@@ -70,6 +65,16 @@ namespace v3D
 			 * @param id the texture id
 			 */
 			void id(unsigned int id);
+			/**
+			 * Get the underlying image
+			 *
+			 * @return the image
+			 */
+			boost::shared_ptr<Image> image(void) const;
+			/**
+			 * Release the image associated with the texture
+			 */
+			void release(void);
 
 			typedef enum 
 			{ 
@@ -86,6 +91,7 @@ namespace v3D
 			bool 			wrap_;		// Repeat(true) or Clamp(false)
 			unsigned int 	width_;
 			unsigned int 	height_;
+			boost::shared_ptr<Image> image_;
 	};
 
 }; // end namespace v3D

@@ -20,6 +20,17 @@ Texture::Texture(boost::shared_ptr<Image> image) : wrap_(false)
 	assert(ok);
 }
 
+boost::shared_ptr<Image> Texture::image(void) const
+{
+	return image_;
+}
+
+void Texture::release(void)
+{
+	boost::shared_ptr<Image> empty_ptr;
+	image_ = empty_ptr;
+}
+
 Texture & Texture::operator = (const Texture & t)
 {
 	type_	= t.type_;
@@ -82,7 +93,8 @@ bool Texture::create(boost::shared_ptr<Image> image)
 {
 	type_ = LINEAR;
 
-	width_ = image->width();
+	image_ 	= image;
+	width_ 	= image->width();
 	height_ = image->height();
 
 	return true;

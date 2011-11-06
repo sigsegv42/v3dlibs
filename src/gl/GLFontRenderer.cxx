@@ -18,6 +18,11 @@ GLFontRenderer::GLFontRenderer()
 
 GLFontRenderer::GLFontRenderer(const Font2D &f) : font_(f)
 { 
+	texture_.create(font_.texture()->image());
+}
+
+GLFontRenderer::~GLFontRenderer()
+{
 }
 
 void GLFontRenderer::print(const std::string & text, float x, float y)
@@ -28,8 +33,10 @@ void GLFontRenderer::print(const std::string & text, float x, float y)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
 
-	if (!font_.texture()->bind())
+	if (!texture_.bind())
+	{
 		return;
+	}
 
 	glBegin(GL_QUADS);
 	for (size_t i = 0; i < text.size(); i++)
