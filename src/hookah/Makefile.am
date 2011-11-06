@@ -18,6 +18,7 @@ drivers/FLTKWindow.cxx
 libv3dhookah_sdl_@VERTICAL3D_API_VERSION@_la_SOURCES = \
 drivers/SDLDriver.cxx \
 drivers/SDLMouse.cxx \
+drivers/SDLKeyboard.cxx \
 drivers/SDLWindow.cxx
 
 libv3dhookah_@VERTICAL3D_API_VERSION@_la_LDFLAGS = -version-info $(VERTICAL3D_SO_VERSION) $(GCOV_LDFLAGS)
@@ -37,6 +38,7 @@ drivers/FLTKKeyboard.h \
 drivers/FLTKMouse.h \
 drivers/FLTKWindow.h \
 drivers/SDLMouse.h \
+drivers/SDLKeyboard.h \
 drivers/SDLWindow.h
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(BOOST_CPPFLAGS) $(GCOV_CFLAGS) $(libpng_CFLAGS)
