@@ -9,7 +9,7 @@ namespace v3D
 	/**
 	 * A OpenGL Texture object.
 	 */
-	class GLTexture
+	class GLTexture : public Texture
 	{
 		public:
 			GLTexture();
@@ -32,9 +32,6 @@ namespace v3D
 			 * @return true if the texture was sucessfully created
 			 */
 			bool create(boost::shared_ptr<Image> image);
-
-		private:
-			Texture texture_;
 	};
 
 }; // end namespace v3D

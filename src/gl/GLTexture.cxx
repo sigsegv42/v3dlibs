@@ -17,23 +17,23 @@ GLTexture::GLTexture()
 { 
 }
 
-GLTexture::GLTexture(const Texture &t) : texture_(t)
+GLTexture::GLTexture(const Texture &t) : Texture(t)
 { 
 }
 
 GLTexture::~GLTexture()
 {
-	if (!texture_.isnull())
+	if (!isnull())
 	{
-		unsigned int id = texture_.id();
-		glDeleteTextures(1, &id);
+		unsigned int tex_id = id();
+		glDeleteTextures(1, &tex_id);
 	}
 }
 
 
 void GLTexture::wrap(bool repeat)
 { 
-	texture_.wrap(repeat);
+	Texture::wrap(repeat);
 	if (!bind())
 	{
 		return;
@@ -52,9 +52,11 @@ void GLTexture::wrap(bool repeat)
 
 bool GLTexture::bind(void)
 {
-	unsigned int id = texture_.id();
-	if (id != -1)
-		glBindTexture(GL_TEXTURE_2D, id);
+	unsigned int tex_id = id();
+	if (tex_id != -1)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex_id);
+	}
 	else
 	{
 		log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.gl"));
@@ -67,13 +69,13 @@ bool GLTexture::bind(void)
 
 bool GLTexture::create(boost::shared_ptr<Image> image)
 {
-	texture_.create(image);
-	unsigned int id = texture_.id();
+	Texture::create(image);
+	unsigned int tex_id = id();
 	// Build A Texture From The Data
-	glGenTextures(1, &id);					// Generate OpenGL texture IDs
-	texture_.id(id);
+	glGenTextures(1, &tex_id);				// Generate OpenGL texture IDs
+	id(tex_id);
 
-	glBindTexture(GL_TEXTURE_2D, id);	// Bind Our Texture
+	glBindTexture(GL_TEXTURE_2D, tex_id);	// Bind Our Texture
 
 	int format = GL_RGB;
 	int internalformat = 3;
@@ -102,7 +104,7 @@ bool GLTexture::create(boost::shared_ptr<Image> image)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);		// Linear Filtered
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);		// Linear Filtered
 
-	if (!texture_.wrap())
+	if (!Texture::wrap())
 	{
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
