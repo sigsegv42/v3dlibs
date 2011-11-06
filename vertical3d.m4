@@ -555,7 +555,7 @@ LIBS=$v3d_hookah_save_LIBS
 # Look for libv3daudio
 V3D_DEFUN([audio],
 v3d_audio_save_LIBS=$LIBS
-LIBS="$LIBS"
+LIBS="$LIBS $openal_LIBS $freealut_LIBS $V3D_TYPES_LIBS"
 [V3D_FIND_LIB([audio],
                 [vertical3d/audio/AudioClip.h],
                 [v3D::AudioClip test();])

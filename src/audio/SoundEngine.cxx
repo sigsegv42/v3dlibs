@@ -7,6 +7,8 @@
 #include <AL/alut.h>
 
 #include <boost/foreach.hpp>
+#include <log4cxx/logger.h>
+
 
 using namespace v3D;
 
@@ -37,17 +39,25 @@ void SoundEngine::shutdown(void)
 bool SoundEngine::load(const boost::property_tree::ptree & tree)
 {
 	std::string key, wav;
-	BOOST_FOREACH(boost::property_tree::ptree::value_type const & v, tree.get_child("config.sounds.clip"))
+	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.audio"));
+	LOG4CXX_DEBUG(logger, "SoundEngine::load - looking for sound clips to load...");
+	BOOST_FOREACH(boost::property_tree::ptree::value_type const & v, tree.get_child("config.sounds"))
 	{
-		key = v.second.get<std::string>("<xmlattr>.id");
-		wav = v.second.get<std::string>("<xmlattr>.file");
-		loadClip(wav, key);
+		if (v.first == "clip")
+		{
+			key = v.second.get<std::string>("<xmlattr>.id");
+			wav = v.second.get<std::string>("<xmlattr>.file");
+			loadClip(wav, key);
+		}
 	}
 	return true;
 }
 
 bool SoundEngine::loadClip(const std::string & filename, const std::string & key)
 {
+	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.audio"));
+	LOG4CXX_DEBUG(logger, "SoundEngine::loadClip - loading audio clip with filename [" << filename << "] with id [" << key << "]");
+
 	AudioClip clip;
 
 	clip.load(filename);
