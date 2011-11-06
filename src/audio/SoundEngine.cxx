@@ -6,6 +6,8 @@
 #include <AL/alc.h>
 #include <AL/alut.h>
 
+#include <boost/foreach.hpp>
+
 using namespace v3D;
 
 SoundEngine::SoundEngine()
@@ -32,16 +34,13 @@ void SoundEngine::shutdown(void)
 	alutExit();
 }
 
-bool SoundEngine::load(const PropertyTree & tree)
+bool SoundEngine::load(const boost::property_tree::ptree & tree)
 {
-	PropertyTree clips = tree.find("config.sounds");
-
-	PropertyTree::iterator iter = clips.begin();
 	std::string key, wav;
-	for (; iter != clips.end(); iter++)
+	BOOST_FOREACH(boost::property_tree::ptree::value_type const & v, tree.get_child("config.sounds.clip"))
 	{
-		key = iter->get("<xmlattr>.id");
-		wav = iter->get("<xmlattr>.file");
+		key = v.second.get<std::string>("<xmlattr>.id");
+		wav = v.second.get<std::string>("<xmlattr>.file");
 		loadClip(wav, key);
 	}
 	return true;

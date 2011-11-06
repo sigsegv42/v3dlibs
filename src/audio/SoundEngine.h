@@ -2,8 +2,8 @@
 #define INCLUDED_V3D_SOUNDENGINE
 
 #include "AudioClip.h"
-#include "../util/PropertyTree.h"
 
+#include <boost/property_tree/ptree.hpp>
 #include <map>
 
 namespace v3D
@@ -19,7 +19,7 @@ namespace v3D
 			~SoundEngine();
 
 			void shutdown(void);
-			bool load(const PropertyTree & tree);
+			bool load(const boost::property_tree::ptree & tree);
 			bool loadClip(const std::string & filename, const std::string & key);
 			void playClip(const std::string & clip);
 			void updateListener(void);
