@@ -14,6 +14,7 @@ namespace v3D
 		public:
 			GLTexture();
 			GLTexture(const Texture &t);
+			GLTexture(boost::shared_ptr<Image> image);
 			virtual ~GLTexture();
 
 			/**

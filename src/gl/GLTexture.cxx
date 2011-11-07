@@ -17,6 +17,11 @@ GLTexture::GLTexture()
 { 
 }
 
+GLTexture::GLTexture(boost::shared_ptr<Image> image)
+{
+	create(image);
+}
+
 GLTexture::GLTexture(const Texture &t) : Texture(t)
 { 
 }

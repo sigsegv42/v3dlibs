@@ -13,6 +13,8 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 
+#include <log4cxx/logger.h>
+
 #include <iostream>
 
 using namespace v3D;
@@ -74,6 +76,10 @@ boost::shared_ptr<Image> ImageFactory::read(const std::string & filename)
 	std::string filepath = full_path.string();
 
 	std::string ext = filename.substr(filename.length() - 3);
+
+	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.image"));
+	LOG4CXX_DEBUG(logger, "ImageFactory::read - reading file [" << filename << "] with reader bound to extension [" << ext << "] from path ["<< filepath << "]");
+	
 	std::map<std::string, boost::shared_ptr<ImageReader> >::iterator it = readers_.find(ext);
 	if (it != readers_.end())
 	{
@@ -81,6 +87,7 @@ boost::shared_ptr<Image> ImageFactory::read(const std::string & filename)
 		return reader->read(filepath);
 	}
 	boost::shared_ptr<Image> empty_ptr;
+	LOG4CXX_DEBUG(logger, "ImageFactory::read - no reader exists for detected image format!");
 	return empty_ptr;
 }
 
