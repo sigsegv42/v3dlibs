@@ -534,7 +534,7 @@ LIBS="$LIBS $V3D_HOOKAH_LIBS $BOOST_SIGNALS_LIBS $sdl_LIBS $V3D_INPUT_LIBS"
                 [vertical3d/hookah/drivers/SDLWindow.h],
                 [])
 LIBS=$v3d_hookah_save_LIBS
-])# V3D_HOOKAH
+])# V3D_HOOKAH_SDL
 
 
 # V3D_HOOKAH_FLTK()
@@ -547,7 +547,7 @@ LIBS="$LIBS $FLTK_LDFLAGS $V3D_HOOKAH_LIBS $BOOST_SIGNALS_LIBS $V3D_INPUT_LIBS"
                 [vertical3d/hookah/drivers/FLTKWindow.h],
                 [])
 LIBS=$v3d_hookah_save_LIBS
-])# V3D_HOOKAH
+])# V3D_HOOKAH_FLTK
 
 
 # V3D_AUDIO()
@@ -555,7 +555,7 @@ LIBS=$v3d_hookah_save_LIBS
 # Look for libv3daudio
 V3D_DEFUN([audio],
 v3d_audio_save_LIBS=$LIBS
-LIBS="$LIBS $openal_LIBS $freealut_LIBS $V3D_TYPES_LIBS"
+LIBS="$LIBS $openal_LIBS $freealut_LIBS $V3D_TYPES_LIBS $liblog4cxx_LIBS"
 [V3D_FIND_LIB([audio],
                 [vertical3d/audio/AudioClip.h],
                 [v3D::AudioClip test();])
