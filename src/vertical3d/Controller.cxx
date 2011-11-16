@@ -158,7 +158,7 @@ void Controller::activate_tool(const std::string & name)
 	}
 }
 
-void Controller::load_camera_profiles(const PropertyTree & tree) 
+void Controller::load_camera_profiles(const boost::property_tree::ptree & tree) 
 {
 	/*
 	  <cameraprofiles>

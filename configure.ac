@@ -120,8 +120,11 @@ src/gl/Makefile
 src/brep/Makefile
 src/hookah/Makefile
 src/gui/Makefile
+src/core/Makefile
 src/tests/Makefile
 src/imagetool/Makefile
+src/v3dshell/Makefile
+src/vertical3d/Makefile
 ])
 
 AC_OUTPUT

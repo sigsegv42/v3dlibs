@@ -8,6 +8,10 @@
 #include "../command/CommandDirectory.h"
 #include "Tool.h"
 
+#include <Luxa/ComponentManager.h>
+
+#include <boost/property_tree/ptree.hpp>
+
 class Controller
 {
 	public:
@@ -19,14 +23,14 @@ class Controller
 
 	protected:
 		void activate_tool(const std::string & name);
-		void load_camera_profiles(const PropertyTree & tree);
+		void load_camera_profiles(const boost::property_tree::ptree & tree);
 
 	private:
 		boost::shared_ptr<Hookah::Window> window_;
 		boost::shared_ptr<v3D::KeyboardDevice> keyboard_;
 		boost::shared_ptr<v3D::MouseDevice> mouse_;
 		v3D::CommandDirectory directory_;
-		boost::shared_ptr<InputEventAdapter> listenerAdapter_;
+		boost::shared_ptr<v3D::InputEventAdapter> listenerAdapter_;
 
 		boost::shared_ptr<v3D::Scene> scene_;
 		boost::shared_ptr<v3D::ViewPort> view_;

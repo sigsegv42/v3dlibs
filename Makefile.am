@@ -12,8 +12,11 @@ src/gl \
 src/brep \
 src/hookah \
 src/gui \
+src/core \
 src/tests \
-src/imagetool
+src/imagetool \
+src/v3dshell \
+src/vertical3d
 
 # make sure the root version file gets installed
 v3d_includedir=$(includedir)/vertical3d-$(VERTICAL3D_API_VERSION)/vertical3d

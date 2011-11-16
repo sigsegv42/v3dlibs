@@ -1,7 +1,8 @@
 #ifndef INCLUDED_V3D_SCENE
 #define INCLUDED_V3D_SCENE
 
-#include <3dtypes/CameraProfile.h>
+#include "../3dtypes/CameraProfile.h"
+#include "../3dtypes/Camera.h"
 
 #include <vector>
 #include <boost/shared_ptr.hpp>

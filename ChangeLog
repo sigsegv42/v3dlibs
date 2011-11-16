@@ -1,3 +1,21 @@
+11.04.11
+
+- add libhookah, libhookah_sdl, libhookah_fltk
+- new m4 macros that other projects can use
+- add libv3dgui
+
+10.30.11
+
+- remove FileLog from util library
+- use boost program options instead of getopts in imagetool
+- build image tool
+- remove getopts from util library
+- build input library
+- input library unit tests
+- build audio library
+- add dependency on openal and freealut for audio library
+
+
 10.29.11
 
 - add dependency on log4cxx & freetype2

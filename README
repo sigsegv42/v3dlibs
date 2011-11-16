@@ -14,6 +14,7 @@ libv3dcommand
 libv3dcore
 libv3dfont
 libv3dgui
+libv3dgl
 libv3dimage
 libv3dinput
 libv3dtypes
