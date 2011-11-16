@@ -3,6 +3,8 @@
 #ifndef USE_TEMPLATE_VECTOR
 
 #include <cassert>
+#include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string.hpp>
 
 using namespace v3D;
 
@@ -15,6 +17,36 @@ Vector2::Vector2(float x, float y)
 {
 	vec_[0] = x;
 	vec_[1] = y;
+}
+
+Vector2::Vector2(const std::string & val)
+{
+	vec_[0] = vec_[1] = 0.0f;
+	if (!val.empty())
+	{
+		std::string var_x, var_y;
+		size_t pos;
+		pos = val.find(",");
+		var_x = val.substr(0, pos);
+		boost::trim(var_x);
+		var_y = val.substr(pos+1, val.length());
+		boost::trim(var_y);
+
+		try
+		{
+			if (!var_x.empty())
+			{
+				vec_[0] = boost::lexical_cast<float>(var_x);
+			}
+			if (!var_y.empty())
+			{
+				vec_[1] = boost::lexical_cast<float>(var_y);
+			}
+		}
+		catch (boost::bad_lexical_cast &)
+		{
+		}
+	}
 }
 
 bool Vector2::operator == (const Vector2 & v)

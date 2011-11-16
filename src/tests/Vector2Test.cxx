@@ -50,4 +50,13 @@ BOOST_AUTO_TEST_CASE( vector2_test )
 	// test const accessor
 	float fval = get_vector_value(vector);
 	BOOST_CHECK_EQUAL(fval, -5.0f);
+
+	std::string val("-5.0, -9.0");
+	v3D::Vector2 vector3(val);
+	BOOST_CHECK_EQUAL((vector3 == vector), true);
+
+	std::string val2("5.0, bad");
+	v3D::Vector2 vector4(val2);
+	BOOST_CHECK_EQUAL(vector4[0], 5.0f);
+	BOOST_CHECK_EQUAL(vector4[1], 0.0f);
 }

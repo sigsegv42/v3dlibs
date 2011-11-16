@@ -3,6 +3,8 @@
 
 #ifndef USE_TEMPLATE_VECTOR
 
+#include <string>
+
 namespace v3D
 {
 
@@ -11,6 +13,7 @@ namespace v3D
 		public:
 			Vector2();
 			Vector2(float x, float y);
+			Vector2(const std::string & val);
 
 			Vector2 & operator += (const Vector2 & v);
 			Vector2 & operator -= (const Vector2 & v);

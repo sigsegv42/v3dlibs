@@ -88,4 +88,14 @@ BOOST_AUTO_TEST_CASE( vector3_test )
 
 	float dot2 = vector3.squaredLength();
 	BOOST_CHECK_EQUAL(dot2, 2219.0f);
+
+	std::string val("23.0, 27.0, 31.0");
+	v3D::Vector3 vector4(val);
+	BOOST_CHECK_EQUAL((vector4 == vector3), true);
+
+	std::string val2("5.0, 2.0, bad");
+	v3D::Vector3 vector5(val2);
+	BOOST_CHECK_EQUAL(vector5[0], 5.0f);
+	BOOST_CHECK_EQUAL(vector5[1], 2.0f);
+	BOOST_CHECK_EQUAL(vector5[2], 0.0f);
 }

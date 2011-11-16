@@ -1,6 +1,8 @@
 #ifndef INCLUDED_V3D_VECTOR3
 #define INCLUDED_V3D_VECTOR3
 
+#include <string>
+
 namespace v3D
 {
 
@@ -16,6 +18,7 @@ namespace v3D
 			Vector3();
 			Vector3(float val);
 			Vector3(float x, float y, float z);
+			Vector3(const std::string & val);
 
 			Vector3 & operator += (const Vector3 & v);
 			Vector3 & operator *= (float f);

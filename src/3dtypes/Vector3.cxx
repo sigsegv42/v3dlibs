@@ -4,6 +4,9 @@
 #include <cmath>
 #include <cassert>
 
+#include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string.hpp>
+
 using namespace v3D;
 
 Vector3::Vector3()
@@ -21,6 +24,42 @@ Vector3::Vector3(float x, float y, float z)
 	vec_[0] = x;
 	vec_[1] = y;
 	vec_[2] = z;
+}
+
+Vector3::Vector3(const std::string & val)
+{
+	vec_[0] = vec_[1] = vec_[2] = 0.0f;
+	if (!val.empty())
+	{
+		std::string var_x, var_y, var_z;
+		size_t pos, pos2;
+		pos = val.find(",");
+		pos2 = val.find(",", pos+1);
+		var_x = val.substr(0, pos);
+		boost::trim(var_x);
+		var_y = val.substr(pos+1, pos2 - pos - 1);
+		boost::trim(var_y);
+		var_z = val.substr(pos2+1, val.length() - pos2);
+		boost::trim(var_z);
+		try
+		{
+			if (!var_x.empty())
+			{
+				vec_[0] = boost::lexical_cast<float>(var_x);
+			}
+			if (!var_y.empty())
+			{
+				vec_[1] = boost::lexical_cast<float>(var_y);
+			}
+			if (!var_z.empty())
+			{
+				vec_[2] = boost::lexical_cast<float>(var_z);
+			}
+		}
+		catch (boost::bad_lexical_cast &)
+		{
+		}
+	}
 }
 
 bool Vector3::operator == (const Vector3 & v) const
