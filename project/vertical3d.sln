@@ -33,8 +33,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "v3dshell", "v3dshell.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libv3dinput", "libv3dinput.vcxproj", "{BA3F211D-4219-4A66-A63F-7BD066F56421}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests.vcxproj", "{704466A7-24C9-4140-A38E-03F86B48A491}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imagetool", "imagetool.vcxproj", "{55B69C89-3EB4-4852-B93D-2C056DC76182}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhookah_fltk", "libhookah_fltk.vcxproj", "{71DC5A5E-3DCA-4C0B-94B9-CA712D8B756C}"
@@ -97,10 +95,6 @@ Global
 		{BA3F211D-4219-4A66-A63F-7BD066F56421}.Debug|Win32.Build.0 = Debug|Win32
 		{BA3F211D-4219-4A66-A63F-7BD066F56421}.Release|Win32.ActiveCfg = Release|Win32
 		{BA3F211D-4219-4A66-A63F-7BD066F56421}.Release|Win32.Build.0 = Release|Win32
-		{704466A7-24C9-4140-A38E-03F86B48A491}.Debug|Win32.ActiveCfg = Debug|Win32
-		{704466A7-24C9-4140-A38E-03F86B48A491}.Debug|Win32.Build.0 = Debug|Win32
-		{704466A7-24C9-4140-A38E-03F86B48A491}.Release|Win32.ActiveCfg = Release|Win32
-		{704466A7-24C9-4140-A38E-03F86B48A491}.Release|Win32.Build.0 = Release|Win32
 		{55B69C89-3EB4-4852-B93D-2C056DC76182}.Debug|Win32.ActiveCfg = Debug|Win32
 		{55B69C89-3EB4-4852-B93D-2C056DC76182}.Debug|Win32.Build.0 = Debug|Win32
 		{55B69C89-3EB4-4852-B93D-2C056DC76182}.Release|Win32.ActiveCfg = Release|Win32

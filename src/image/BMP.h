@@ -1,6 +1,8 @@
 #ifndef INCLUDED_V3D_BMP_COMMON
 #define INCLUDED_V3D_BMP_COMMON
 
+#include <stdint.h>
+
 namespace v3D
 {
 
@@ -16,26 +18,26 @@ namespace v3D
 
 	struct bmp_info_header
 	{
-		unsigned long	size_;
-		long			width_;
-		long			height_;
+		uint32_t		size_;
+		int32_t			width_;
+		int32_t			height_;
 		unsigned short	planes_;
 		unsigned short	bits_;
-		unsigned long	compression_;
-		unsigned long	imageSize_;
-		long			xppm_;
-		long			yppm_;
-		unsigned long	used_;
-		unsigned long	important_;
+		uint32_t		compression_;
+		uint32_t		imageSize_;
+		int32_t			xppm_;
+		int32_t			yppm_;
+		uint32_t		used_;
+		uint32_t		important_;
 	};
 
 	struct bmp_file_header
 	{
 		unsigned short	type_;
-		unsigned long	size_;
+		uint32_t		size_;
 		unsigned short	reserved1_;
 		unsigned short	reserved2_;
-		unsigned long	offset_;
+		uint32_t		offset_;
 	};
 
 #pragma pack(pop)
