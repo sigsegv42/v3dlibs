@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\build\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\build\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\win_build\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\win_build\$(ProjectName)\$(Configuration)\</IntDir>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -54,12 +54,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>Z:\code\vendor\boost</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_49_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libv3dtypes.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>z:\code\vendor\boost\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);z:\code\vendor\SDL-1.2.13\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libv3dtypes.lib;libv3dinput.lib;libv3dcommand.lib;libv3dfont.lib;libv3dbrep.lib;libv3dimage.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\vendor\boost_1_49_0\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);$(SolutionDir)..\..\vendor\SDL-1.2.15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AssemblyDebug>false</AssemblyDebug>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -69,12 +69,12 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>Z:\code\vendor\boost</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_49_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libv3dtypes.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>z:\code\vendor\boost\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);z:\code\vendor\SDL-1.2.13\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libv3dtypes.lib;libv3dinput.lib;libv3dcommand.lib;libv3dfont.lib;libv3dbrep.lib;libv3dimage.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\vendor\boost_1_49_0\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);$(SolutionDir)..\..\vendor\SDL-1.2.15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -83,7 +83,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\tests\Color3Test.cxx" />
+    <ClCompile Include="..\src\tests\3dtypesTest.cxx" />
+    <ClCompile Include="..\src\tests\AABBoxTest.cxx" />
+    <ClCompile Include="..\src\tests\ArcBallTest.cxx" />
+    <ClCompile Include="..\src\tests\BindTest.cxx" />
+    <ClCompile Include="..\src\tests\Bound2DTest.cxx" />
+    <ClCompile Include="..\src\tests\BRepTest.cxx" />
+    <ClCompile Include="..\src\tests\CameraProfileTest.cxx" />
+    <ClCompile Include="..\src\tests\CameraTest.cxx" />
+    <ClCompile Include="..\src\tests\Color3Test.cxx" />
+    <ClCompile Include="..\src\tests\Color4Test.cxx" />
+    <ClCompile Include="..\src\tests\CommandDirectoryTest.cxx" />
+    <ClCompile Include="..\src\tests\CommandInfoTest.cxx" />
+    <ClCompile Include="..\src\tests\CommandTest.cxx" />
+    <ClCompile Include="..\src\tests\EventInfoTest.cxx" />
+    <ClCompile Include="..\src\tests\FaceTest.cxx" />
+    <ClCompile Include="..\src\tests\FontCacheTest.cxx" />
+    <ClCompile Include="..\src\tests\FontTest.cxx" />
+    <ClCompile Include="..\src\tests\HalfEdgeTest.cxx" />
+    <ClCompile Include="..\src\tests\ImageReaderTest.cxx" />
+    <ClCompile Include="..\src\tests\ImageTest.cxx" />
+    <ClCompile Include="..\src\tests\ImageWriterTest.cxx" />
+    <ClCompile Include="..\src\tests\InputEventAdapterTest.cxx" />
+    <ClCompile Include="..\src\tests\KeyboardDeviceTest.cxx" />
+    <ClCompile Include="..\src\tests\Matrix4Test.cxx" />
+    <ClCompile Include="..\src\tests\MouseDeviceTest.cxx" />
+    <ClCompile Include="..\src\tests\QuaternionTest.cxx" />
+    <ClCompile Include="..\src\tests\TestMain.cxx" />
+    <ClCompile Include="..\src\tests\TextureTest.cxx" />
+    <ClCompile Include="..\src\tests\Vector2Test.cxx" />
+    <ClCompile Include="..\src\tests\Vector3Test.cxx" />
+    <ClCompile Include="..\src\tests\VertexTest.cxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

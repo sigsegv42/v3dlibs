@@ -31,4 +31,4 @@ config.log
 config.status
 libtool
 *.dirstamp
-
+win_build/
