@@ -155,7 +155,7 @@ void Matrix4::rotate(float angle, float x, float y, float z)
 	*/
 }
 
-std::string & Matrix4::str() const
+std::string Matrix4::str() const
 {
 	std::stringstream stream;
 	for (unsigned int offset = 0; offset < 16; offset += 4)

@@ -56,7 +56,7 @@ namespace v3D
 			 * Create a string representation.
 			 * @return the string representation of the matrix
 			 */
-			std::string & str() const;
+			std::string str() const;
 
 			void	neg();
 			void	abs();

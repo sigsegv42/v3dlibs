@@ -181,7 +181,7 @@ const float * Vector3::operator*() const
 	return f;
 }
 
-std::string & Vector3::str() const
+std::string Vector3::str() const
 {
 	std::stringstream stream;
 	stream << vec_[0] << ", " << vec_[1] << ", " << vec_[2];

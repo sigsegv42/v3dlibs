@@ -32,3 +32,4 @@ config.status
 libtool
 *.dirstamp
 win_build/
+*.vcxproj.user
