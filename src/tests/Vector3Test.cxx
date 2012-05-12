@@ -94,6 +94,7 @@ BOOST_AUTO_TEST_CASE( vector3_test )
 	BOOST_CHECK_EQUAL((vector4 == vector3), true);
 
 	// test string conversion
+	std::string in_val("23, 27, 31");
 	std::string check_val = vector4.str();
 	BOOST_CHECK_EQUAL((val == check_val), true);
 

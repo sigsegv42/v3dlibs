@@ -262,10 +262,10 @@ BOOST_AUTO_TEST_CASE( matrix4_test )
 	std::stringstream stream;
 	std::string string_rep;
 	stream << 
-		"[12.0, 27.0, 18.0, 24.0]" << std::endl << 
-		"[30.0, 30.0, 42.0, 48.0]" << std::endl << 
-		"[54.0, 60.0, 198.0, 72.0]" << std::endl << 
-		"[78.0, 75.0, 90.0, 96.0]" << std::endl;
+		"[12, 27, 18, 24]" << std::endl << 
+		"[30, 30, 42, 48]" << std::endl << 
+		"[54, 60, 198, 72]" << std::endl << 
+		"[78, 75, 90, 96]" << std::endl;
 	string_rep = stream.str();
 
 	std::string check_str = matrix8.str();
