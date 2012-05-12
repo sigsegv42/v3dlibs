@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cmath>
 #include <algorithm>
+#include <sstream>
 
 using namespace v3D;
 
@@ -18,8 +19,12 @@ Matrix4::Matrix4()
 Matrix4::Matrix4(float m[4][4])
 {
 	for (unsigned int i = 0; i < 4; i++)
+	{
 		for (unsigned int j = 0; j < 4; j++)
+		{
 			matrix_[(i * 4) + j] = m[i][j];
+		}
+	}
 }
 
 Matrix4::Matrix4(float m[16])
@@ -61,7 +66,9 @@ Matrix4::Matrix4(float a, float b, float c, float d,
 Matrix4::Matrix4(float i)
 {
 	for (unsigned int j = 0; j < 16; j++)
+	{
 		matrix_[j] = i;
+	}
 }
 
 Matrix4::~Matrix4()
@@ -84,7 +91,9 @@ void Matrix4::identity()
 void Matrix4::zero()
 {
 	for (unsigned int i = 0; i < 16; i++)
+	{
 		matrix_[i] = 0.0f;
+	}
 }
 
 void Matrix4::clone(const Matrix4 & m)
@@ -146,6 +155,17 @@ void Matrix4::rotate(float angle, float x, float y, float z)
 	*/
 }
 
+std::string & Matrix4::str() const
+{
+	std::stringstream stream;
+	for (unsigned int offset = 0; offset < 16; offset += 4)
+	{
+		stream << "[" << matrix_[offset] << ", " << matrix_[offset+1] << ", " << matrix_[offset+2] << ", " << matrix_[offset+3] << "]" << std::endl;
+	}
+	std::string str = stream.str();
+	return str;
+}
+
 float Matrix4::operator [] (unsigned int i) const
 {
 	assert(i < 16);
@@ -170,7 +190,9 @@ Matrix4 & Matrix4::operator*=(const float f)
 	float * dest = matrix_;
 
 	for (unsigned int i = 0; i < 16; i++)
+	{
 		*(dest++) *= f;
+	}
 
 	return *this;
 }
@@ -190,7 +212,9 @@ Matrix4 Matrix4::operator-() const
 	float * dest = result;
 
 	for (unsigned int i = 0; i < 16; i++)
+	{
 		*(dest++) = - (*(src++));
+	}
 
 	return Matrix4(result);
 }
@@ -210,7 +234,9 @@ void Matrix4::abs()
 	float *dest = matrix_;
 
 	for (unsigned int i = 0; i < 16; i++)
+	{
 		*(dest++) = fabs(*(src++));
+	}
 }
 
 const float * Matrix4::operator*() const
@@ -247,8 +273,12 @@ bool Matrix4::operator==(const Matrix4 & m) const
 	const float *dest = matrix_;
 
 	for (unsigned int i = 0; i < 16; i++)
+	{
 		if (*(dest++) != *(src++))
+		{
 			return false;
+		}
+	}
 
 	return true;
 }
@@ -266,7 +296,9 @@ const Matrix4 v3D::operator-(const Matrix4 & lhs, const Matrix4 & rhs)
 	float * dest = result;
 
 	for (unsigned int i = 0; i < 16; i++)
+	{
 		*(dest++) = *(src1++) - *(src2++);
+	}
 
 	return Matrix4(result);
 }
@@ -278,7 +310,9 @@ const Matrix4 v3D::operator*(const Matrix4 & lhs, const float d)
 	float * dest = result;
 
 	for (unsigned int i = 0; i < 16; i++)
+	{
 		*(dest++) = *(src++) * d;
+	}
 
    return Matrix4(result);
 }
@@ -473,8 +507,12 @@ Matrix4 Matrix4::transpose() const
 {
 	float m[16];
 	for (unsigned int i = 0; i < 4; i++)
+	{
 		for (unsigned int j = 0; j < 4; j++)
+		{
 			m[(i*4)+j] = matrix_[i+(j*4)];
+		}
+	}
 	return Matrix4(m);
 }
 

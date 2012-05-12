@@ -3,6 +3,8 @@
 
 #include "Vector3.h"
 
+#include <string>
+
 namespace v3D
 {
 
@@ -12,6 +14,10 @@ namespace v3D
 	class Matrix4
 	{
 		public:
+			/**
+			 * Default constructor
+			 * Initializes an identity matrix
+			 */
 			Matrix4();
 			Matrix4(float m[4][4]);
 			Matrix4(float m[16]);
@@ -47,9 +53,10 @@ namespace v3D
 			 */
 			Matrix4 inverse() const;
 			/**
-			 * Access the individual matrix components.
-			 * @return a pointer to the matrix data.
+			 * Create a string representation.
+			 * @return the string representation of the matrix
 			 */
+			std::string & str() const;
 
 			void	neg();
 			void	abs();
@@ -76,6 +83,10 @@ namespace v3D
 			float operator [] (unsigned int i) const;	// get
 			float & operator[](unsigned int);			// set
 
+			/**
+			 * Access the individual matrix components.
+			 * @return a pointer to the matrix data.
+			 */
 			const float * operator*() const;
 
 		private:

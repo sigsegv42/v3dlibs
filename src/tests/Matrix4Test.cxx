@@ -1,5 +1,7 @@
 #include <boost/test/unit_test.hpp>
 
+#include <sstream>
+
 #include "../3dtypes/Matrix4.h"
 
 BOOST_AUTO_TEST_CASE( matrix4_test )
@@ -255,4 +257,17 @@ BOOST_AUTO_TEST_CASE( matrix4_test )
 	BOOST_CHECK_EQUAL(matrix8[13], 75.0f);
 	BOOST_CHECK_EQUAL(matrix8[14], 90.0f);
 	BOOST_CHECK_EQUAL(matrix8[15], 96.0f);
+
+	// test stringifying
+	std::stringstream stream;
+	std::string string_rep;
+	stream << 
+		"[12.0, 27.0, 18.0, 24.0]" << std::endl << 
+		"[30.0, 30.0, 42.0, 48.0]" << std::endl << 
+		"[54.0, 60.0, 198.0, 72.0]" << std::endl << 
+		"[78.0, 75.0, 90.0, 96.0]" << std::endl;
+	string_rep = stream.str();
+
+	std::string check_str = matrix8.str();
+	BOOST_CHECK_EQUAL((string_rep == check_str), true);
 }

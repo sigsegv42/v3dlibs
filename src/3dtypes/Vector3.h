@@ -57,6 +57,12 @@ namespace v3D
 			bool unit() const;
 			bool zero() const;
 
+			/**
+			 * Create a string representation.
+			 * @return the string representation of the vector.
+			 */
+			std::string & str() const;
+
 		private:
 			float vec_[3];
 	};

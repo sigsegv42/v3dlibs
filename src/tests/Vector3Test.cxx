@@ -93,6 +93,10 @@ BOOST_AUTO_TEST_CASE( vector3_test )
 	v3D::Vector3 vector4(val);
 	BOOST_CHECK_EQUAL((vector4 == vector3), true);
 
+	// test string conversion
+	std::string check_val = vector4.str();
+	BOOST_CHECK_EQUAL((val == check_val), true);
+
 	std::string val2("5.0, 2.0, bad");
 	v3D::Vector3 vector5(val2);
 	BOOST_CHECK_EQUAL(vector5[0], 5.0f);

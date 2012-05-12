@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <cassert>
+#include <sstream>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
@@ -180,6 +181,14 @@ const float * Vector3::operator*() const
 	return f;
 }
 
+std::string & Vector3::str() const
+{
+	std::stringstream stream;
+	stream << vec_[0] << ", " << vec_[1] << ", " << vec_[2];
+	std::string str = stream.str();
+	return str;
+}
+
 const Vector3 v3D::operator + (const Vector3 & lhs, const Vector3 & rhs) // v1 + v2
 {
 	return Vector3(lhs[0] + rhs[0], lhs[1] + rhs[1], lhs[2] + rhs[2]);
@@ -216,3 +225,5 @@ const Vector3 v3D::operator * (const Vector3 & lhs, float f)
 
 	return vec;
 }
+
+
