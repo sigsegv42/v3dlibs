@@ -1,10 +1,6 @@
 #include "GLTexture.h"
 
-#ifdef _WIN32
-	#include <windows.h>
-#endif 
-
-#include <GL/gl.h>
+#include <GL/glew.h>
 
 #include <cassert>
 #include <iostream>

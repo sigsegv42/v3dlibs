@@ -96,7 +96,7 @@ BOOST_AUTO_TEST_CASE( vector3_test )
 	// test string conversion
 	std::string in_val("23, 27, 31");
 	std::string check_val = vector4.str();
-	BOOST_CHECK_EQUAL((val == check_val), true);
+	BOOST_CHECK_EQUAL((in_val == check_val), true);
 
 	std::string val2("5.0, 2.0, bad");
 	v3D::Vector3 vector5(val2);

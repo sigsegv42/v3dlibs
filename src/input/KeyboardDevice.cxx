@@ -9,7 +9,9 @@ bool KeyboardDevice::KeyState::pressed(const std::string & c) const
 {
 	std::vector<std::string>::const_iterator iter = std::find(keys_.begin(), keys_.end(), c);
 	if (iter != keys_.end())
+	{
 		return true;
+	}
 	return false;
 }
 
@@ -19,7 +21,7 @@ bool KeyboardDevice::KeyState::operator() (const std::string & c)
 	bool pressed = true;
 	if (iter != keys_.end())
 	{
-		std::remove(keys_.begin(), keys_.end(), c);
+		keys_.erase(iter);
 		pressed = false;
 	}
 	else

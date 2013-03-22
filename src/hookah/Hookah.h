@@ -1,10 +1,9 @@
 /**
  * HooKaH - 3D Application Framework Library 
- * (c) 2006-2008 Josh Farr
+ * (c) Josh Farr <j.wgasa@gmail.com>
  * Version 0.0.8
  * 
  **/
-
 #ifndef INCLUDED_HOOKAH_HOOKAH
 #define INCLUDED_HOOKAH_HOOKAH
 

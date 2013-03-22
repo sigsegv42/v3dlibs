@@ -49,6 +49,15 @@ namespace Hookah
 			 * @param cap the new window caption
 			 */
 			virtual void caption(const std::string & cap);
+			/**
+			 * Toggle mouse cursor visibility
+			 * @param state whether to enable or disable
+			 */
+			virtual void cursor(bool state);
+			/**
+			 * Move the mouse cursor to a new position in the window
+			 */
+			virtual void warpCursor(int x, int y);
 
 			/**
 			 * Get the width of the window.
@@ -60,6 +69,8 @@ namespace Hookah
 			 * @return the height of the window
 			 */
 			int height() const;
+
+			bool active() const;
 
 			/**
 			 * Shutdown the window. Any SDL, audio cleanup is done here. The application will 
@@ -109,6 +120,7 @@ namespace Hookah
 			void resize();
 			void resize(int w, int h);
 			std::string caption_;
+			void active(bool state);
 
 			boost::shared_ptr<v3D::InputDevice> device(const std::string & name);
 
@@ -116,6 +128,7 @@ namespace Hookah
 			int width_;
 			int height_;
 			std::map< std::string, boost::shared_ptr<v3D::InputDevice> > inputDevices_;
+			bool active_; // window focused
 
 			TickEventType tickEventListeners_;
 			DrawEventType drawEventListeners_;

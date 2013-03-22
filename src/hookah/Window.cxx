@@ -6,7 +6,8 @@ using namespace Hookah;
 
 Window::Window(unsigned int width, unsigned int height) : 
 	width_(width), 
-	height_(height)
+	height_(height),
+	active_(true)
 {
 }
 
@@ -18,6 +19,15 @@ void Window::caption(const std::string & cap)
 {
 	caption_ = cap;
 }
+
+void Window::cursor(bool state)
+{
+}
+
+void Window::warpCursor(int x, int y)
+{
+}
+
 
 int Window::width() const
 {
@@ -39,6 +49,16 @@ void Window::resize(int w, int h)
 void Window::resize()
 {
 	resizeEventListeners_(width_, height_);
+}
+
+bool Window::active() const
+{
+	return active_;
+}
+
+void Window::active(bool state)
+{
+	active_ = state;
 }
 
 void Window::draw()
