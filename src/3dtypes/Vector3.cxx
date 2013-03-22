@@ -63,6 +63,13 @@ Vector3::Vector3(const std::string & val)
 	}
 }
 
+void Vector3::set(float x, float y, float z)
+{
+	vec_[0] = x;
+	vec_[1] = y;
+	vec_[2] = z;
+}
+
 bool Vector3::operator == (const Vector3 & v) const
 {
 	return  ((vec_[0] == v.vec_[0]) && 

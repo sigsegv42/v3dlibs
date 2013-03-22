@@ -101,6 +101,25 @@ void Matrix4::clone(const Matrix4 & m)
 	std::copy(m.matrix_, m.matrix_+16, matrix_);
 }
 
+void Matrix4::column(unsigned int col, const v3D::Vector4 & vec)
+{
+	assert(col < 4);
+
+	matrix_[col] = vec[0];
+	matrix_[col+4] = vec[1];
+	matrix_[col+8] = vec[2];
+	matrix_[col+12] = vec[3];
+}
+
+void Matrix4::column(unsigned int col, const v3D::Vector3 & vec)
+{
+	assert(col < 4);
+
+	matrix_[col] = vec[0];
+	matrix_[col+4] = vec[1];
+	matrix_[col+8] = vec[2];
+}
+
 void Matrix4::translate(float x, float y, float z)
 {
 	/*
@@ -131,6 +150,22 @@ void Matrix4::translate(float x, float y, float z)
 	*/
 }
 
+void Matrix4::translate(const Vector3 & distance)
+{
+	matrix_[0] += matrix_[12] * distance[0];
+	matrix_[1] += matrix_[13] * distance[0];
+	matrix_[2] += matrix_[14] * distance[0];
+	matrix_[3] += matrix_[15] * distance[0];
+	matrix_[4] += matrix_[12] * distance[1];
+	matrix_[5] += matrix_[13] * distance[1];
+	matrix_[6] += matrix_[14] * distance[1];
+	matrix_[7] += matrix_[15] * distance[1];
+	matrix_[8] += matrix_[12] * distance[2];
+	matrix_[9] += matrix_[13] * distance[2];
+	matrix_[10] += matrix_[14] * distance[2];
+	matrix_[11] += matrix_[15] * distance[2];
+}
+
 void Matrix4::scale(float x, float y, float z)
 {
 	matrix_[0]  *= x;
@@ -153,6 +188,93 @@ void Matrix4::rotate(float angle, float x, float y, float z)
 		s = sin(angle)
 		(x, y, z) = 1 	(normalized)
 	*/
+}
+
+void Matrix4::rotate(float angle, const Vector3 & axis)
+{
+	float radians = deg2rad(angle);
+	float c = cosf(radians);
+	float s = sinf(radians);
+	float x = axis[0];
+	float y = axis[1];
+	float z = axis[2];
+	float xx = x * x;
+	float xy = x * y;
+	float xz = x * z;
+	float yy = y * y;
+	float yz = y * z;
+	float zz = z * z;
+
+	Matrix4 matrix;
+	matrix[0] = xx * (1.0f - c) + c;
+	matrix[1] = xy * (1.0f - c) + (z * s);
+	matrix[2] = xz * (1.0f - c) - (y * s);
+	matrix[3] = 0.0f;
+
+	matrix[4] = xy * (1.0f - c) - (z * s);
+	matrix[5] = yy * (1.0f - c) + c;
+	matrix[6] = yz * (1.0f - c) + (x * s);
+	matrix[7] = 0.0f;
+
+	matrix[8] = xz * (1.0f - c) + (y * s);
+	matrix[9] = yz * (1.0f - c) - (x * s);
+	matrix[10] = zz * (1.0f - c) + c;
+	matrix[11] = 0.0f;
+
+	matrix[12] = 0.0f;
+	matrix[13] = 0.0f;
+	matrix[14] = 0.0f;
+	matrix[15] = 1.0f;
+
+	*this = matrix * (*this);
+}
+
+void Matrix4::rotateX(float angle)
+{
+	float c = cosf(deg2rad(angle));
+	float s = sinf(deg2rad(angle));
+	Matrix4 m = *this;
+
+	matrix_[4] = m[4] * c + m[8] * -s;
+	matrix_[5] = m[5] * c + m[9] * -s;
+	matrix_[6] = m[6] * c + m[10] * -s;
+	matrix_[7] = m[7] * c + m[11] * -s;
+	matrix_[8] = m[4] * s + m[8] * c;
+	matrix_[9] = m[5] * s + m[9] * c;
+	matrix_[10] = m[6] * s + m[10] * c;
+	matrix_[11] = m[7] * s + m[11] * c;
+}
+
+void Matrix4::rotateY(float angle)
+{
+	float c = cosf(deg2rad(angle));
+	float s = sinf(deg2rad(angle));
+	Matrix4 m = *this;
+
+	matrix_[0] = m[0] * c + m[8] * s;
+	matrix_[1] = m[1] * c + m[9] * s;
+	matrix_[2] = m[2] * c + m[10] * s;
+	matrix_[3] = m[3] * c + m[11] * s;
+	matrix_[8] = m[0] * -s + m[8] * c;
+	matrix_[9] = m[1] * -s + m[9] * c;
+	matrix_[10] = m[2] * -s + m[10] * c;
+	matrix_[11] = m[3] * -s + m[11] * c;
+}
+
+void Matrix4::rotateZ(float angle)
+{
+	float c = cosf(deg2rad(angle));
+	float s = sinf(deg2rad(angle));
+	Matrix4 m = *this;
+
+	matrix_[0] = m[0] * c + m[4] * -s;
+	matrix_[1] = m[1] * c + m[5] * -s;
+	matrix_[2] = m[2] * c + m[6] * -s;
+	matrix_[3] = m[3] * c + m[7] * -s;
+	matrix_[4] = m[0] * s + m[4] * c;
+	matrix_[5] = m[1] * s + m[5] * c;
+	matrix_[6] = m[2] * s + m[6] * c;
+	matrix_[7] = m[3] * s + m[7] * c;
 }
 
 std::string Matrix4::str() const
@@ -333,9 +455,14 @@ const Matrix4 v3D::operator+(const Matrix4 & lhs, const Matrix4 & rhs)
 const Vector3 v3D::operator*(const Matrix4 & lhs, const Vector3 & v)
 {
 	Vector3 dest;
+	/*
 	dest[0] = v[0] * lhs[0] + v[1] * lhs[1] + v[2] * lhs[2] + lhs[3];
 	dest[1] = v[0] * lhs[4] + v[1] * lhs[5] + v[2] * lhs[6] + lhs[7];
 	dest[2] = v[0] * lhs[8] + v[1] * lhs[9] + v[2] * lhs[10] + lhs[11];
+	*/
+    dest[0] = (v[0] * lhs[0]) + (v[1] * lhs[4]) + (v[2] * lhs[8]);
+	dest[1] = (v[0] * lhs[1]) + (v[1] * lhs[5]) + (v[2] * lhs[9]),
+	dest[2] = (v[0] * lhs[2]) + (v[1] * lhs[6]) + (v[2] * lhs[10]);
 
 	return dest;
 }

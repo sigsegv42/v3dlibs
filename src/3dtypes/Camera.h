@@ -13,11 +13,17 @@ namespace v3D
 	{
 		public:
 			Camera();
+			Camera(const CameraProfile & profile);
 			virtual ~Camera();
 
 			// get
 			Matrix4	projection() const;
 			Matrix4 view() const;
+
+			/**
+			 * Access the underlying camera profile
+			 */
+			CameraProfile & profile();
 
 			Vector3 unproject(const Vector3 & point, int viewport[4]);
 			Vector3 project(const Vector3 & point, int viewport[4]);

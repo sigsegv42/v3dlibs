@@ -2,6 +2,7 @@
 #define INCLUDED_V3D_MATRIX4
 
 #include "Vector3.h"
+#include "Vector4.h"
 
 #include <string>
 
@@ -10,6 +11,7 @@ namespace v3D
 
 	/**
 	 * A 4x4 Matrix class.
+	 * The internal representation of the matrix is stored in row major order
 	 */
 	class Matrix4
 	{
@@ -57,6 +59,11 @@ namespace v3D
 			 * @return the string representation of the matrix
 			 */
 			std::string str() const;
+			/**
+			 * Set a column in the matrix.
+			 */
+			void column(unsigned int col, const Vector4 & vec);
+			void column(unsigned int col, const Vector3 & vec);
 
 			void	neg();
 			void	abs();
@@ -69,6 +76,15 @@ namespace v3D
 			void		translate(float x, float y, float z);
 			void		scale(float x, float y, float z);
 			void		rotate(float angle, float x, float y, float z);
+
+			/**
+			 * An alternative that does traditional non-quaternion rotation
+			 */
+			void		rotate(float angle, const Vector3 & axis);
+			void		rotateX(float angle);
+			void		rotateY(float angle);
+			void		rotateZ(float angle);
+			void		translate(const Vector3 & distance);
 
 			Matrix4 & operator=(const Matrix4 &);			// m1 = m2
 

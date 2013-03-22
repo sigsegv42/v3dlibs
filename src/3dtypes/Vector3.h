@@ -36,6 +36,8 @@ namespace v3D
 			 */
 			void reset();
 
+			void set(float x, float y, float z);
+
 			Vector3 cross(const Vector3 & v) const;
 			/**
 			 * Calculate the dot product of two vectors.

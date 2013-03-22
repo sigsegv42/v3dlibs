@@ -97,3 +97,13 @@ CameraProfile & CameraProfile::operator = (const CameraProfile & p)
 	return *this;
 }
 
+void CameraProfile::eye(const Vector3 & position)
+{
+	eye_ = position;
+}
+
+void CameraProfile::clipping(float near, float far)
+{
+	near_ = near;
+	far_ = far;
+}

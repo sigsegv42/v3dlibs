@@ -9,8 +9,17 @@ Camera::Camera() : profile_("Unnamed")
 {
 }
 
+Camera::Camera(const CameraProfile & profile) : profile_(profile)
+{
+}
+
 Camera::~Camera()
 {
+}
+
+CameraProfile & Camera::profile()
+{
+	return profile_;
 }
 
 /*

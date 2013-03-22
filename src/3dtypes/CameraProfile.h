@@ -20,6 +20,7 @@ namespace v3D
 			virtual ~CameraProfile();
 
 			void clipping(float near, float far);
+			void eye(const Vector3 & position);
 
 			/**
 			*	Orient the camera to look at a point in space.
