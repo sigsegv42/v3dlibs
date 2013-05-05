@@ -40,7 +40,9 @@ void FLTKWindow::caption(const std::string & cap)
 bool FLTKWindow::shutdown()
 {
 	if (shutdown_)
+	{
 		return true;
+	}
 	shutdown_ = true;
 	return true;
 }
@@ -48,7 +50,9 @@ bool FLTKWindow::shutdown()
 void FLTKWindow::draw()
 {
 	if (shutdown_)
+	{
 		return;
+	}
 	Window::draw();
 	swap_buffers();
 	dirty_ = false;
@@ -57,7 +61,9 @@ void FLTKWindow::draw()
 void FLTKWindow::tick()
 {
 	if (shutdown_)
+	{
 		return;
+	}
 
 	// call base (will dispatch any input device events)
 	Window::tick();

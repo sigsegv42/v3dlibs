@@ -1,7 +1,7 @@
 #ifndef INCLUDED_HOOKAH_FLTKMOUSE
 #define INCLUDED_HOOKAH_FLTKMOUSE
 
-#include "../../input/MouseDevice.h"
+#include "../../../input/MouseDevice.h"
 
 namespace Hookah
 {

@@ -1,16 +1,17 @@
-#include "../Hookah.h"
-#include "FLTKWindow.h"
-#include "FLTKKeyboard.h"
-#include "FLTKMouse.h"
+#include "../../Hookah.h"
+#include "SFMLWindow.h"
+#include "SFMLKeyboard.h"
+#include "SFMLMouse.h"
 
 #include <boost/shared_ptr.hpp>
 
-boost::shared_ptr<Hookah::Window> Hookah::Create3DWindow(unsigned int width, unsigned int height)
+boost::shared_ptr<Hookah::Window> Hookah::Create3DWindow(unsigned width, unsigned int height)
 {
 	boost::shared_ptr<Hookah::Window> win;
 	try
 	{
-		win.reset(new Hookah::FLTKWindow(width, height));
+		std::string caption("");
+		win.reset(new Hookah::SFMLWindow(width, height, caption));
 	}
 	catch(std::exception & e)
 	{
@@ -26,12 +27,13 @@ boost::shared_ptr<v3D::InputDevice> Hookah::CreateInputDevice(const std::string 
 
 	if (device == "keyboard")
 	{
-		dev.reset(new Hookah::FLTKKeyboard);
+		dev.reset(new Hookah::SFMLKeyboard);
 	}
 	else if (device == "mouse")
 	{
-		dev.reset(new Hookah::FLTKMouse);
+		dev.reset(new Hookah::SFMLMouse);
 	}
 
 	return dev;
 }
+

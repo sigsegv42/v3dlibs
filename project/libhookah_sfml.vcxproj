@@ -10,20 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLDriver.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLKeyboard.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLMouse.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLWindow.cxx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\hookah\drivers\sdl\SDLKeyboard.h" />
-    <ClInclude Include="..\src\hookah\drivers\sdl\SDLMouse.h" />
-    <ClInclude Include="..\src\hookah\drivers\sdl\SDLWindow.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{44D6796C-FA63-4600-859E-5CF702F6D6A4}</ProjectGuid>
-    <RootNamespace>libhookah_sdl</RootNamespace>
+    <ProjectGuid>{FA28972D-AA92-464B-A148-D2988C074B28}</ProjectGuid>
+    <RootNamespace>libhookah_sfml</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -64,7 +53,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\SDL-1.2.15\;$(SolutionDir)..\..\vendor\boost_1_53_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\SFML\include\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\glew-1.9.0\include\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -79,7 +68,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\SDL-1.2.15\;$(SolutionDir)..\..\vendor\boost_1_53_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\SFML\include\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\glew-1.9.0\include\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -89,6 +78,17 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLDriver.cxx" />
+    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLKeyboard.cxx" />
+    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLMouse.cxx" />
+    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLWindow.cxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\hookah\drivers\sfml\SFMLKeyboard.h" />
+    <ClInclude Include="..\src\hookah\drivers\sfml\SFMLMouse.h" />
+    <ClInclude Include="..\src\hookah\drivers\sfml\SFMLWindow.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

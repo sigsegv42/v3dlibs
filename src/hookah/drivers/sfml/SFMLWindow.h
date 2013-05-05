@@ -1,21 +1,21 @@
-#ifndef INCLUDED_HOOKAH_SDL2WINDOW
-#define INCLUDED_HOOKAH_SDL2WINDOW
+#ifndef INCLUDED_HOOKAH_SFMLWINDOW
+#define INCLUDED_HOOKAH_SFMLWINDOW
 
-#include "../Window.h"
+#include "../../Window.h"
 
-#include <SDL.h>
+#include <SFML/Window/Window.hpp>
 
 namespace Hookah
 {
 
 	/**
-	 * An SDL-based Window class.
+	 * An SFML-based Window class.
 	 **/
-	class SDL2Window : public Window
+	class SFMLWindow : public Window
 	{
 		public:
-			SDL2Window(unsigned int width, unsigned int height, const std::string & cap);
-			~SDL2Window();
+			SFMLWindow(unsigned int width, unsigned int height, const std::string & cap);
+			~SFMLWindow();
 
 			/**
 			 * Main drawing routine called once per frame from the main game loop. This should 
@@ -34,10 +34,6 @@ namespace Hookah
 			 * @param state whether to enable or disable
 			 */
 			void cursor(bool state);
-			/**
-			 * Move the mouse cursor to a new position in the window
-			 */
-			void warpCursor(int x, int y);
 
 			/**
 			 * Shutdown the window. Any sdl cleanup is done here. The application will 
@@ -65,23 +61,12 @@ namespace Hookah
 
 		protected:
 			/**
-			 * Internal method to run the core blocking event loop.
-			 * @param draw_mode whether drawing should be done at every opportunity or only after invalidations.
-			 * @return true if successful
-			 */
-			bool blockingEventLoop(DrawMode draw_mode);
-			/**
 			 * Internal method to run the core non-blocking event loop.
 			 * @param draw_mode whether drawing should be done at every opportunity or only after invalidations.
 			 * @return true if successful
 			 */
 			bool nonBlockingEventLoop(DrawMode draw_mode);
-			/**
-			 * Process a single SDL event.
-			 * @param event the event to process
-			 * @return whether the event was successfully handled
-			 */
-			bool dispatchSDLEvent(const SDL_Event & event);
+
 			/**
 			 * Conditionally draw a single frame. Drawing will only be done if the drawing mode conditions are 
 			 * met and the window is active.
@@ -90,8 +75,9 @@ namespace Hookah
 			void drawFrame(DrawMode draw_mode);
 
 		private:
-			SDL_Window * window_;
-			SDL_GLContext context_;
+			sf::Window window_;
+			sf::Time startTime_;
+			sf::Clock clock_;
 			int bpp_;
 			int videoFlags_;
 			bool shutdown_;
@@ -100,4 +86,4 @@ namespace Hookah
 
 }; // end namespace Hookah
 
-#endif // INCLUDED_HOOKAH_SDL2WINDOW
+#endif // INCLUDED_HOOKAH_SFMLWINDOW

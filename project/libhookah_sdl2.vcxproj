@@ -10,6 +10,17 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\hookah\drivers\sdl2\SDL2Driver.cxx" />
+    <ClCompile Include="..\src\hookah\drivers\sdl2\SDL2Keyboard.cxx" />
+    <ClCompile Include="..\src\hookah\drivers\sdl2\SDL2Mouse.cxx" />
+    <ClCompile Include="..\src\hookah\drivers\sdl2\SDL2Window.cxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\hookah\drivers\sdl2\SDL2Keyboard.h" />
+    <ClInclude Include="..\src\hookah\drivers\sdl2\SDL2Mouse.h" />
+    <ClInclude Include="..\src\hookah\drivers\sdl2\SDL2Window.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5B3824A2-C9B6-4E76-8BA4-552F8CDD5FF7}</ProjectGuid>
     <RootNamespace>libhookah_sdl2</RootNamespace>
@@ -78,17 +89,6 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\hookah\drivers\SDL2Driver.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\SDL2Keyboard.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\SDL2Mouse.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\SDL2Window.cxx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\hookah\drivers\SDL2Keyboard.h" />
-    <ClInclude Include="..\src\hookah\drivers\SDL2Mouse.h" />
-    <ClInclude Include="..\src\hookah\drivers\SDL2Window.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

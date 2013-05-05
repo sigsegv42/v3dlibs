@@ -1,7 +1,7 @@
 #ifndef INCLUDED_HOOKAH_SDL2MOUSE
 #define INCLUDED_HOOKAH_SDL2MOUSE
 
-#include "../../input/MouseDevice.h"
+#include "../../../input/MouseDevice.h"
 
 namespace Hookah
 {

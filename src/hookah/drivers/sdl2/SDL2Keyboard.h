@@ -1,7 +1,7 @@
-#ifndef INCLUDED_HOOKAH_SD2LKEYBOARD
+#ifndef INCLUDED_HOOKAH_SDL2KEYBOARD
 #define INCLUDED_HOOKAH_SDL2KEYBOARD
 
-#include "../../input/KeyboardDevice.h"
+#include "../../../input/KeyboardDevice.h"
 
 #include <string>
 

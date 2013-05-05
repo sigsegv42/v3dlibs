@@ -1,7 +1,7 @@
-#include "../Hookah.h"
-#include "SDL2Window.h"
-#include "SDL2Keyboard.h"
-#include "SDL2Mouse.h"
+#include "../../Hookah.h"
+#include "SDLWindow.h"
+#include "SDLKeyboard.h"
+#include "SDLMouse.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -17,8 +17,7 @@ boost::shared_ptr<Hookah::Window> Hookah::Create3DWindow(unsigned width, unsigne
 	boost::shared_ptr<Hookah::Window> win;
 	try
 	{
-		std::string caption("");
-		win.reset(new Hookah::SDL2Window(width, height, caption));
+		win.reset(new Hookah::SDLWindow(width, height));
 	}
 	catch(std::exception & e)
 	{
@@ -34,11 +33,11 @@ boost::shared_ptr<v3D::InputDevice> Hookah::CreateInputDevice(const std::string 
 
 	if (device == "keyboard")
 	{
-		dev.reset(new Hookah::SDL2Keyboard);
+		dev.reset(new Hookah::SDLKeyboard);
 	}
 	else if (device == "mouse")
 	{
-		dev.reset(new Hookah::SDL2Mouse);
+		dev.reset(new Hookah::SDLMouse);
 	}
 
 	return dev;

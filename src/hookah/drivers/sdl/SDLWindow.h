@@ -1,7 +1,7 @@
 #ifndef INCLUDED_HOOKAH_SDLWINDOW
 #define INCLUDED_HOOKAH_SDLWINDOW
 
-#include "../Window.h"
+#include "../../Window.h"
 
 #include <SDL/SDL.h>
 

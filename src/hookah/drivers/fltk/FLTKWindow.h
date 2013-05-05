@@ -1,7 +1,7 @@
 #ifndef INCLUDED_HOOKAH_FLTKWINDOW
 #define INCLUDED_HOOKAH_FLTKWINDOW
 
-#include "../Window.h"
+#include "../../Window.h"
 
 #include <fltk/GlWindow.h>
 

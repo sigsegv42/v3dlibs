@@ -53,7 +53,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>c:\Program Files (x86)\OpenAL 1.1 SDK\include;z:\code\vendor\freealut-1.1.0-bin\include\;$(SolutionDir)..\..\vendor\boost_1_49_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\Program Files (x86)\OpenAL 1.1 SDK\include;z:\code\vendor\freealut-1.1.0-bin\include\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -68,7 +68,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>c:\Program Files (x86)\OpenAL 1.1 SDK\include;z:\code\vendor\freealut-1.1.0-bin\include\;$(SolutionDir)..\..\vendor\boost_1_49_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\Program Files (x86)\OpenAL 1.1 SDK\include;z:\code\vendor\freealut-1.1.0-bin\include\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
