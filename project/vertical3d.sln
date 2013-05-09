@@ -45,6 +45,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhookah_sdl2", "libhookah
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhookah_sfml", "libhookah_sfml.vcxproj", "{FA28972D-AA92-464B-A148-D2988C074B28}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libv3dgl", "libv3dgl.vcxproj", "{8535A7D1-2328-4983-94FA-66A3311C88AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -123,8 +125,15 @@ Global
 		{FA28972D-AA92-464B-A148-D2988C074B28}.Debug|Win32.Build.0 = Debug|Win32
 		{FA28972D-AA92-464B-A148-D2988C074B28}.Release|Win32.ActiveCfg = Release|Win32
 		{FA28972D-AA92-464B-A148-D2988C074B28}.Release|Win32.Build.0 = Release|Win32
+		{8535A7D1-2328-4983-94FA-66A3311C88AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8535A7D1-2328-4983-94FA-66A3311C88AD}.Debug|Win32.Build.0 = Debug|Win32
+		{8535A7D1-2328-4983-94FA-66A3311C88AD}.Release|Win32.ActiveCfg = Release|Win32
+		{8535A7D1-2328-4983-94FA-66A3311C88AD}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8535A7D1-2328-4983-94FA-66A3311C88AD} = {612CDE79-3E6A-4E64-B364-56EF2D455196}
 	EndGlobalSection
 EndGlobal
