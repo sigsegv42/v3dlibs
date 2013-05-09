@@ -12,10 +12,10 @@
 
 using namespace v3D;
 
-VertexBuffer::VertexBuffer() :
+VertexBuffer::VertexBuffer(BufferType type) :
 	ebo_(0),
 	vbo_(0),
-	type_(BUFFER_TYPE_DYNAMIC)
+	type_(type)
 {
 }
 

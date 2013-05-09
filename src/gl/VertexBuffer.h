@@ -43,7 +43,7 @@ namespace v3D
 				BUFFER_TYPE_DYNAMIC
 			} BufferType;
 
-			VertexBuffer();
+			VertexBuffer(BufferType type);
 			~VertexBuffer();
 
 			void attribute(unsigned int position, unsigned int size, AttributeType type, unsigned int length);
@@ -59,7 +59,6 @@ namespace v3D
 			void indices(glm::ivec3 * data, size_t count);
 			void allocate();
 
-		protected:
 			void set(unsigned int attr, const float * data, size_t size);
 
 		private:
