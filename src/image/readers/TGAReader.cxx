@@ -16,7 +16,10 @@ TGAReader::~TGAReader()
 
 boost::shared_ptr<Image> TGAReader::read(const std::string &filename)
 {
-	unsigned char TGAheader[12]={0,0,2,0,0,0,0,0,0,0,0,0};// Uncompressed TGA Header
+	// 2 = uncompressed rgb
+	// 3 = uncompressed b&w
+	unsigned char rgbTGAheader[12]={0,0,2,0,0,0,0,0,0,0,0,0};// Uncompressed TGA Header
+	unsigned char bwTGAheader[12]={0,0,3,0,0,0,0,0,0,0,0,0};// Uncompressed TGA Header
 	unsigned char TGAcompare[12];						// Used To Compare TGA Header
 	unsigned char header[6];							// First 6 Useful Bytes From The Header
 
@@ -39,7 +42,7 @@ boost::shared_ptr<Image> TGAReader::read(const std::string &filename)
 	}
 
 	file.read(reinterpret_cast<char*>(&TGAcompare), sizeof(TGAcompare));
-	if (memcmp(TGAheader, TGAcompare, sizeof(TGAheader)) != 0)
+	if (memcmp(rgbTGAheader, TGAcompare, sizeof(rgbTGAheader)) != 0 && memcmp(bwTGAheader, TGAcompare, sizeof(bwTGAheader)))
 	{
 		file.close();
 		return empty_ptr;
@@ -53,7 +56,7 @@ boost::shared_ptr<Image> TGAReader::read(const std::string &filename)
     
  	if(width <= 0 ||						// Is The Width Less Than Or Equal To Zero
 		height	<= 0 ||						// Is The Height Less Than Or Equal To Zero
-		(header[4] != 24 && header[4] != 32))		// Is The TGA 24 or 32 Bit?
+		(header[4] != 24 && header[4] != 32 && header[4] != 8))	// 8/24/32 bit?
 	{
 		file.close();
 		return empty_ptr;
@@ -72,12 +75,15 @@ boost::shared_ptr<Image> TGAReader::read(const std::string &filename)
 		return empty_ptr;
 	}
 
-	unsigned int temp;
-	for (unsigned int i = 0; i < int(size); i += bytespp)
-	{										// Swaps The 1st And 3rd Bytes ('R'ed and 'B'lue)
-		temp = data[i];
-		data[i] = data[i + 2];
-		data[i + 2] = temp;
+	if (bytespp >= 3)
+	{
+		unsigned int temp;
+		for (unsigned int i = 0; i < int(size); i += bytespp)
+		{										// Swaps The 1st And 3rd Bytes ('R'ed and 'B'lue)
+			temp = data[i];
+			data[i] = data[i + 2];
+			data[i + 2] = temp;
+		}
 	}
 	file.close();
 	return img;

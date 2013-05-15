@@ -1,3 +1,8 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
+
 #ifndef INCLUDED_V3D_VECTOR2
 #define INCLUDED_V3D_VECTOR2
 

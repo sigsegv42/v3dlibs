@@ -1,7 +1,12 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
+
 #ifndef INCLUDED_V3D_BOUND2D
 #define INCLUDED_V3D_BOUND2D
 
-#include "Vector2.h"
+#include <glm/glm.hpp>
 
 namespace v3D
 {
@@ -27,39 +32,39 @@ namespace v3D
 			 * @param position the top left corner of the clipping plane
 			 * @param size the width and height of the bounded area
 			 */
-			Bound2D(const Vector2 & position, const Vector2 & size);
+			Bound2D(const glm::vec2 & position, const glm::vec2 & size);
 
 			/**
 			 * Get the size of the bounding volume
 			 *
 			 * @return the width and height of the bounded area
 			 */
-			Vector2	size() const;
+			glm::vec2 size() const;
 			/**
 			 * Get the position of the bounding volume
 			 *
 			 * @return the top left corner of the bounding box
 			 */
-			Vector2	position() const;
+			glm::vec2 position() const;
 			/**
 			 * Shrink the bounding box by a given amount.
 			 *
 			 * @param size the amount to shrink the box by
 			 */
-			void	shrink(float size);
+			void shrink(float size);
 			/**
 			 * Expand the bounding box by a given amount.
 			 *
 			 * @param size the amount to expand the box by
 			 */
-			void	expand(float size);
+			void expand(float size);
 			/**
 			 * Determine if a given point intersects the bounding volume
 			 *
 			 * @param point the point to check for intersection
 			 * @return whether the point is inside the bounding box (true) or not (false)
 			 */
-			bool	intersect(const Vector2 & point);
+			bool intersect(const glm::vec2 & point);
 			/**
 			 * Add the size of another bounding volume to this one
 			 *
@@ -69,8 +74,8 @@ namespace v3D
 			Bound2D & operator += (const Bound2D & bound);
 
 		private:
-			Vector2 size_;
-			Vector2	position_;
+			glm::vec2 size_;
+			glm::vec2	position_;
 	};
 
 }; // end namespace v3D

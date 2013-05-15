@@ -46,8 +46,22 @@ namespace v3D
 			VertexBuffer(BufferType type);
 			~VertexBuffer();
 
+			/**
+			 * Define a vertex buffer attribute
+			 *
+			 * @param unsigned int position attribute position
+			 * @param unsigned int size the number of fields in each attribute element
+			 * @param AttributeType type the type of data stored in this attribute
+			 * @param unsigned int length the number of elements stored in this attribute
+			 */
 			void attribute(unsigned int position, unsigned int size, AttributeType type, unsigned int length);
 
+			/**
+			 * Upload attribute data
+			 * 
+			 * @param unsigned int attr the attribute position
+			 * @param vector an array of attribute element data
+			 */
 			void data1f(unsigned int attr, const std::vector<float> & data);
 			void data2f(unsigned int attr, const std::vector<glm::vec2> & data);
 			void data3f(unsigned int attr, const std::vector<glm::vec3> & data);

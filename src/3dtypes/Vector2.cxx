@@ -1,3 +1,8 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
+
 #include "Vector2.h"
 
 #ifndef USE_TEMPLATE_VECTOR

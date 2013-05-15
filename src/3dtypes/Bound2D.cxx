@@ -1,3 +1,8 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
+
 #include "Bound2D.h"
 
 using namespace v3D;
@@ -6,7 +11,7 @@ Bound2D::Bound2D(float x, float y, float width, float height) : size_(width, hei
 {
 }
 
-Bound2D::Bound2D(const Vector2 & position, const Vector2 & size) : size_(size), position_(position)
+Bound2D::Bound2D(const glm::vec2 & position, const glm::vec2 & size) : size_(size), position_(position)
 {
 }
 
@@ -30,7 +35,7 @@ void Bound2D::expand(float size)
 	position_[1] += size;
 }
 
-bool Bound2D::intersect(const Vector2 & point)
+bool Bound2D::intersect(const glm::vec2 & point)
 {
 	if ((point[0] >= position_[0]) && 
 		(point[1] >= position_[1]) && 
@@ -48,12 +53,12 @@ Bound2D & Bound2D::operator += (const Bound2D & bound)
 }
 
 
-Vector2	Bound2D::size() const
+glm::vec2 Bound2D::size() const
 {
 	return size_;
 }
 
-Vector2	Bound2D::position() const
+glm::vec2 Bound2D::position() const
 {
 	return position_;
 }
