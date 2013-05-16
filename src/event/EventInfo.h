@@ -1,3 +1,7 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
+
 #ifndef INCLUDED_V3D_EVENTINFO
 #define INCLUDED_V3D_EVENTINFO
 

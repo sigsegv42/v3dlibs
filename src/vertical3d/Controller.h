@@ -8,7 +8,7 @@
 #include "../command/CommandDirectory.h"
 #include "Tool.h"
 
-#include <Luxa/ComponentManager.h>
+#include <luxa/ComponentManager.h>
 
 #include <boost/property_tree/ptree.hpp>
 

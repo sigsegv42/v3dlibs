@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "../command/EventInfo.h"
+#include "../event/EventInfo.h"
 
 BOOST_AUTO_TEST_CASE( eventinfo_test )
 {

@@ -1,8 +1,12 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
+
 #ifndef INCLUDED_V3D_COMMANDDIRECTORY
 #define INCLUDED_V3D_COMMANDDIRECTORY
 
-#include "EventListener.h"
-#include "EventInfo.h"
+#include "../event/EventListener.h"
+#include "../event/EventInfo.h"
 #include "Command.h"
 #include "Bind.h"
 

@@ -1,3 +1,6 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
 #include "KeyboardDevice.h"
 #include "KeyboardEventListener.h"
 

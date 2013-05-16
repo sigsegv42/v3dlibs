@@ -81,7 +81,6 @@
     <ClCompile Include="..\src\command\Command.cxx" />
     <ClCompile Include="..\src\command\CommandDirectory.cxx" />
     <ClCompile Include="..\src\command\CommandInfo.cxx" />
-    <ClCompile Include="..\src\command\EventInfo.cxx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\command\Bind.h" />
@@ -89,8 +88,6 @@
     <ClInclude Include="..\src\command\Command.h" />
     <ClInclude Include="..\src\command\CommandDirectory.h" />
     <ClInclude Include="..\src\command\CommandInfo.h" />
-    <ClInclude Include="..\src\command\EventInfo.h" />
-    <ClInclude Include="..\src\command\EventListener.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

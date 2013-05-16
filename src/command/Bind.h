@@ -2,7 +2,7 @@
 #define INCLUDED_V3D_COMMAND_BIND
 
 #include "CommandInfo.h"
-#include "EventInfo.h"
+#include "../event/EventInfo.h"
 
 namespace v3D
 {

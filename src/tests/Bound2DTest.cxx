@@ -7,23 +7,23 @@ BOOST_AUTO_TEST_CASE( bound2d_test )
 	v3D::Bound2D bound(2.0f, 5.0f, 10.0f, 20.0f);
 
 	// test constructor & get position
-	v3D::Vector2 position = bound.position();
+	glm::vec2 position = bound.position();
 	BOOST_CHECK_EQUAL(position[0], 2.0f);
 	BOOST_CHECK_EQUAL(position[1], 5.0f);
 
 	// test constructor & get size
-	v3D::Vector2 size = bound.size();
+	glm::vec2 size = bound.size();
 	BOOST_CHECK_EQUAL(size[0], 10.0f);
 	BOOST_CHECK_EQUAL(size[1], 20.0f);
 
 	v3D::Bound2D bound2(position, size);
 
 	// test 2nd constructor form
-	v3D::Vector2 position2 = bound2.position();
+	glm::vec2 position2 = bound2.position();
 	BOOST_CHECK_EQUAL((position == position2), true);
 
 	// test 2nd constructor form
-	v3D::Vector2 size2 = bound2.size();
+	glm::vec2 size2 = bound2.size();
 	BOOST_CHECK_EQUAL((size == size2), true);
 
 	// test expand
@@ -45,10 +45,10 @@ BOOST_AUTO_TEST_CASE( bound2d_test )
 	BOOST_CHECK_EQUAL(position[1], 20.0f);
 
 	// test intersect
-	v3D::Vector2 point(25.0f, 35.0f);
+	glm::vec2 point(25.0f, 35.0f);
 	bool inside = bound.intersect(point);
 	BOOST_CHECK_EQUAL((inside == true), true);
-	point = v3D::Vector2(10.0f, 5.0f);
+	point = glm::vec2(10.0f, 5.0f);
 	inside = bound.intersect(point);
 	BOOST_CHECK_EQUAL((inside == false), true);
 

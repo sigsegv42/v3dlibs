@@ -22,6 +22,9 @@ class MockMouseEventListener : public v3D::MouseEventListener
 		{
 			BOOST_CHECK_EQUAL(button, 2);
 		}
+		void notify(const v3D::EventInfo & e)
+		{
+		}
 };
 
 /**

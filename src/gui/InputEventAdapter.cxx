@@ -21,7 +21,7 @@ void InputEventAdapter::connect(EventListener * target)
 	targets_.push_back(target);
 }
 
-void InputEventAdapter::dispatch(const EventInfo & info) const
+void InputEventAdapter::notify(const EventInfo & info)
 {
 	std::vector<EventListener * >::const_iterator iter = targets_.begin();
 	for (; iter != targets_.end(); iter++)
@@ -35,7 +35,7 @@ void InputEventAdapter::motion(unsigned int x, unsigned int y)
 	std::string name = "mouse::";
 	name += "motion";
 	EventInfo e(name, EventInfo::MATCH_STATE_ANY);
-	dispatch(e);
+	notify(e);
 }
 
 void InputEventAdapter::buttonPressed(unsigned int button)
@@ -44,7 +44,7 @@ void InputEventAdapter::buttonPressed(unsigned int button)
 	name += "button_";
 	name += boost::lexical_cast<std::string>(button);
 	EventInfo e(name, EventInfo::MATCH_STATE_ON);
-	dispatch(e);
+	notify(e);
 }
 
 void InputEventAdapter::buttonReleased(unsigned int button)
@@ -53,17 +53,17 @@ void InputEventAdapter::buttonReleased(unsigned int button)
 	name += "button_";
 	name += boost::lexical_cast<std::string>(button);
 	EventInfo e(name, EventInfo::MATCH_STATE_OFF);
-	dispatch(e);
+	notify(e);
 }
 
 void InputEventAdapter::keyPressed(const std::string & key)
 {
 	EventInfo e(key, EventInfo::MATCH_STATE_ON);
-	dispatch(e);
+	notify(e);
 }
 
 void InputEventAdapter::keyReleased(const std::string & key)
 {
 	EventInfo e(key, EventInfo::MATCH_STATE_OFF);
-	dispatch(e);
+	notify(e);
 }

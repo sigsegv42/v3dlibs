@@ -1,3 +1,6 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
 #ifndef INCLUDED_V3D_KEYBOARDDEVICE
 #define INCLUDED_V3D_KEYBOARDDEVICE
 

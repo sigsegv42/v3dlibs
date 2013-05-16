@@ -1,10 +1,15 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
 #ifndef INCLUDED_V3D_KEYBOARDEVENTLISTENER
 #define INCLUDED_V3D_KEYBOARDEVENTLISTENER
+
+#include "../event/EventListener.h"
 
 namespace v3D
 {
 
-	class KeyboardEventListener
+	class KeyboardEventListener : public EventListener
 	{
 		public:
 			virtual ~KeyboardEventListener() { }

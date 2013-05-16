@@ -41,6 +41,7 @@ class CameraControlTool :
 		void zoom(const v3D::Vector2ui & position);
 		void truck(const v3D::Vector2ui & position);
 		void pan(const v3D::Vector2ui & position);
+		void notify(const v3D::EventInfo & e);
 
 	private:
 		v3D::Vector2ui last_;

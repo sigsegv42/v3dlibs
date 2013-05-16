@@ -17,6 +17,9 @@ class MockKeyboardEventListener : public v3D::KeyboardEventListener
 		{ 
 			BOOST_CHECK_EQUAL((key == "w"), true);
 		}
+		void notify(const v3D::EventInfo & e)
+		{
+		}
 };
 
 /**

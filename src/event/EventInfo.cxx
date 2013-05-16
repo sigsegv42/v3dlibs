@@ -1,3 +1,7 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
+
 #include "EventInfo.h"
 
 using namespace v3D;

@@ -5,7 +5,7 @@
 #include "../input/KeyboardDevice.h"
 #include "../input/MouseEventListener.h"
 #include "../input/KeyboardEventListener.h"
-#include "../command/EventListener.h"
+#include "../event/EventListener.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -34,7 +34,7 @@ namespace v3D
 			void keyReleased(const std::string & key);
 
 		protected:
-			void dispatch(const EventInfo & info) const;
+			void notify(const EventInfo & info);
 
 		private:
 			std::vector< EventListener * > targets_;

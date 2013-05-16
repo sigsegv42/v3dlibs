@@ -56,12 +56,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;$(SolutionDir)..\..\vendor\glm-0.9.4.2\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libv3dtypes.lib;libv3dinput.lib;libv3dcommand.lib;libv3dfont.lib;libv3dbrep.lib;libv3dimage.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\vendor\boost_1_49_0\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);$(SolutionDir)..\..\vendor\SDL-1.2.15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libv3dtypes.lib;libv3dinput.lib;libv3dcommand.lib;libv3dfont.lib;libv3dbrep.lib;libv3dimage.lib;libv3devent.lib;libv3dgui.lib;log4cxx.lib;jpeg.lib;libpng15.lib;zlib.lib;freetype2411.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);$(SolutionDir)..\..\vendor\SDL-1.2.15\lib;$(SolutionDir)..\..\vendor\jpeg-8d\Release\;$(SolutionDir)..\..\vendor\libpng-1.5.10\projects\vstudio\$(Configuration)\;$(SolutionDir)..\..\vendor\apache-logger\apache-log4cxx-0.10.0\projects\$(Configuration)\;$(SolutionDir)..\..\vendor\freetype-2.4.11\objs\win32\vc2010\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AssemblyDebug>false</AssemblyDebug>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -71,12 +71,12 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;$(SolutionDir)..\..\vendor\glm-0.9.4.2\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libv3dtypes.lib;libv3dinput.lib;libv3dcommand.lib;libv3dfont.lib;libv3dbrep.lib;libv3dimage.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\vendor\boost_1_49_0\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);$(SolutionDir)..\..\vendor\SDL-1.2.15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libv3dtypes.lib;libv3dinput.lib;libv3dcommand.lib;libv3dfont.lib;libv3dbrep.lib;libv3dimage.lib;libv3devent.lib;libv3dgui.lib;log4cxx.lib;jpeg.lib;libpng15.lib;zlib.lib;freetype2411.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\stage\lib;$(OutDir);$(SolutionDir)..\..\QuantumXML\build\$(Configuration);$(SolutionDir)..\..\vendor\SDL-1.2.15\lib;$(SolutionDir)..\..\vendor\jpeg-8d\Release\;$(SolutionDir)..\..\vendor\libpng-1.5.10\projects\vstudio\$(Configuration)\;$(SolutionDir)..\..\vendor\apache-logger\apache-log4cxx-0.10.0\projects\$(Configuration)\;$(SolutionDir)..\..\vendor\freetype-2.4.11\objs\win32\vc2010\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

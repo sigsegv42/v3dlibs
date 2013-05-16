@@ -1,3 +1,7 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
+
 #include "MouseDevice.h"
 #include "MouseEventListener.h"
 

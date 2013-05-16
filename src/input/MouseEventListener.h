@@ -1,6 +1,10 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ */
 #ifndef INCLUDED_V3D_MOUSEEVENTLISTENER
 #define INCLUDED_V3D_MOUSEEVENTLISTENER
 
+#include "../event/EventListener.h"
 
 namespace v3D
 {
@@ -8,7 +12,7 @@ namespace v3D
 	/**
 	 * An event listener for mouse events.
  	 */
-	class MouseEventListener
+	class MouseEventListener : public EventListener
 	{
 		public:
 			virtual ~MouseEventListener() { }

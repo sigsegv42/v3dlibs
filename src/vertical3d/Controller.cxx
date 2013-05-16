@@ -6,6 +6,7 @@
 #include "CameraControlTool.h"
 
 #include <boost/bind.hpp>
+#include <boost/property_tree/xml_parser.hpp>
 #include <iostream>
 
 
@@ -15,11 +16,11 @@ Controller::Controller()
 	window_ = Hookah::Create3DWindow(800, 600);
 
 	// create input devices 
-	keyboard_ = boost::shared_dynamic_cast<v3D::KeyboardDevice, v3D::InputDevice>(Hookah::CreateInputDevice("keyboard"));
-	mouse_ = boost::shared_dynamic_cast<v3D::MouseDevice, v3D::InputDevice>(Hookah::CreateInputDevice("mouse"));
+	keyboard_ = boost::dynamic_pointer_cast<v3D::KeyboardDevice, v3D::InputDevice>(Hookah::CreateInputDevice("keyboard"));
+	mouse_ = boost::dynamic_pointer_cast<v3D::MouseDevice, v3D::InputDevice>(Hookah::CreateInputDevice("mouse"));
 
 	// register directory as an observer of input device events
-	listenerAdapter_.reset(new InputEventAdapter(keyboard_, mouse_));
+	listenerAdapter_.reset(new v3D::InputEventAdapter(keyboard_, mouse_));
 	listenerAdapter_->connect(&directory_);
 
 	// add input devices to window
@@ -30,8 +31,8 @@ Controller::Controller()
 	window_->caption("Vertical|3D");
 
 	// load config file into a property tree
-	PropertyTree ptree;
-	ptree.load("config.xml");
+	boost::property_tree::ptree ptree;
+	boost::property_tree::read_xml("config.xml", ptree);
 
 	// setup scene
 	scene_.reset(new v3D::Scene());
@@ -168,18 +169,16 @@ void Controller::load_camera_profiles(const boost::property_tree::ptree & tree)
 		    right="1.0, 0.0, 0.0" direction="0.0, 0.0, 1.0" />
 	*/
 
-	const PropertyTree & cameras = tree.find("config.cameraprofiles");
+	const boost::property_tree::ptree::const_assoc_iterator & cameras = tree.find("config.cameraprofiles");
 
 	std::string param;
-	PropertyTree::const_iterator iter = cameras.begin();
+	boost::property_tree::ptree::const_iterator iter = cameras.begin();
 	for ( ; iter != cameras.end(); iter++)
 	{
 		param = iter->get("<xmlattr>.name");
-		CameraProfile profile(name, eye, up, right, direction);
+		v3D::CameraProfile profile(name, eye, up, right, direction);
 		float near, far;
 		profile.clipping(near, far);
 		scene_->addCameraProfile(profile);
 	}
-
-	return true;
 }

@@ -8,6 +8,10 @@ CameraControlTool::CameraControlTool(const boost::shared_ptr<v3D::MouseDevice> &
 
 }
 
+void CameraControlTool::notify(const v3D::EventInfo & e)
+{
+}
+
 
 // tool overrides
 void CameraControlTool::activate(const std::string & name)
