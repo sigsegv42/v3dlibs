@@ -76,13 +76,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\hookah\Window.cxx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\hookah\Hookah.h" />
-    <ClInclude Include="..\src\hookah\Window.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="libhookah_fltk.vcxproj">
       <Project>{71dc5a5e-3dca-4c0b-94b9-ca712d8b756c}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
@@ -99,6 +92,13 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\vertical3d\hookah\Hookah.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\vertical3d\hookah\Window.cxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

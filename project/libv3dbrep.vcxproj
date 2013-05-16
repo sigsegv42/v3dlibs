@@ -79,16 +79,16 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\brep\BRep.cxx" />
-    <ClCompile Include="..\src\brep\Face.cxx" />
-    <ClCompile Include="..\src\brep\HalfEdge.cxx" />
-    <ClCompile Include="..\src\brep\Vertex.cxx" />
+    <ClCompile Include="..\src\vertical3d\brep\BRep.cxx" />
+    <ClCompile Include="..\src\vertical3d\brep\Face.cxx" />
+    <ClCompile Include="..\src\vertical3d\brep\HalfEdge.cxx" />
+    <ClCompile Include="..\src\vertical3d\brep\Vertex.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\brep\BRep.h" />
-    <ClInclude Include="..\src\brep\Face.h" />
-    <ClInclude Include="..\src\brep\HalfEdge.h" />
-    <ClInclude Include="..\src\brep\Vertex.h" />
+    <ClInclude Include="..\src\vertical3d\brep\BRep.h" />
+    <ClInclude Include="..\src\vertical3d\brep\Face.h" />
+    <ClInclude Include="..\src\vertical3d\brep\HalfEdge.h" />
+    <ClInclude Include="..\src\vertical3d\brep\Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

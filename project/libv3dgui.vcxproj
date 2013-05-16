@@ -76,10 +76,10 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\gui\InputEventAdapter.cxx" />
+    <ClCompile Include="..\src\vertical3d\gui\InputEventAdapter.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\gui\InputEventAdapter.h" />
+    <ClInclude Include="..\src\vertical3d\gui\InputEventAdapter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

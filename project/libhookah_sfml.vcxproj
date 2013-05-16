@@ -79,15 +79,15 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLDriver.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLKeyboard.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLMouse.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sfml\SFMLWindow.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sfml\SFMLDriver.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sfml\SFMLKeyboard.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sfml\SFMLMouse.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sfml\SFMLWindow.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\hookah\drivers\sfml\SFMLKeyboard.h" />
-    <ClInclude Include="..\src\hookah\drivers\sfml\SFMLMouse.h" />
-    <ClInclude Include="..\src\hookah\drivers\sfml\SFMLWindow.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\sfml\SFMLKeyboard.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\sfml\SFMLMouse.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\sfml\SFMLWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -79,15 +79,15 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\input\KeyboardDevice.cxx" />
-    <ClCompile Include="..\src\input\MouseDevice.cxx" />
+    <ClCompile Include="..\src\vertical3d\input\KeyboardDevice.cxx" />
+    <ClCompile Include="..\src\vertical3d\input\MouseDevice.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\input\InputDevice.h" />
-    <ClInclude Include="..\src\input\KeyboardDevice.h" />
-    <ClInclude Include="..\src\input\KeyboardEventListener.h" />
-    <ClInclude Include="..\src\input\MouseDevice.h" />
-    <ClInclude Include="..\src\input\MouseEventListener.h" />
+    <ClInclude Include="..\src\vertical3d\input\InputDevice.h" />
+    <ClInclude Include="..\src\vertical3d\input\KeyboardDevice.h" />
+    <ClInclude Include="..\src\vertical3d\input\KeyboardEventListener.h" />
+    <ClInclude Include="..\src\vertical3d\input\MouseDevice.h" />
+    <ClInclude Include="..\src\vertical3d\input\MouseEventListener.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

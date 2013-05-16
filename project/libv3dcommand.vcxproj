@@ -76,18 +76,18 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\command\Bind.cxx" />
-    <ClCompile Include="..\src\command\BindLoader.cxx" />
-    <ClCompile Include="..\src\command\Command.cxx" />
-    <ClCompile Include="..\src\command\CommandDirectory.cxx" />
-    <ClCompile Include="..\src\command\CommandInfo.cxx" />
+    <ClCompile Include="..\src\vertical3d\command\Bind.cxx" />
+    <ClCompile Include="..\src\vertical3d\command\BindLoader.cxx" />
+    <ClCompile Include="..\src\vertical3d\command\Command.cxx" />
+    <ClCompile Include="..\src\vertical3d\command\CommandDirectory.cxx" />
+    <ClCompile Include="..\src\vertical3d\command\CommandInfo.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\command\Bind.h" />
-    <ClInclude Include="..\src\command\BindLoader.h" />
-    <ClInclude Include="..\src\command\Command.h" />
-    <ClInclude Include="..\src\command\CommandDirectory.h" />
-    <ClInclude Include="..\src\command\CommandInfo.h" />
+    <ClInclude Include="..\src\vertical3d\command\Bind.h" />
+    <ClInclude Include="..\src\vertical3d\command\BindLoader.h" />
+    <ClInclude Include="..\src\vertical3d\command\Command.h" />
+    <ClInclude Include="..\src\vertical3d\command\CommandDirectory.h" />
+    <ClInclude Include="..\src\vertical3d\command\CommandInfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

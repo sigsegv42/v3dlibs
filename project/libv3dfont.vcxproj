@@ -76,12 +76,12 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\font\Font2D.cxx" />
-    <ClCompile Include="..\src\font\FontCache.cxx" />
+    <ClCompile Include="..\src\vertical3d\font\Font2D.cxx" />
+    <ClCompile Include="..\src\vertical3d\font\FontCache.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\font\Font2D.h" />
-    <ClInclude Include="..\src\font\FontCache.h" />
+    <ClInclude Include="..\src\vertical3d\font\Font2D.h" />
+    <ClInclude Include="..\src\vertical3d\font\FontCache.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

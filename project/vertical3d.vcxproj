@@ -100,18 +100,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\vertical3d\CameraControlTool.cxx" />
-    <ClCompile Include="..\src\vertical3d\Controller.cxx" />
-    <ClCompile Include="..\src\vertical3d\HWRenderContext.cxx" />
-    <ClCompile Include="..\src\vertical3d\vertical3d.cxx" />
-    <ClCompile Include="..\src\vertical3d\ViewPort.cxx" />
+    <ClCompile Include="..\src\vertical3d\vertical3d\CameraControlTool.cxx" />
+    <ClCompile Include="..\src\vertical3d\vertical3d\Controller.cxx" />
+    <ClCompile Include="..\src\vertical3d\vertical3d\HWRenderContext.cxx" />
+    <ClCompile Include="..\src\vertical3d\vertical3d\vertical3d.cxx" />
+    <ClCompile Include="..\src\vertical3d\vertical3d\ViewPort.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\vertical3d\CameraControlTool.h" />
-    <ClInclude Include="..\src\vertical3d\Controller.h" />
-    <ClInclude Include="..\src\vertical3d\HWRenderContext.h" />
-    <ClInclude Include="..\src\vertical3d\Tool.h" />
-    <ClInclude Include="..\src\vertical3d\ViewPort.h" />
+    <ClInclude Include="..\src\vertical3d\vertical3d\CameraControlTool.h" />
+    <ClInclude Include="..\src\vertical3d\vertical3d\Controller.h" />
+    <ClInclude Include="..\src\vertical3d\vertical3d\HWRenderContext.h" />
+    <ClInclude Include="..\src\vertical3d\vertical3d\Tool.h" />
+    <ClInclude Include="..\src\vertical3d\vertical3d\ViewPort.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\data\config.xml" />

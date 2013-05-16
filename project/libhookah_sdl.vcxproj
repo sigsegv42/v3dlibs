@@ -11,15 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLDriver.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLKeyboard.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLMouse.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\sdl\SDLWindow.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sdl\SDLDriver.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sdl\SDLKeyboard.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sdl\SDLMouse.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\sdl\SDLWindow.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\hookah\drivers\sdl\SDLKeyboard.h" />
-    <ClInclude Include="..\src\hookah\drivers\sdl\SDLMouse.h" />
-    <ClInclude Include="..\src\hookah\drivers\sdl\SDLWindow.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\sdl\SDLKeyboard.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\sdl\SDLMouse.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\sdl\SDLWindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{44D6796C-FA63-4600-859E-5CF702F6D6A4}</ProjectGuid>

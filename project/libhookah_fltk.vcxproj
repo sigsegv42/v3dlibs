@@ -11,15 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\hookah\drivers\fltk\FLTKDriver.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\fltk\FLTKKeyboard.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\fltk\FLTKMouse.cxx" />
-    <ClCompile Include="..\src\hookah\drivers\fltk\FLTKWindow.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\fltk\FLTKDriver.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\fltk\FLTKKeyboard.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\fltk\FLTKMouse.cxx" />
+    <ClCompile Include="..\src\vertical3d\hookah\drivers\fltk\FLTKWindow.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\hookah\drivers\fltk\FLTKKeyboard.h" />
-    <ClInclude Include="..\src\hookah\drivers\fltk\FLTKMouse.h" />
-    <ClInclude Include="..\src\hookah\drivers\fltk\FLTKWindow.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\fltk\FLTKKeyboard.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\fltk\FLTKMouse.h" />
+    <ClInclude Include="..\src\vertical3d\hookah\drivers\fltk\FLTKWindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{71DC5A5E-3DCA-4C0B-94B9-CA712D8B756C}</ProjectGuid>

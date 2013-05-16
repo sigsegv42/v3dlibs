@@ -76,13 +76,13 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\core\CreatePolyCommandSet.cxx" />
-    <ClCompile Include="..\src\core\Scene.cxx" />
+    <ClCompile Include="..\src\vertical3d\core\CreatePolyCommandSet.cxx" />
+    <ClCompile Include="..\src\vertical3d\core\Scene.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\core\CreatePolyCommandSet.h" />
-    <ClInclude Include="..\src\core\Scene.h" />
-    <ClInclude Include="..\src\core\SceneVisitor.h" />
+    <ClInclude Include="..\src\vertical3d\core\CreatePolyCommandSet.h" />
+    <ClInclude Include="..\src\vertical3d\core\Scene.h" />
+    <ClInclude Include="..\src\vertical3d\core\SceneVisitor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

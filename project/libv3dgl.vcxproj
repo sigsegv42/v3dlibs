@@ -79,14 +79,14 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\gl\Program.cxx" />
-    <ClCompile Include="..\src\gl\Shader.cxx" />
-    <ClCompile Include="..\src\gl\VertexBuffer.cxx" />
+    <ClCompile Include="..\src\vertical3d\gl\Program.cxx" />
+    <ClCompile Include="..\src\vertical3d\gl\Shader.cxx" />
+    <ClCompile Include="..\src\vertical3d\gl\VertexBuffer.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\gl\Program.h" />
-    <ClInclude Include="..\src\gl\Shader.h" />
-    <ClInclude Include="..\src\gl\VertexBuffer.h" />
+    <ClInclude Include="..\src\vertical3d\gl\Program.h" />
+    <ClInclude Include="..\src\vertical3d\gl\Shader.h" />
+    <ClInclude Include="..\src\vertical3d\gl\VertexBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

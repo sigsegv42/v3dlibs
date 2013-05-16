@@ -76,36 +76,36 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\3dtypes\AABBox.cxx" />
-    <ClCompile Include="..\src\3dtypes\ArcBall.cxx" />
-    <ClCompile Include="..\src\3dtypes\Bound2D.cxx" />
-    <ClCompile Include="..\src\3dtypes\Camera.cxx" />
-    <ClCompile Include="..\src\3dtypes\CameraProfile.cxx" />
-    <ClCompile Include="..\src\3dtypes\Color3.cxx" />
-    <ClCompile Include="..\src\3dtypes\Color4.cxx" />
-    <ClCompile Include="..\src\3dtypes\Matrix4.cxx" />
-    <ClCompile Include="..\src\3dtypes\Quaternion.cxx" />
-    <ClCompile Include="..\src\3dtypes\String.cxx" />
-    <ClCompile Include="..\src\3dtypes\Vector2.cxx" />
-    <ClCompile Include="..\src\3dtypes\Vector3.cxx" />
-    <ClCompile Include="..\src\3dtypes\Vector4.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\AABBox.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\ArcBall.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Bound2D.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Camera.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\CameraProfile.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Color3.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Color4.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Matrix4.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Quaternion.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\String.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Vector2.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Vector3.cxx" />
+    <ClCompile Include="..\src\vertical3d\3dtypes\Vector4.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\3dtypes\3dtypes.h" />
-    <ClInclude Include="..\src\3dtypes\AABBox.h" />
-    <ClInclude Include="..\src\3dtypes\ArcBall.h" />
-    <ClInclude Include="..\src\3dtypes\Bound2D.h" />
-    <ClInclude Include="..\src\3dtypes\Camera.h" />
-    <ClInclude Include="..\src\3dtypes\CameraProfile.h" />
-    <ClInclude Include="..\src\3dtypes\Color3.h" />
-    <ClInclude Include="..\src\3dtypes\Color4.h" />
-    <ClInclude Include="..\src\3dtypes\Matrix4.h" />
-    <ClInclude Include="..\src\3dtypes\Quaternion.h" />
-    <ClInclude Include="..\src\3dtypes\String.h" />
-    <ClInclude Include="..\src\3dtypes\Vector.h" />
-    <ClInclude Include="..\src\3dtypes\Vector2.h" />
-    <ClInclude Include="..\src\3dtypes\Vector3.h" />
-    <ClInclude Include="..\src\3dtypes\Vector4.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\3dtypes.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\AABBox.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\ArcBall.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Bound2D.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Camera.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\CameraProfile.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Color3.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Color4.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Matrix4.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Quaternion.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\String.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Vector.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Vector2.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Vector3.h" />
+    <ClInclude Include="..\src\vertical3d\3dtypes\Vector4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

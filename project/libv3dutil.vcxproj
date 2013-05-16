@@ -77,12 +77,12 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\util\PropertyTree.cxx" />
-    <ClCompile Include="..\src\util\PropertyTreeReader.cxx" />
+    <ClCompile Include="..\src\vertical3d\util\PropertyTree.cxx" />
+    <ClCompile Include="..\src\vertical3d\util\PropertyTreeReader.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\util\PropertyTree.h" />
-    <ClInclude Include="..\src\util\PropertyTreeReader.h" />
+    <ClInclude Include="..\src\vertical3d\util\PropertyTree.h" />
+    <ClInclude Include="..\src\vertical3d\util\PropertyTreeReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -97,13 +97,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\imagetool\imagetool.cxx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="libv3dimage.vcxproj">
       <Project>{c937e36c-e59e-47ee-ac49-0baa44f4237c}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\vertical3d\imagetool\imagetool.cxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

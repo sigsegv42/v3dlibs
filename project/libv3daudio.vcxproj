@@ -79,12 +79,12 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\audio\AudioClip.cxx" />
-    <ClCompile Include="..\src\audio\SoundEngine.cxx" />
+    <ClCompile Include="..\src\vertical3d\audio\AudioClip.cxx" />
+    <ClCompile Include="..\src\vertical3d\audio\SoundEngine.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\audio\AudioClip.h" />
-    <ClInclude Include="..\src\audio\SoundEngine.h" />
+    <ClInclude Include="..\src\vertical3d\audio\AudioClip.h" />
+    <ClInclude Include="..\src\vertical3d\audio\SoundEngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

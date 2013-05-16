@@ -2,19 +2,19 @@ AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I .
 
 SUBDIRS = \
-src/3dtypes \
-src/command \
-src/image \
-src/font \
-src/input \
-src/audio \
-src/gl \
-src/brep \
-src/hookah \
-src/gui \
-src/core \
-src/tests \
-src/imagetool
+src/vertical3d/3dtypes \
+src/vertical3d/command \
+src/vertical3d/image \
+src/vertical3d/font \
+src/vertical3d/input \
+src/vertical3d/audio \
+src/vertical3d/gl \
+src/vertical3d/brep \
+src/vertical3d/hookah \
+src/vertical3d/gui \
+src/vertical3d/core \
+src/vertical3d/tests \
+src/vertical3d/imagetool
 
 # make sure the root version file gets installed
 v3d_includedir=$(includedir)/vertical3d-$(VERTICAL3D_API_VERSION)/vertical3d
