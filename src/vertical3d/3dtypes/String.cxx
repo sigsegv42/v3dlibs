@@ -11,7 +11,7 @@
 
 using namespace v3D;
 
-glm::vec2 string_to_vec2(const std::string & val)
+glm::vec2 v3D::string_to_vec2(const std::string & val)
 {
 	glm::vec2 vec(0.0f);
 	if (!val.empty())

@@ -1,3 +1,7 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
 #include "GLTexture.h"
 
 #include <GL/glew.h>
@@ -94,7 +98,7 @@ bool GLTexture::create(boost::shared_ptr<Image> image)
 	// test to make sure texture will fit first
 	glTexImage2D(GL_PROXY_TEXTURE_2D, 0, internalformat, image->width(), image->height(), 0, format, GL_UNSIGNED_BYTE, image->data());
 	GLint params[1];
-	glGetTexLevelParameteriv (GL_PROXY_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, params);
+	glGetTexLevelParameteriv(GL_PROXY_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, params);
 	if (params[0] == 0)
 	{
 		return false;
