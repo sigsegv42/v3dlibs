@@ -53,7 +53,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\freetype-2.4.11\include;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\freetype-2.4.11\include;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;$(SolutionDir)..\..\vendor\glm-0.9.4.2\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -66,7 +66,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\freetype-2.4.11\include;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\freetype-2.4.11\include;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;$(SolutionDir)..\..\vendor\glm-0.9.4.2\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -76,12 +76,22 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\vertical3d\font\BitmapFont.cxx" />
+    <ClCompile Include="..\src\vertical3d\font\BitmapTextBuffer.cxx" />
     <ClCompile Include="..\src\vertical3d\font\Font2D.cxx" />
     <ClCompile Include="..\src\vertical3d\font\FontCache.cxx" />
+    <ClCompile Include="..\src\vertical3d\font\TextureFont.cxx" />
+    <ClCompile Include="..\src\vertical3d\font\TextureFontCache.cxx" />
+    <ClCompile Include="..\src\vertical3d\font\TextureTextBuffer.cxx" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\vertical3d\font\BitmapFont.h" />
+    <ClInclude Include="..\src\vertical3d\font\BitmapTextBuffer.h" />
     <ClInclude Include="..\src\vertical3d\font\Font2D.h" />
     <ClInclude Include="..\src\vertical3d\font\FontCache.h" />
+    <ClInclude Include="..\src\vertical3d\font\TextureFont.h" />
+    <ClInclude Include="..\src\vertical3d\font\TextureFontCache.h" />
+    <ClInclude Include="..\src\vertical3d\font\TextureTextBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

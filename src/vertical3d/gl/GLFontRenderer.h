@@ -1,3 +1,8 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
+
 #ifndef INCLUDED_V3D_GL_FONT_RENDERER
 #define INCLUDED_V3D_GL_FONT_RENDERER
 

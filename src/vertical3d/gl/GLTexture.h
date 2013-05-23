@@ -25,7 +25,7 @@ namespace v3D
 			 * Make the texture active.
 			 * @return true if successful otherwise false
 			 */
-			bool bind(void);
+			bool bind();
 			/**
 			 * Set whether the texture wraps (repeats)
 			 * @param repeat whether the texture should wrap

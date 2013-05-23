@@ -53,7 +53,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\libpng-1.5.10\;$(SolutionDir)..\..\vendor\zlib-1.2.7\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\jpeg-8d\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\libpng-1.5.10\;$(SolutionDir)..\..\vendor\zlib-1.2.7\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\jpeg-8d\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;$(SolutionDir)..\..\vendor\glm-0.9.4.2\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -66,7 +66,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\libpng-1.5.10\;$(SolutionDir)..\..\vendor\zlib-1.2.7\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\jpeg-8d\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\vendor\libpng-1.5.10\;$(SolutionDir)..\..\vendor\zlib-1.2.7\;$(SolutionDir)..\..\vendor\boost_1_53_0\;$(SolutionDir)..\..\vendor\jpeg-8d\;$(SolutionDir)..\..\vendor\log4cxx\src\main\include\;$(SolutionDir)..\..\vendor\glm-0.9.4.2\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -81,6 +81,7 @@
     <ClCompile Include="..\src\vertical3d\image\ImageReader.cxx" />
     <ClCompile Include="..\src\vertical3d\image\ImageWriter.cxx" />
     <ClCompile Include="..\src\vertical3d\image\Texture.cxx" />
+    <ClCompile Include="..\src\vertical3d\image\TextureAtlas.cxx" />
     <ClCompile Include="..\src\vertical3d\image\writers\BMPWriter.cxx" />
     <ClCompile Include="..\src\vertical3d\image\writers\JPEGWriter.cxx" />
     <ClCompile Include="..\src\vertical3d\image\writers\PNGWriter.cxx" />
@@ -97,6 +98,7 @@
     <ClInclude Include="..\src\vertical3d\image\ImageReader.h" />
     <ClInclude Include="..\src\vertical3d\image\ImageWriter.h" />
     <ClInclude Include="..\src\vertical3d\image\Texture.h" />
+    <ClInclude Include="..\src\vertical3d\image\TextureAtlas.h" />
     <ClInclude Include="..\src\vertical3d\image\writers\BMPWriter.h" />
     <ClInclude Include="..\src\vertical3d\image\writers\JPEGWriter.h" />
     <ClInclude Include="..\src\vertical3d\image\writers\PNGWriter.h" />

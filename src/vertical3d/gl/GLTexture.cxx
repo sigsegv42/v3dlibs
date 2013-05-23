@@ -55,7 +55,7 @@ void GLTexture::wrap(bool repeat)
 	}
 }
 
-bool GLTexture::bind(void)
+bool GLTexture::bind()
 {
 	unsigned int tex_id = id();
 	if (tex_id != -1)
@@ -83,11 +83,11 @@ bool GLTexture::create(boost::shared_ptr<Image> image)
 	glBindTexture(GL_TEXTURE_2D, tex_id);	// Bind Our Texture
 
 	int format = GL_RGB;
-	int internalformat = 3;
+	int internalformat = GL_RGB;
 	if (image->bpp() == 24) // is the image 24 bits?
 	{
 		format = GL_RGB;
-		internalformat = 3;
+		internalformat = GL_RGB;
 	}
 	else if (image->bpp() == 8)
 	{
@@ -111,8 +111,8 @@ bool GLTexture::create(boost::shared_ptr<Image> image)
 
 	if (!Texture::wrap())
 	{
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	}
 	else
 	{

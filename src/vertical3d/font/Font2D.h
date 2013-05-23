@@ -1,3 +1,8 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
+
 #ifndef INCLUDED_V3D_FONT2D
 #define INCLUDED_V3D_FONT2D
 

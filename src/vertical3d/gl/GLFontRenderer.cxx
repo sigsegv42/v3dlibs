@@ -1,3 +1,8 @@
+/**
+ * (c) Joshua Farr <j.wgasa@gmail.com>
+ *
+ */
+
 #include "GLFontRenderer.h"
 
 #include <GL/glew.h>
