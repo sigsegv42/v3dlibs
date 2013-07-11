@@ -80,6 +80,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\vertical3d\gl\BitmapFontRenderer.cxx" />
+    <ClCompile Include="..\src\vertical3d\gl\Canvas.cxx" />
     <ClCompile Include="..\src\vertical3d\gl\GLFontRenderer.cxx" />
     <ClCompile Include="..\src\vertical3d\gl\GLTexture.cxx" />
     <ClCompile Include="..\src\vertical3d\gl\Program.cxx" />
@@ -89,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\vertical3d\gl\BitmapFontRenderer.h" />
+    <ClInclude Include="..\src\vertical3d\gl\Canvas.h" />
     <ClInclude Include="..\src\vertical3d\gl\GLFontRenderer.h" />
     <ClInclude Include="..\src\vertical3d\gl\GLTexture.h" />
     <ClInclude Include="..\src\vertical3d\gl\Program.h" />

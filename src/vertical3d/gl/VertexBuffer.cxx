@@ -15,7 +15,8 @@ using namespace v3D;
 VertexBuffer::VertexBuffer(BufferType type) :
 	ebo_(0),
 	vbo_(0),
-	type_(type)
+	type_(type),
+	allocated_(false)
 {
 }
 
@@ -152,6 +153,12 @@ void VertexBuffer::allocate()
 	// allocate buffer
 	glBufferData(GL_ARRAY_BUFFER, bufferSize, NULL, usage);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	allocated_ = true;
+}
+
+bool VertexBuffer::allocated() const
+{
+	return allocated_;
 }
 
 void VertexBuffer::data1f(unsigned int attr, const std::vector<float> & data)

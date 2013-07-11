@@ -75,12 +75,15 @@ namespace v3D
 
 			void set(unsigned int attr, const float * data, size_t size);
 
+			bool allocated() const;
+
 		private:
 			unsigned int ebo_;
 			unsigned int vbo_;
 			std::vector<VertexAttribute> attributes_;
 			unsigned int indices_;
 			BufferType type_;
+			bool allocated_;
 	};
 
 }; // end namespace v3D
