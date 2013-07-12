@@ -148,12 +148,13 @@ void Canvas::circle(size_t sides, size_t size, glm::vec3 color)
 {
 	unsigned int vcount = xyz_.size();
 	glm::mat4 mv = modelView_.back();
-	glm::vec4 middle(0.0f);
+	glm::vec4 middle(0.0f, 0.0f, 0.0f, 1.0f);
 	middle = mv * middle;
 	glm::vec4 rgba(color, 0.0f);
 	glm::vec3 p0(middle.x, middle.y, middle.z);
-	xyz_.push_back(p0);
+	addVertex(p0, rgba);
 	float delta = 2.0f * PI / sides;
+	unsigned int index = 1;
 	for (size_t k = 0; k < sides; k++)
 	{
 		glm::vec4 p1(0.0f, 0.0f, 0.0f, 1.0f);
@@ -169,11 +170,13 @@ void Canvas::circle(size_t sides, size_t size, glm::vec3 color)
 		p2[1] = sin(delta * n) * size;
 		p1 = mv * p1;
 		p2 = mv * p2;
-		xyz_.push_back(glm::vec3(p1.x, p1.y, p1.z));
-		xyz_.push_back(glm::vec3(p2.x, p2.y, p2.z));
+
+		addVertex(glm::vec3(p2.x, p2.y, 0.0f), rgba);
+		addVertex(glm::vec3(p1.x, p1.y, 0.0f), rgba);
+
 		indices_.push_back(vcount);
-		indices_.push_back(vcount + k + 1);
-		indices_.push_back(vcount + k + 2);
-		rgba_.push_back(rgba);
+		indices_.push_back(vcount + index);
+		indices_.push_back(vcount + index + 1);
+		index += 2;
 	}
 }
