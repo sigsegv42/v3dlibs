@@ -13,6 +13,9 @@ namespace v3D
 
 	class Program;
 
+	/**
+	 * An OpenGL Canvas for rendering 2D primitives
+	 */
 	class Canvas
 	{
 		public:
@@ -20,15 +23,36 @@ namespace v3D
 			Canvas(boost::shared_ptr<Program> program, unsigned int width, unsigned int height);
 			~Canvas();
 
+			/**
+			 * Upload canvas primitive data to the GPU
+			 */
 			void upload();
+			/**
+			 * Render the canvas
+			 */
 			void render();
+			/**
+			 * Clear the canvas
+			 */
 			void clear();
+			/**
+			 * Update the size of the canvas
+			 */
 			void resize(unsigned int width, unsigned int height);
 
 			void rect(unsigned int left, unsigned int right, unsigned int top, unsigned int bottom, glm::vec3 color);
 			void circle(size_t sides, size_t size, glm::vec3 color);
+			/**
+			 * Push an identity matrix onto the modelview matrix stack
+			 */
 			void push();
+			/**
+			 * Pop the top matrix off the modelview matrix stack
+			 */
 			void pop();
+			/**
+			 * Translate the current modelview matrix
+			 */
 			void translate(glm::vec2 pos);
 
 		protected:

@@ -15,7 +15,9 @@ namespace v3D
 
 	class TextureFontCache;
 	class TextureFont;
-
+	/**
+	 * A text buffer for texture fonts
+	 */
 	class TextureTextBuffer
 	{
 		public:

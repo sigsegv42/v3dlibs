@@ -14,7 +14,7 @@ namespace v3D
 {
 
 	/**
-	 * A OpenGL Font renderer.
+	 * A OpenGL Font renderer for texture fonts.
 	 */
 	class TextureFontRenderer
 	{
@@ -23,16 +23,33 @@ namespace v3D
 			TextureFontRenderer(boost::shared_ptr<TextureTextBuffer> buffer, boost::shared_ptr<Program> program);
 			virtual ~TextureFontRenderer();
 
+			/**
+			 * Access the underlying text buffer
+			 */
 			boost::shared_ptr<TextureTextBuffer> buffer();
 
+			/**
+			 * Upload font data to the GPU
+			 */
 			void upload();
+
+			/**
+			 * Render uploaded font data
+			 */
 			void render();
+
+			/**
+			 * Update the size of the rendering area.
+			 * The underlying shader normal matrices will updated.
+			 */
+			void resize(float width, float height);
 
 		private:
 			boost::shared_ptr<TextureTextBuffer> buffer_;
 			boost::shared_ptr<Program> program_;
 			VertexBuffer vertexBuffer_;
 			GLTexture texture_;
+			unsigned int vao_;
 	};
 
 }; // end namespace v3D

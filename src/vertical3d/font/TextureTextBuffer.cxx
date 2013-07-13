@@ -139,13 +139,6 @@ void TextureTextBuffer::addVertex(glm::vec3 position, glm::vec2 texture, glm::ve
 
 void TextureTextBuffer::addText(glm::vec2 & pen, const Markup & markup, const std::wstring & text)
 {
-	/*
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("voxel.log"));
-	std::stringstream msg;
-	msg << "Textbuffer ascender: " << ascender_ << " descender: " << descender_;
-	msg << " Font ascender: " << markup.font_->ascender() << " descender: " << markup.font_->descender();
-	LOG4CXX_INFO(logger, msg.str());
-	*/
 	if (xyz_.size() == 0)
 	{
 		origin_ = pen;
