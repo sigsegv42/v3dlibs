@@ -12,8 +12,6 @@
 
 namespace v3D
 {
-
-	class TextureFontCache;
 	class TextureFont;
 	/**
 	 * A text buffer for texture fonts
@@ -49,15 +47,13 @@ namespace v3D
 				LCD_FILTERING_ON = 3
 			} LcdFiltering;
 
-			TextureTextBuffer(unsigned int depth);
+			TextureTextBuffer();
 
 			void addText(glm::vec2 & pen, const Markup & markup, const std::wstring & text);
 			void clear();
 
 			void upload();
 			void render();
-
-			boost::shared_ptr<TextureFontCache> cache();
 
 			std::vector<glm::vec3> & xyz();
 			std::vector<glm::vec4> & rgba();
@@ -76,7 +72,7 @@ namespace v3D
 			float descender_;
 			unsigned int lineStart_;
 			glm::vec2 origin_;
-			boost::shared_ptr<TextureFontCache> cache_;
+
 			// vertex data
 			std::vector<glm::vec3> xyz_;
 			std::vector<glm::vec4> rgba_;

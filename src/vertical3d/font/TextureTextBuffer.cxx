@@ -4,7 +4,6 @@
  */
 
 #include "TextureTextBuffer.h"
-#include "TextureFontCache.h"
 #include "../image/TextureAtlas.h"
 #include "TextureFont.h"
 
@@ -13,17 +12,11 @@
 
 using namespace v3D;
 
-TextureTextBuffer::TextureTextBuffer(unsigned int depth) :
+TextureTextBuffer::TextureTextBuffer() :
 	ascender_(0.0f),
 	descender_(0.0f),
 	lineStart_(0)
 {
-	cache_.reset(new TextureFontCache(512, 512, depth));
-}
-
-boost::shared_ptr<TextureFontCache> TextureTextBuffer::cache()
-{
-	return cache_;
 }
 
 void TextureTextBuffer::addCharacter(glm::vec2 & pen, const Markup & markup, wchar_t current, wchar_t previous)

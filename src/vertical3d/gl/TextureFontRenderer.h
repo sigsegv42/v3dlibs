@@ -13,6 +13,8 @@
 namespace v3D
 {
 
+	class TextureAtlas;
+
 	/**
 	 * A OpenGL Font renderer for texture fonts.
 	 */
@@ -20,7 +22,7 @@ namespace v3D
 	{
 		public:
 			TextureFontRenderer();
-			TextureFontRenderer(boost::shared_ptr<TextureTextBuffer> buffer, boost::shared_ptr<Program> program);
+			TextureFontRenderer(boost::shared_ptr<TextureTextBuffer> buffer, boost::shared_ptr<Program> program, boost::shared_ptr<TextureAtlas> atlas);
 			virtual ~TextureFontRenderer();
 
 			/**
@@ -46,6 +48,7 @@ namespace v3D
 
 		private:
 			boost::shared_ptr<TextureTextBuffer> buffer_;
+			boost::shared_ptr<TextureAtlas> atlas_;
 			boost::shared_ptr<Program> program_;
 			VertexBuffer vertexBuffer_;
 			GLTexture texture_;

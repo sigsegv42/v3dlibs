@@ -20,12 +20,14 @@ TextureFontRenderer::TextureFontRenderer() :
 
 }
 
-TextureFontRenderer::TextureFontRenderer(boost::shared_ptr<TextureTextBuffer> buffer, boost::shared_ptr<Program> program) :
+TextureFontRenderer::TextureFontRenderer(boost::shared_ptr<TextureTextBuffer> buffer, boost::shared_ptr<Program> program, boost::shared_ptr<TextureAtlas> atlas) :
 	program_(program),
 	buffer_(buffer),
+	atlas_(atlas),
 	vertexBuffer_(v3D::VertexBuffer::BUFFER_TYPE_DYNAMIC)
 {
 	glGenVertexArrays(1, &vao_);
+	texture_.create(atlas_->image());
 }
 
 TextureFontRenderer::~TextureFontRenderer()
@@ -67,17 +69,14 @@ void TextureFontRenderer::upload()
 	vertexBuffer_.data1f(4, buffer_->gamma());
 
 	vertexBuffer_.indices(buffer_->indices());
-
-	texture_.create(buffer_->cache()->atlas()->image());
 }
 
 void TextureFontRenderer::render()
 {
 	glBindVertexArray(vao_);
-	boost::shared_ptr<TextureAtlas> atlas = buffer_->cache()->atlas();
 	glEnable(GL_BLEND);
 	program_->enable();
-	if (atlas->depth() == 1)
+	if (atlas_->depth() == 1)
 	{
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		vertexBuffer_.render();
@@ -89,9 +88,9 @@ void TextureFontRenderer::render()
 	unsigned int texture = program_->uniform("texture");
 	glUniform1i(texture, 0);
 	unsigned int pixel = program_->uniform("pixel");
-	float width = 1.0f / static_cast<float>(atlas->width());
-	float height = 1.0f / static_cast<float>(atlas->height());
-	float depth = static_cast<float>(atlas->depth());
+	float width = 1.0f / static_cast<float>(atlas_->width());
+	float height = 1.0f / static_cast<float>(atlas_->height());
+	float depth = static_cast<float>(atlas_->depth());
 	glUniform3f(pixel, width, height, depth);
 	vertexBuffer_.render();
 	program_->disable();
