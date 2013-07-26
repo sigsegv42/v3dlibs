@@ -18,11 +18,11 @@ namespace v3D
 			SoundEngine();
 			~SoundEngine();
 
-			void shutdown(void);
-			bool load(const boost::property_tree::ptree & tree);
+			void shutdown();
+			bool load(const boost::property_tree::ptree & tree, const std::string & assetPath);
 			bool loadClip(const std::string & filename, const std::string & key);
-			void playClip(const std::string & clip);
-			void updateListener(void);
+			bool playClip(const std::string & clip);
+			void updateListener();
 
 		private:
 			std::map<std::string, AudioClip> sounds_;

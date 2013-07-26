@@ -15,10 +15,10 @@ namespace v3D
 			~AudioClip();
 
 			bool load(const std::string & filename);
-			void destroy(void);
+			void destroy();
 
 	//		unsigned int buffer(void) const;
-			unsigned int source(void) const;
+			unsigned int source() const;
 
 	//		vector3d position(void) const;
 	//		vector3d velocity(void) const;

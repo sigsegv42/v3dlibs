@@ -32,7 +32,7 @@ SoundEngine::~SoundEngine()
 {
 }
 
-void SoundEngine::shutdown(void)
+void SoundEngine::shutdown()
 {
 	for (std::map<std::string, AudioClip>::iterator i = sounds_.begin(); i != sounds_.end(); i++)
 	{
@@ -41,9 +41,9 @@ void SoundEngine::shutdown(void)
 	alutExit();
 }
 
-bool SoundEngine::load(const boost::property_tree::ptree & tree)
+bool SoundEngine::load(const boost::property_tree::ptree & tree, const std::string & assetPath)
 {
-	std::string key, wav;
+	std::string key, filename, wav;
 	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.audio"));
 	LOG4CXX_DEBUG(logger, "SoundEngine::load - looking for sound clips to load...");
 	BOOST_FOREACH(boost::property_tree::ptree::value_type const & v, tree.get_child("config.sounds"))
@@ -51,7 +51,8 @@ bool SoundEngine::load(const boost::property_tree::ptree & tree)
 		if (v.first == "clip")
 		{
 			key = v.second.get<std::string>("<xmlattr>.id");
-			wav = v.second.get<std::string>("<xmlattr>.file");
+			filename = v.second.get<std::string>("<xmlattr>.file");
+			wav = assetPath + filename;
 			loadClip(wav, key);
 		}
 	}
@@ -65,21 +66,27 @@ bool SoundEngine::loadClip(const std::string & filename, const std::string & key
 
 	AudioClip clip;
 
-	clip.load(filename);
+	if (!clip.load(filename))
+	{
+		return false;
+	}
 	sounds_[key] = clip;
 
 	return true;
 }
 
-void SoundEngine::playClip(const std::string & clip)
+bool SoundEngine::playClip(const std::string & clip)
 {
 	if (sounds_.find(clip) == sounds_.end())
-		return;
+	{
+		return false;
+	}
 
 	alSourcePlay(sounds_[clip].source());
+	return true;
 }
 
-void SoundEngine::updateListener(void)
+void SoundEngine::updateListener()
 {
 	alListenerfv(AL_POSITION, *listenerPosition_);
 	alListenerfv(AL_VELOCITY, *listenerVelocity_);
