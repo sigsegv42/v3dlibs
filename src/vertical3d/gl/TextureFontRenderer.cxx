@@ -54,17 +54,17 @@ void TextureFontRenderer::upload()
 {
 	glBindVertexArray(vao_);
 
-	vertexBuffer_.attribute(0, 3, v3D::VertexBuffer::ATTRIBUTE_TYPE_VERTEX, buffer_->xyz().size());
-	vertexBuffer_.attribute(1, 2, v3D::VertexBuffer::ATTRIBUTE_TYPE_NORMAL, buffer_->uv().size());
-	vertexBuffer_.attribute(2, 4, v3D::VertexBuffer::ATTRIBUTE_TYPE_COLOR, buffer_->rgba().size());
+	vertexBuffer_.attribute(0, 3, v3D::VertexBuffer::ATTRIBUTE_TYPE_VERTEX, buffer_->vertices().size());
+	vertexBuffer_.attribute(1, 2, v3D::VertexBuffer::ATTRIBUTE_TYPE_NORMAL, buffer_->uvs().size());
+	vertexBuffer_.attribute(2, 4, v3D::VertexBuffer::ATTRIBUTE_TYPE_COLOR, buffer_->colors().size());
 	vertexBuffer_.attribute(3, 1, v3D::VertexBuffer::ATTRIBUTE_TYPE_GENERIC, buffer_->shift().size());
 	vertexBuffer_.attribute(4, 1, v3D::VertexBuffer::ATTRIBUTE_TYPE_GENERIC, buffer_->gamma().size());
 
 	vertexBuffer_.allocate();
 
-	vertexBuffer_.data3f(0, buffer_->xyz());
-	vertexBuffer_.data2f(1, buffer_->uv());
-	vertexBuffer_.data4f(2, buffer_->rgba());
+	vertexBuffer_.data3f(0, buffer_->vertices());
+	vertexBuffer_.data2f(1, buffer_->uvs());
+	vertexBuffer_.data4f(2, buffer_->colors());
 	vertexBuffer_.data1f(3, buffer_->shift());
 	vertexBuffer_.data1f(4, buffer_->gamma());
 

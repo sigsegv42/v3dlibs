@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include "TextBuffer.h"
+
 #include <glm/glm.hpp>
 #include <boost/shared_ptr.hpp>
 #include <string>
@@ -16,7 +18,7 @@ namespace v3D
 	/**
 	 * A text buffer for texture fonts
 	 */
-	class TextureTextBuffer
+	class TextureTextBuffer : public TextBuffer
 	{
 		public:
 			typedef struct
@@ -52,15 +54,8 @@ namespace v3D
 			void addText(glm::vec2 & pen, const Markup & markup, const std::wstring & text);
 			void clear();
 
-			void upload();
-			void render();
-
-			std::vector<glm::vec3> & xyz();
-			std::vector<glm::vec4> & rgba();
-			std::vector<glm::vec2> & uv();
 			std::vector<float> & shift();
 			std::vector<float> & gamma();
-			std::vector<unsigned int> & indices();
 
 		protected:
 			void addCharacter(glm::vec2 & pen, const Markup & markup, wchar_t current, wchar_t previous);
@@ -74,13 +69,9 @@ namespace v3D
 			glm::vec2 origin_;
 
 			// vertex data
-			std::vector<glm::vec3> xyz_;
-			std::vector<glm::vec4> rgba_;
-			std::vector<glm::vec2> uv_;
 			std::vector<float> shift_;
 			std::vector<float> gamma_;
 			std::vector<glm::ivec4> items_;
-			std::vector<unsigned int> indices_;
 	};
 
 };

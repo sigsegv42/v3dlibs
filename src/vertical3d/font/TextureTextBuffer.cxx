@@ -41,8 +41,8 @@ void TextureTextBuffer::addCharacter(glm::vec2 & pen, const Markup & markup, wch
 	}
 	unsigned int vcount = 0;
 	unsigned int icount = 0;
-	unsigned int istart = indices_.size();
-	unsigned int vstart = xyz_.size();
+	unsigned int istart = indices().size();
+	unsigned int vstart = vertices().size();
 
 	if (markup.backgroundColor_.a > 0.0f)
 	{
@@ -103,7 +103,7 @@ void TextureTextBuffer::addCharacter(glm::vec2 & pen, const Markup & markup, wch
 
 void TextureTextBuffer::addQuad(const glm::vec2 & xy0, const glm::vec2 & xy1, const glm::vec2 & uv0, const glm::vec2 & uv1, const glm::vec4 & color, float gamma)
 {
-	unsigned int vcount = xyz_.size();
+	unsigned int vcount = vertices().size();
 
 	// uv[0,1].t are flipped so y(0) can be top of screen (otherwise texture is upside down)
 	addVertex(glm::vec3(xy0.x, xy0.y, 0.0f), glm::vec2(uv0.s, uv1.t), color, xy0.x - ((int)xy0.x), gamma);
@@ -113,26 +113,26 @@ void TextureTextBuffer::addQuad(const glm::vec2 & xy0, const glm::vec2 & xy1, co
 
 	// Use CCW winding so that the ortho matrix can put y(0) at the top of the screen
 	// CW winding tri indices would be (0, 1, 2), (0, 2, 3)
-	indices_.push_back(vcount);
-	indices_.push_back(vcount+2);
-	indices_.push_back(vcount+1);
-	indices_.push_back(vcount);
-	indices_.push_back(vcount+3);
-	indices_.push_back(vcount+2);
+	addIndex(vcount);
+	addIndex(vcount+2);
+	addIndex(vcount+1);
+	addIndex(vcount);
+	addIndex(vcount+3);
+	addIndex(vcount+2);
 }
 
 void TextureTextBuffer::addVertex(glm::vec3 position, glm::vec2 texture, glm::vec4 color, float shift, float gamma)
 {
-	xyz_.push_back(position);
-	uv_.push_back(texture);
-	rgba_.push_back(color);
+	TextBuffer::addVertex(position);
+	addTextureCoordinate(texture);
+	addColor(color);
 	shift_.push_back(shift);
 	gamma_.push_back(gamma);
 }
 
 void TextureTextBuffer::addText(glm::vec2 & pen, const Markup & markup, const std::wstring & text)
 {
-	if (xyz_.size() == 0)
+	if (vertices().size() == 0)
 	{
 		origin_ = pen;
 	}
@@ -165,30 +165,12 @@ void TextureTextBuffer::addText(glm::vec2 & pen, const Markup & markup, const st
 void TextureTextBuffer::clear()
 {
 	// reset all of the underlying vertex buffer data sources
-	xyz_.clear();
-	rgba_.clear();
-	uv_.clear();
+	TextBuffer::clear();
 	shift_.clear();
 	gamma_.clear();
 	items_.clear();
-	indices_.clear();
 }
 
-
-std::vector<glm::vec3> & TextureTextBuffer::xyz()
-{
-	return xyz_;
-}
-
-std::vector<glm::vec4> & TextureTextBuffer::rgba()
-{
-	return rgba_;
-}
-
-std::vector<glm::vec2> & TextureTextBuffer::uv()
-{
-	return uv_;
-}
 
 std::vector<float> & TextureTextBuffer::shift()
 {
@@ -198,9 +180,4 @@ std::vector<float> & TextureTextBuffer::shift()
 std::vector<float> & TextureTextBuffer::gamma()
 {
 	return gamma_;
-}
-
-std::vector<unsigned int> & TextureTextBuffer::indices()
-{
-	return indices_;
 }

@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "TextBuffer.h"
+
 #include <glm/glm.hpp>
 #include <boost/shared_ptr.hpp>
 #include <string>
@@ -14,7 +16,7 @@ namespace v3D
 
 	class BitmapFont;
 
-	class BitmapTextBuffer
+	class BitmapTextBuffer : public TextBuffer
 	{
 		public:
 			/**
@@ -35,13 +37,6 @@ namespace v3D
 			void text(glm::vec2 & pen, const std::string & txt, const glm::vec4 & color);
 
 			/**
-			 * Clear the existing text buffer
-			 */
-			void clear();
-			void invalidate();
-			bool dirty() const;
-
-			/**
 			 * Calculate the width of a string of text
 			 *
 			 * @param string txt string of text
@@ -50,19 +45,8 @@ namespace v3D
 			 */
 			size_t width(const std::string & txt);
 
-			std::vector<glm::vec3> & vertices();
-			std::vector<glm::vec2> & uvs();
-			std::vector<glm::vec4> & colors();
-			std::vector<unsigned int> & indices();
-
 		private:
 			boost::shared_ptr<BitmapFont> font_;
-			bool dirty_;
-
-			std::vector<glm::vec3> vertices_;
-			std::vector<glm::vec2> uvs_;
-			std::vector<glm::vec4> colors_;
-			std::vector<unsigned int> indices_;
 	};
 
 }

@@ -80,6 +80,7 @@
     <ClCompile Include="..\src\vertical3d\font\BitmapTextBuffer.cxx" />
     <ClCompile Include="..\src\vertical3d\font\Font2D.cxx" />
     <ClCompile Include="..\src\vertical3d\font\FontCache.cxx" />
+    <ClCompile Include="..\src\vertical3d\font\TextBuffer.cxx" />
     <ClCompile Include="..\src\vertical3d\font\TextureFont.cxx" />
     <ClCompile Include="..\src\vertical3d\font\TextureFontCache.cxx" />
     <ClCompile Include="..\src\vertical3d\font\TextureTextBuffer.cxx" />
@@ -89,6 +90,7 @@
     <ClInclude Include="..\src\vertical3d\font\BitmapTextBuffer.h" />
     <ClInclude Include="..\src\vertical3d\font\Font2D.h" />
     <ClInclude Include="..\src\vertical3d\font\FontCache.h" />
+    <ClInclude Include="..\src\vertical3d\font\TextBuffer.h" />
     <ClInclude Include="..\src\vertical3d\font\TextureFont.h" />
     <ClInclude Include="..\src\vertical3d\font\TextureFontCache.h" />
     <ClInclude Include="..\src\vertical3d\font\TextureTextBuffer.h" />
