@@ -14,8 +14,7 @@
 using namespace v3D;
 
 TextureFontRenderer::TextureFontRenderer() :
-	vertexBuffer_(v3D::VertexBuffer::BUFFER_TYPE_DYNAMIC),
-	vao_(0)
+	vertexBuffer_(v3D::VertexBuffer::BUFFER_TYPE_DYNAMIC)
 {
 
 }
@@ -26,7 +25,6 @@ TextureFontRenderer::TextureFontRenderer(boost::shared_ptr<TextureTextBuffer> bu
 	atlas_(atlas),
 	vertexBuffer_(v3D::VertexBuffer::BUFFER_TYPE_DYNAMIC)
 {
-	glGenVertexArrays(1, &vao_);
 	texture_.create(atlas_->image());
 }
 
@@ -52,8 +50,6 @@ void TextureFontRenderer::resize(float width, float height)
 
 void TextureFontRenderer::upload()
 {
-	glBindVertexArray(vao_);
-
 	vertexBuffer_.attribute(0, 3, v3D::VertexBuffer::ATTRIBUTE_TYPE_VERTEX, buffer_->vertices().size());
 	vertexBuffer_.attribute(1, 2, v3D::VertexBuffer::ATTRIBUTE_TYPE_NORMAL, buffer_->uvs().size());
 	vertexBuffer_.attribute(2, 4, v3D::VertexBuffer::ATTRIBUTE_TYPE_COLOR, buffer_->colors().size());
@@ -73,7 +69,6 @@ void TextureFontRenderer::upload()
 
 void TextureFontRenderer::render()
 {
-	glBindVertexArray(vao_);
 	glEnable(GL_BLEND);
 	program_->enable();
 	if (atlas_->depth() == 1)

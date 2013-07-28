@@ -18,6 +18,8 @@ VertexBuffer::VertexBuffer(BufferType type) :
 	type_(type),
 	allocated_(false)
 {
+	glGenVertexArrays(1, &vao_);
+	glGenBuffers(1, &vbo_);
 }
 
 VertexBuffer::~VertexBuffer()
@@ -26,10 +28,7 @@ VertexBuffer::~VertexBuffer()
 	{
 		glDeleteBuffers(1, &ebo_);
 	}
-	if (vbo_ != 0)
-	{
-		glDeleteBuffers(1, &vbo_);
-	}
+	glDeleteBuffers(1, &vbo_);
 }
 
 void VertexBuffer::attribute(unsigned int position, unsigned int size, AttributeType type, unsigned int length)
@@ -57,6 +56,18 @@ void VertexBuffer::attribute(unsigned int position, unsigned int size, Attribute
 		}
 	}
 	attr.offset_ = offset;
+
+	glBindVertexArray(vao_);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
+	glEnableVertexAttribArray(position);
+	glVertexAttribPointer(
+		position, 
+		attr.size_, 
+		GL_FLOAT, 
+		GL_FALSE, 
+		attr.stride_, 
+		reinterpret_cast<void*>(attr.offset_)
+	);
 
 	// if the attribute in the same poisition has previously been set then just replace the old version
 	if (exists)
@@ -89,10 +100,9 @@ void VertexBuffer::indices(const std::vector<unsigned int> & data)
 			usage = GL_STATIC_DRAW;
 			break;
 	}
-	// NB - ebo's are bound to the vao so the vao must already be bound
+	glBindVertexArray(vao_);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_ * sizeof(unsigned int), &data[0], usage);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 void VertexBuffer::indices(glm::ivec3 * data, size_t count)
@@ -115,19 +125,14 @@ void VertexBuffer::indices(glm::ivec3 * data, size_t count)
 			usage = GL_STATIC_DRAW;
 			break;
 	}
-	// NB - ebo's are bound to the vao so the vao must already be bound
+	glBindVertexArray(vao_);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_ * sizeof(unsigned int), &(data[0].x), usage);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 
 void VertexBuffer::allocate()
 {
-	if (vbo_ == 0)
-	{
-		glGenBuffers(1, &vbo_);
-	}
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
 
 	size_t bufferSize = 0;
@@ -152,7 +157,6 @@ void VertexBuffer::allocate()
 
 	// allocate buffer
 	glBufferData(GL_ARRAY_BUFFER, bufferSize, NULL, usage);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	allocated_ = true;
 }
 
@@ -187,31 +191,11 @@ void VertexBuffer::set(unsigned int attr, const float * data, size_t size)
 	unsigned int offset = attributes_[attr].offset_;
 	size_t byteSize = attributes_[attr].stride_ * size;
 	glBufferSubData(GL_ARRAY_BUFFER, offset, byteSize, data);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void VertexBuffer::render()
 {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_);
+	glBindVertexArray(vao_);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
-
-	for (unsigned int i = 0; i < attributes_.size(); i++)
-	{
-		glEnableVertexAttribArray(attributes_[i].position_);
-		glVertexAttribPointer(
-			attributes_[i].position_, 
-			attributes_[i].size_, 
-			GL_FLOAT, 
-			GL_FALSE, 
-			attributes_[i].stride_, 
-			reinterpret_cast<void*>(attributes_[i].offset_)
-		);
-	}
-
 	glDrawElements(GL_TRIANGLES, indices_, GL_UNSIGNED_INT, reinterpret_cast<void*>(0));
-
-	for (unsigned int i = 0; i < attributes_.size(); i++)
-	{
-		glDisableVertexAttribArray(attributes_[i].position_);
-	}
 }

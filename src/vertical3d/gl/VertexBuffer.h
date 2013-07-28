@@ -78,6 +78,7 @@ namespace v3D
 			bool allocated() const;
 
 		private:
+			unsigned int vao_;
 			unsigned int ebo_;
 			unsigned int vbo_;
 			std::vector<VertexAttribute> attributes_;

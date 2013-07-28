@@ -52,7 +52,6 @@ namespace v3D
 			boost::shared_ptr<Program> program_;
 			VertexBuffer vertexBuffer_;
 			GLTexture texture_;
-			unsigned int vao_;
 	};
 
 }; // end namespace v3D
