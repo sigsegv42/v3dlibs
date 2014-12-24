@@ -1,10 +1,11 @@
 #include "SDL2Window.h"
 
+#include <sstream>
+#include <iostream>
+
 #include <GL/glew.h>
 
-#include <boost/bind.hpp>
 #include <boost/function.hpp>
-#include <iostream>
 
 using namespace Hookah;
 

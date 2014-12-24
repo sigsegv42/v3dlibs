@@ -5,7 +5,6 @@
 #include "../core/CreatePolyCommandSet.h"
 #include "CameraControlTool.h"
 
-#include <boost/bind.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 #include <iostream>
 

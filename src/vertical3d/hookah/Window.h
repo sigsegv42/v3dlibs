@@ -4,7 +4,7 @@
 #include "../input/InputDevice.h"
 
 #include <boost/shared_ptr.hpp>
-#include <boost/signals.hpp>
+#include <boost/signals2/signal.hpp>
 
 #include <vector>
 
@@ -93,9 +93,9 @@ namespace Hookah
 			 */
 			void addInputDevice(const std::string & name, boost::shared_ptr<v3D::InputDevice> device);
 
-			typedef boost::signal<void (unsigned int) > TickEventType;
-			typedef boost::signal< void (Window *) > DrawEventType;
-			typedef boost::signal< void (int, int) > ResizeEventType;
+			typedef boost::signals2::signal<void (unsigned int) > TickEventType;
+			typedef boost::signals2::signal< void (Window *) > DrawEventType;
+			typedef boost::signals2::signal< void (int, int) > ResizeEventType;
 
 			void addDrawListener(const DrawEventType::slot_function_type & slot);
 			void addResizeListener(const ResizeEventType::slot_function_type & slot);
