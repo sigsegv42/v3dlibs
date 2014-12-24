@@ -16,7 +16,7 @@
 // for setjmp/longjmp used in jpeg error handling
 #include <csetjmp>
 
-#include <log4cxx/logger.h>
+#include <boost/log/trivial.hpp>
 
 using namespace v3D;
 
@@ -56,8 +56,7 @@ JPEGReader::~JPEGReader()
 
 boost::shared_ptr<Image> JPEGReader::read(const std::string &filename)
 {
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.image"));
-	LOG4CXX_DEBUG(logger, "JPEGReader::read - Reading jpeg file [" << filename << "]");
+	BOOST_LOG_TRIVIAL(debug) << "JPEGReader::read - Reading jpeg file [" << filename << "]";
 
 	boost::shared_ptr<Image> empty_ptr;
 	struct jpeg_decompress_struct cinfo;
@@ -67,7 +66,7 @@ boost::shared_ptr<Image> JPEGReader::read(const std::string &filename)
 	errno = 0;
 	if ((fp = fopen(filename.c_str(), "rb")) == 0)
 	{
-		LOG4CXX_DEBUG(logger, "JPEGReader::read - failed opening file [" << filename << "] with errno [" << strerror(errno) << "]");
+		BOOST_LOG_TRIVIAL(debug) << "JPEGReader::read - failed opening file [" << filename << "] with errno [" << strerror(errno) << "]";
 		return empty_ptr;
 	}
 

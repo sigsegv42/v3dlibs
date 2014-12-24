@@ -59,7 +59,7 @@ namespace v3D
 
 		protected:
 			void addCharacter(glm::vec2 & pen, const Markup & markup, wchar_t current, wchar_t previous);
-			void addVertex(glm::vec3 position, glm::vec2 texture, glm::vec4 color, float shift, float gamma);
+			void addVertex(const glm::vec3 & position, const glm::vec2 & texture, const glm::vec4 & color, float shift, float gamma);
 			void addQuad(const glm::vec2 & xy0, const glm::vec2 & xy1, const glm::vec2 & uv0, const glm::vec2 & uv1, const glm::vec4 & color, float gamma);
 
 		private:

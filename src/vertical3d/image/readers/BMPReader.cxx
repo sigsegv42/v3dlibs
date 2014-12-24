@@ -8,7 +8,7 @@
 // needed for runtime_error
 #include <stdexcept>
 
-#include <log4cxx/logger.h>
+#include <boost/log/trivial.hpp>
 
 using namespace v3D;
 
@@ -23,8 +23,7 @@ BMPReader::~BMPReader()
 
 boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 {
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.image"));
-	LOG4CXX_DEBUG(logger, "BMPReader::read - reading file: " << filename);
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - reading file: " << filename;
 
 	std::fstream file;
 	file.open(filename.c_str(), std::fstream::in | std::fstream::binary);
@@ -33,7 +32,7 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 
 	if (!file)
 	{
-		LOG4CXX_DEBUG(logger, "BMPReader::read - error opening file: " << filename);
+		BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - error opening file: " << filename;
 		return empty_ptr;
 	}
 
@@ -44,14 +43,14 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 	file.read(reinterpret_cast<char*>(&fheader), sizeof(bmp_file_header));
 	if (!file)
 	{
-		LOG4CXX_DEBUG(logger, "BMPReader::read - error reading bmp file header!");
+		BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - error reading bmp file header!";
 		throw std::runtime_error("error reading bmp file header!");
 	}
 
 	// check magic number
 	if (fheader.type_ != 19778)
 	{
-		LOG4CXX_DEBUG(logger, "BMPReader::read - bad header magic number!");
+		BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - bad header magic number!";
 		return empty_ptr;
 	}
 
@@ -62,29 +61,29 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 	file.read(reinterpret_cast<char*>(&iheader), sizeof(bmp_info_header));
 	if (!file)
 	{
-		LOG4CXX_DEBUG(logger, "BMPReader::read - error reading bmp info header!");
+		BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - error reading bmp info header!";
 		throw std::runtime_error("error reading bmp info header!");
 	}
 
 	int num_colors = 1 << iheader.bits_;
 
-	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp type: " << fheader.type_ );
-	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp size: " << fheader.size_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp reserved1: " << fheader.reserved1_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp reserved2: " << fheader.reserved2_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - bmp offset: " << fheader.offset_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info size: " << iheader.size_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info width: " << iheader.width_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info height: " << iheader.height_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info planes: " << iheader.planes_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info bits: " << iheader.bits_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info compression: " << iheader.compression_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info image size: " << iheader.imageSize_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info xppm: " << iheader.xppm_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info yppm: " << iheader.yppm_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info used: " << iheader.used_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - info important: " << iheader.important_);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - num colors: " << num_colors);
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - bmp type: " << fheader.type_ ;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - bmp size: " << fheader.size_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - bmp reserved1: " << fheader.reserved1_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - bmp reserved2: " << fheader.reserved2_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - bmp offset: " << fheader.offset_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info size: " << iheader.size_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info width: " << iheader.width_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info height: " << iheader.height_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info planes: " << iheader.planes_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info bits: " << iheader.bits_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info compression: " << iheader.compression_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info image size: " << iheader.imageSize_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info xppm: " << iheader.xppm_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info yppm: " << iheader.yppm_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info used: " << iheader.used_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - info important: " << iheader.important_;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - num colors: " << num_colors;
 
 	bmp_rgb_quad * colors = 0;
 	if (iheader.bits_ == 8) // load 8 bit color palette
@@ -107,8 +106,8 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 		pad++;
 	}
 
-	LOG4CXX_DEBUG(logger, "BMPReader::read - allocating image bits: " << size);
-	LOG4CXX_DEBUG(logger, "BMPReader::read - width is: " << width << " after padding: " << pad);
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - allocating image bits: " << size;
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - width is: " << width << " after padding: " << pad;
 
 	// this is just temporary storage
 	boost::shared_ptr<Image> img(new Image(size));
@@ -129,7 +128,7 @@ boost::shared_ptr<Image> BMPReader::read(const std::string & filename)
 	// read image data
 	file.read(reinterpret_cast<char*>(temp), size);
 
-	LOG4CXX_DEBUG(logger, "BMPReader::read - done reading file..");
+	BOOST_LOG_TRIVIAL(debug) << "BMPReader::read - done reading file..";
 
 	if (!file)
 	{

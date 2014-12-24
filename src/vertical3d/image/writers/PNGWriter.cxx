@@ -114,7 +114,7 @@ bool PNGWriter::write(const std::string & filename, const boost::shared_ptr<Imag
 	png_byte ** row_pointers = 0;
 	row_pointers = new png_bytep[height];
 
-	if (height > PNG_UINT_32_MAX/png_sizeof(png_bytep))
+	if (height > PNG_UINT_32_MAX/sizeof(png_bytep))
 		png_error (png_ptr, "Image is too tall to process in memory");
 
 	png_bytep data = img->data();

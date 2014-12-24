@@ -4,12 +4,11 @@
  */
 #include "TextureAtlas.h"
 
-#include <log4cxx/logger.h>
-
 #include "Image.h"
 #include "ImageFactory.h"
 
 #include <boost/shared_ptr.hpp>
+#include <boost/log/trivial.hpp>
 
 using namespace v3D;
 
@@ -20,12 +19,10 @@ TextureAtlas::TextureAtlas(unsigned int width, unsigned int height, unsigned int
 	id_(0),
 	used_(0)
 {
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.image"));
-
 	if (depth != 1 && depth != 3 && depth != 4)
 	{
 		std::string err = "Invalid texture atlas depth - must be 1, 3, or 4";
-		LOG4CXX_ERROR(logger, err);
+		BOOST_LOG_TRIVIAL(error) << err;
 		throw std::runtime_error(err);
 	}
 

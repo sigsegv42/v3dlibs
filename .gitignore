@@ -33,3 +33,8 @@ libtool
 *.dirstamp
 win_build/
 *.vcxproj.user
+/build/
+/project/Release/
+/project/*.*sdf
+/project/*.suo
+

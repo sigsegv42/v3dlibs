@@ -8,7 +8,6 @@
 #include "TextureFont.h"
 
 #include <glm/gtc/matrix_transform.hpp>
-#include <log4cxx/logger.h>
 
 using namespace v3D;
 
@@ -121,7 +120,7 @@ void TextureTextBuffer::addQuad(const glm::vec2 & xy0, const glm::vec2 & xy1, co
 	addIndex(vcount+2);
 }
 
-void TextureTextBuffer::addVertex(glm::vec3 position, glm::vec2 texture, glm::vec4 color, float shift, float gamma)
+void TextureTextBuffer::addVertex(const glm::vec3 & position, const glm::vec2 & texture, const glm::vec4 & color, float shift, float gamma)
 {
 	TextBuffer::addVertex(position);
 	addTextureCoordinate(texture);

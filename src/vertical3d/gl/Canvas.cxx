@@ -64,7 +64,7 @@ void Canvas::addQuad(const glm::vec2 & xy0, const glm::vec2 & xy1, const glm::ve
 	indices_.push_back(vcount+2);
 }
 
-void Canvas::addVertex(glm::vec3 position, glm::vec4 color)
+void Canvas::addVertex(const glm::vec3 & position, const glm::vec4 & color)
 {
 	xyz_.push_back(position);
 	rgba_.push_back(color);

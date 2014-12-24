@@ -56,7 +56,7 @@ namespace v3D
 			void translate(glm::vec2 pos);
 
 		protected:
-			void addVertex(glm::vec3 position, glm::vec4 color);
+			void addVertex(const glm::vec3 & position, const glm::vec4 & color);
 			void addQuad(const glm::vec2 & xy0, const glm::vec2 & xy1, const glm::vec4 & color);
 
 		private:

@@ -9,7 +9,7 @@
 #include <cassert>
 #include <iostream>
 
-#include <log4cxx/logger.h>
+#include <boost/log/trivial.hpp>
 
 using namespace v3D;
 
@@ -64,8 +64,7 @@ bool GLTexture::bind()
 	}
 	else
 	{
-		log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.gl"));
-		LOG4CXX_DEBUG(logger, "GLTexture::bind - bad texture id!");
+		BOOST_LOG_TRIVIAL(error) << "GLTexture::bind - bad texture id!";
 		return false;
 	}
 

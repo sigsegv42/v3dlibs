@@ -6,8 +6,7 @@
 #include "Shader.h"
 
 #include <GL/glew.h>
-
-#include <log4cxx/logger.h>
+#include <boost/log/trivial.hpp>
 
 #include <fstream>
 #include <iostream>
@@ -63,8 +62,7 @@ Shader::Shader(ShaderType type, const std::string & shader) :
 
 		std::string msg = std::string("Compile failure in ") + shaderTypeName + std::string(" shader: ") + std::string(infoLog);
 		delete[] infoLog;
-		log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("voxel.log"));
-		LOG4CXX_ERROR(logger, msg);
+		BOOST_LOG_TRIVIAL(error) << msg;
 		throw std::runtime_error(msg);
 	}
 }

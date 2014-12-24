@@ -7,7 +7,7 @@
 
 #include "CommandInfo.h"
 
-#include <boost/signals.hpp>
+#include <boost/signals2.hpp>
 
 namespace v3D
 {
@@ -24,7 +24,7 @@ namespace v3D
 			 *	bool callback(const CommandInfo & cmd, const std::string & param);
 			 * 
 			 */
-			typedef boost::signal<bool (const CommandInfo & , const std::string &) > CommandHandlerType;
+			typedef boost::signals2::signal<bool (const CommandInfo & , const std::string &) > CommandHandlerType;
 			/**
 			 * Constructor
 			 * @param name the name of the command
@@ -53,7 +53,8 @@ namespace v3D
 		private:
 			CommandHandlerType handler_;
 			CommandInfo info_;
-			boost::signals::connection connection_;
+			boost::signals2::connection connection_;
+			boost::signals2::shared_connection_block blocker_;
 	};
 
 }; // end namespace v3D

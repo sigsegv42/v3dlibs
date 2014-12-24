@@ -10,7 +10,7 @@
 #include <cmath>
 #include <algorithm>
 
-#include <log4cxx/logger.h>
+#include <boost/log/trivial.hpp>
 
 #undef max
 
@@ -73,15 +73,14 @@ bool Font2D::build(void)
 							  "1234567890~!@#$%^&*()-=+;:"
 							  " _'\",./?[]|\\<>{}`\xFF");
 
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.font"));
-	LOG4CXX_DEBUG(logger, "Font2D::build - Building font: " << typeface_);
+	BOOST_LOG_TRIVIAL(debug) << "Font2D::build - Building font: " << typeface_;
 
 	// initialize freetype library
 	FT_Library library;
 	FT_Error error;
 	if ((error = FT_Init_FreeType(&library)) != 0)
 	{
-		LOG4CXX_DEBUG(logger, "Font2D::build - Error initializing freetype library!");
+		BOOST_LOG_TRIVIAL(debug) << "Font2D::build - Error initializing freetype library!";
 		return false;
 	}
 	// load font file
@@ -89,20 +88,20 @@ bool Font2D::build(void)
 	std::string filename(typeface_);
 	if ((error = FT_New_Face(library, filename.c_str(), 0, &face)) != 0)
 	{
-		LOG4CXX_DEBUG(logger, "Font2D::build - Error creating new freetype face!");
+		BOOST_LOG_TRIVIAL(debug) << "Font2D::build - Error creating new freetype face!";
 		return false;
 	}
 	// make sure this is a scalable truetype font
 	if (!(face->face_flags & FT_FACE_FLAG_SCALABLE) || !(face->face_flags & FT_FACE_FLAG_HORIZONTAL))
 	{
-		LOG4CXX_DEBUG(logger, "Font2D::build - Not a scalable TTF font!");
+		BOOST_LOG_TRIVIAL(debug) << "Font2D::build - Not a scalable TTF font!";
 		return false;
 	}
 
 	// set the font size
 	if ((error = FT_Set_Pixel_Sizes(face, size_, 0)) != 0)
 	{
-		LOG4CXX_DEBUG(logger, "Font2D::build - Error setting font pixel size!");
+		BOOST_LOG_TRIVIAL(debug) << "Font2D::build - Error setting font pixel size!";
 		return false;
 	}
 
@@ -132,7 +131,7 @@ bool Font2D::build(void)
 		// load the glyph and render the bitmap
 		if ((error = FT_Load_Char(face, charcode, FT_LOAD_RENDER)) != 0)
 		{
-			LOG4CXX_DEBUG(logger, "Font2D::build - Error loading character [" << charcode << "] from typeface!");
+			BOOST_LOG_TRIVIAL(debug) << "Font2D::build - Error loading character [" << charcode << "] from typeface!";
 			return false;
 		}
 		// get the advance in pixels and added padding
@@ -150,7 +149,7 @@ bool Font2D::build(void)
 		row_space -= advance;
 
 		max_ascent = std::max(face->glyph->bitmap_top, max_ascent);
-		max_descent = std::max(face->glyph->bitmap.rows - face->glyph->bitmap_top, max_descent);
+		max_descent = std::max((static_cast<int>(face->glyph->bitmap.rows) - face->glyph->bitmap_top), max_descent);
 	}
 
 	// calculate final texture size
@@ -174,7 +173,7 @@ bool Font2D::build(void)
 		// load the glyph and render the bitmap
 		if ((error = FT_Load_Char(face, charcode, FT_LOAD_RENDER)) != 0)
 		{
-			LOG4CXX_DEBUG(logger, "Font2D::build - Error loading character [" << charcode << "] !");
+			BOOST_LOG_TRIVIAL(debug) << "Font2D::build - Error loading character [" << charcode << "] !";
 			return false;
 		}
 		unsigned int advance = (face->glyph->metrics.horiAdvance >> 6) + pad;
@@ -193,9 +192,9 @@ bool Font2D::build(void)
 		glyphs_[charcode] = glyph;
 
 		// copy bitmap to texture image
-		for (int row = 0; row < face->glyph->bitmap.rows; row++)
+		for (unsigned int row = 0; row < face->glyph->bitmap.rows; row++)
 		{
-			for (int pixel = 0; pixel < face->glyph->bitmap.width; pixel++)
+			for (unsigned int pixel = 0; pixel < face->glyph->bitmap.width; pixel++)
 			{
 				(*image)[(x + face->glyph->bitmap_left + pixel) + (y - face->glyph->bitmap_top + row) * image_width] =
 					face->glyph->bitmap.buffer[pixel + row * face->glyph->bitmap.pitch];

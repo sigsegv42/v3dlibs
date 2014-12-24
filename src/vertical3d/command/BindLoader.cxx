@@ -5,14 +5,13 @@
 #include "BindLoader.h"
 
 #include <boost/foreach.hpp>
-#include <log4cxx/logger.h>
+#include <boost/log/trivial.hpp>
 
 using namespace v3D;
 
 bool utility::load_binds(const boost::property_tree::ptree & tree, CommandDirectory * directory)
 {
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.command"));
-	LOG4CXX_DEBUG(logger, "utility::load_binds - looking for commands to bind...");
+	BOOST_LOG_TRIVIAL(debug) << "utility::load_binds - looking for commands to bind...";
 	// <bind event="w" scope="pong" command="leftPaddleUp" param="value" catch="any" />
 	std::string event_name, command, val, scope, param;
 	EventInfo::MatchState flag = EventInfo::MATCH_STATE_NONE;
@@ -26,8 +25,8 @@ bool utility::load_binds(const boost::property_tree::ptree & tree, CommandDirect
 			val 		= v.second.get<std::string>("<xmlattr>.catch");
 			param 		= v.second.get<std::string>("<xmlattr>.param", "");
 
-			LOG4CXX_DEBUG(logger, "utility::load_binds - binding event [" << event_name << "] to command [" << command 
-				<< "] in scope [" << scope << "] catch [" << val << "] param [" << param << "]");
+			BOOST_LOG_TRIVIAL(debug) << "utility::load_binds - binding event [" << event_name << "] to command [" << command
+				<< "] in scope [" << scope << "] catch [" << val << "] param [" << param << "]";
 
 			if (val == "on")
 			{

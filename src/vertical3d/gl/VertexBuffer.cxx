@@ -8,8 +8,6 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <GL/glew.h>
 
-#include <log4cxx/logger.h>
-
 using namespace v3D;
 
 VertexBuffer::VertexBuffer(BufferType type) :

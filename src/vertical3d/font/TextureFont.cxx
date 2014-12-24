@@ -6,14 +6,14 @@
 #include "TextureFont.h"
 #include "../image/TextureAtlas.h"
 
-#include <log4cxx/logger.h>
-
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_STROKER_H
 #include FT_LCD_FILTER_H
 
 #include <cmath>
+
+#include <boost/log/trivial.hpp>
 
 using namespace v3D;
 
@@ -37,19 +37,18 @@ void TextureFont::Freetype::release()
 
 bool TextureFont::Freetype::loadFace(const std::string & filename, float size)
 {
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.font"));
 	// initialize freetype library
 	FT_Error error;
 	if ((error = FT_Init_FreeType(&library_)) != 0)
 	{
-		LOG4CXX_ERROR(logger, "Error initializing freetype library!");
+		BOOST_LOG_TRIVIAL(error) << "Error initializing freetype library!";
 		return false;
 	}
 
 	// load font file
 	if ((error = FT_New_Face(library_, filename.c_str(), 0, &face_)) != 0)
 	{
-		LOG4CXX_ERROR(logger, "Error creating new freetype face!");
+		BOOST_LOG_TRIVIAL(error) << "Error creating new freetype face!";
 		FT_Done_FreeType(library_);
 		return false;
 	}
@@ -57,7 +56,7 @@ bool TextureFont::Freetype::loadFace(const std::string & filename, float size)
 	// select charmap
 	if ((error = FT_Select_Charmap(face_, FT_ENCODING_UNICODE)) != 0)
 	{
-		LOG4CXX_ERROR(logger, "Error selecting freetype charmap!");
+		BOOST_LOG_TRIVIAL(error) << "Error selecting freetype charmap!";
 		release();
 		return false;
 	}
@@ -67,7 +66,7 @@ bool TextureFont::Freetype::loadFace(const std::string & filename, float size)
 	size_t hres = 64;
 	if ((error = FT_Set_Char_Size(face_, (int)(size*64), 0, 72*hres, 72)) != 0)
 	{
-		LOG4CXX_ERROR(logger, "Error setting freetype char size!");
+		BOOST_LOG_TRIVIAL(error) << "Error setting freetype char size!";
 		release();
 		return false;
 	}
@@ -158,7 +157,6 @@ boost::shared_ptr<TextureFont::Glyph> TextureFont::glyph(wchar_t charcode)
 {
 	wchar_t lineCode = static_cast<wchar_t>(-1);
 
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("voxel.log"));
 	for (unsigned int i = 0; i < glyphs_.size(); ++i)
 	{
 		if ((glyphs_[i]->charcode_ == charcode) &&
@@ -177,7 +175,7 @@ boost::shared_ptr<TextureFont::Glyph> TextureFont::glyph(wchar_t charcode)
 
 		if (region.x < 0)
 		{
-			LOG4CXX_DEBUG(logger, "Texture atlas is full!");
+			BOOST_LOG_TRIVIAL(debug) << "Texture atlas is full!";
 			return glyph;
 		}
 		glyph = createGlyph();
@@ -219,7 +217,6 @@ boost::shared_ptr<TextureFont::Glyph> TextureFont::glyph(wchar_t charcode)
 
 bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 {
-	log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("v3d.font"));
 	if (!freetype_->loadFace(filename_, size_))
 	{
 		return false;
@@ -259,7 +256,7 @@ bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 		FT_Error error;
 		if ((error = FT_Load_Glyph(freetype_->face_, glyphIndex, flags)) != 0)
 		{
-			LOG4CXX_ERROR(logger, "Error loading glyph!");
+			BOOST_LOG_TRIVIAL(error) << "Error loading glyph!";
 			FT_Done_FreeType(freetype_->library_);
 			return false;
 		}
@@ -286,7 +283,7 @@ bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 			FT_Stroker stroker;
 			if ((error = FT_Stroker_New(freetype_->library_, &stroker)) != 0)
 			{
-				LOG4CXX_ERROR(logger, "Error creating stroker!");
+				BOOST_LOG_TRIVIAL(error) << "Error creating stroker!";
 				freetype_->release();
 				return false;
 			}
@@ -299,7 +296,7 @@ bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 			);
 			if ((error = FT_Get_Glyph(freetype_->face_->glyph, &ft_glyph)) != 0)
 			{
-				LOG4CXX_ERROR(logger, "Error getting glyph!");
+				BOOST_LOG_TRIVIAL(error) << "Error getting glyph!";
 				freetype_->release();
 				return false;
             }
@@ -318,7 +315,7 @@ bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 			}
 			if (error)
 			{
-				LOG4CXX_ERROR(logger, "Error setting glyph stroke border!");
+				BOOST_LOG_TRIVIAL(error) << "Error setting glyph stroke border!";
 				freetype_->release();
 				return false;
 			}
@@ -327,7 +324,7 @@ bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 			{
 				if ((error = FT_Glyph_To_Bitmap(&ft_glyph, FT_RENDER_MODE_NORMAL, 0, 1)) != 0)
 				{
-					LOG4CXX_ERROR(logger, "Error converting glyph to bitmap!");
+					BOOST_LOG_TRIVIAL(error) << "Error converting glyph to bitmap!";
 					freetype_->release();
 					return false;
 				}
@@ -336,7 +333,7 @@ bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 			{
 				if ((error = FT_Glyph_To_Bitmap( &ft_glyph, FT_RENDER_MODE_LCD, 0, 1)) != 0)
 				{
-					LOG4CXX_ERROR(logger, "Error converting glyph to bitmap!");
+					BOOST_LOG_TRIVIAL(error) << "Error converting glyph to bitmap!";
 					freetype_->release();
 					return false;
 				}
@@ -358,7 +355,7 @@ bool TextureFont::loadGlyphs(const wchar_t * charcodes)
 		if (region.x < 0)
 		{
 			missed++;
-			LOG4CXX_ERROR(logger, "Texture atlas is full!");
+			BOOST_LOG_TRIVIAL(error) << "Texture atlas is full!";
 			continue;
 		}
 		w = w - 1;

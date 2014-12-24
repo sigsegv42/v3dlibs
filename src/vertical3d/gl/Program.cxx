@@ -7,8 +7,7 @@
 #include "Shader.h"
 
 #include <GL/glew.h>
-
-#include <log4cxx/logger.h>
+#include <boost/log/trivial.hpp>
 
 using namespace v3D;
 
@@ -42,8 +41,7 @@ void Program::shaders(std::vector<boost::shared_ptr<Shader>> & theShaders)
 		std::string msg = std::string("Shader Program Linker failure: ") + std::string(infoLog);
 		delete[] infoLog;
 
-		log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("voxel.log"));
-		LOG4CXX_ERROR(logger, msg);
+		BOOST_LOG_TRIVIAL(error) << msg;
 
 		throw std::runtime_error(msg);
 	}
